@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct EndingView: View {
+    @ObservedObject var arViewModel : ARViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Ya did it")
     }
 }
 
 struct EndingView_Previews: PreviewProvider {
     static var previews: some View {
-        EndingView()
+        EndingView(arViewModel: ARViewModel.init())
     }
 }

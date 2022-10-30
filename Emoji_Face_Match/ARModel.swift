@@ -25,6 +25,7 @@ struct ARModel {
     mutating func update(faceAnchor: ARFaceAnchor){
         smileRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileRight})?.value ?? 0)
         smileLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileLeft})?.value ?? 0)
+        checkToSeeIfSmile()
     }
     
     // Game Logic Below
@@ -33,6 +34,15 @@ struct ARModel {
         print("Test 2 - gamestageVar = \(gameStageVar)")
     }
     
+    
+    
+    mutating func checkToSeeIfSmile() {
+        print("running func")
+        if smileLeft > 0.3 || smileRight > 0.3 {
+            gameStageVar = .ending
+            print("should be changing to ending")
+        }
+    }
     // Game Logic Above
     
     

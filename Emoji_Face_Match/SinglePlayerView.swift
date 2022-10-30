@@ -10,9 +10,16 @@ import SwiftUI
 struct SinglePlayerView: View {
     @ObservedObject var arViewModel : ARViewModel
     var body: some View {
-        VStack {
-            Text("Single Player View")
-        }
+                ZStack {
+                    ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
+                    VStack {
+                        Text(arViewModel.isSmiling ? "Smiling 😄" : "Not Smiling 😐")
+                            .padding()
+                            .foregroundColor(arViewModel.isSmiling ? .green : .red)
+                            .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
+                        Spacer()
+                    }
+                }
     }
 }
 

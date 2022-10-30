@@ -15,19 +15,9 @@ struct ContentView : View {
             switch arViewModel.gameStage {
             case .menu: MenuView(arViewModel: arViewModel)
             case .singlePlayer: SinglePlayerView(arViewModel: arViewModel)
-            case .ending: EndingView()
+            case .ending: EndingView(arViewModel: arViewModel)
             }
         }
-//        ZStack {
-//            ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
-//            VStack {
-//                Text(arViewModel.isSmiling ? "Smiling 😄" : "Not Smiling 😐")
-//                    .padding()
-//                    .foregroundColor(arViewModel.isSmiling ? .green : .red)
-//                    .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
-//                Spacer()
-//            }
-//        }
     }
 }
 
