@@ -11,16 +11,23 @@ import RealityKit
 struct ContentView : View {
     @ObservedObject var arViewModel : ARViewModel = ARViewModel()
     var body: some View {
-        ZStack {
-            ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
-            VStack {
-                Text(arViewModel.isSmiling ? "Smiling 😄" : "Not Smiling 😐")
-                    .padding()
-                    .foregroundColor(arViewModel.isSmiling ? .green : .red)
-                    .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
-                Spacer()
+        VStack {
+            switch arViewModel.gameStage {
+            case .menu: MenuView(arViewModel: arViewModel)
+            case .singlePlayer: SinglePlayerView(arViewModel: arViewModel)
+            case .ending: EndingView()
             }
         }
+//        ZStack {
+//            ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
+//            VStack {
+//                Text(arViewModel.isSmiling ? "Smiling 😄" : "Not Smiling 😐")
+//                    .padding()
+//                    .foregroundColor(arViewModel.isSmiling ? .green : .red)
+//                    .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
+//                Spacer()
+//            }
+//        }
     }
 }
 

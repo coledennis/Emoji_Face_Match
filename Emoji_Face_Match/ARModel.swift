@@ -12,6 +12,8 @@ import ARKit
 struct ARModel {
     private(set) var arView : ARView
     
+    var gameStageVar: GameStage = .menu
+    
     var smileRight: Float = 0
     var smileLeft: Float = 0
     
@@ -24,4 +26,14 @@ struct ARModel {
         smileRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileRight})?.value ?? 0)
         smileLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileLeft})?.value ?? 0)
     }
+    
+    // Game Logic Below
+    mutating func updateGameStage(gameStage: GameStage) {
+        gameStageVar = gameStage
+        print("Test 2 - gamestageVar = \(gameStageVar)")
+    }
+    
+    // Game Logic Above
+    
+    
 }

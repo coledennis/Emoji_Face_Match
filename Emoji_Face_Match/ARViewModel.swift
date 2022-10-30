@@ -10,11 +10,23 @@ import RealityKit
 import ARKit
 
 class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
-    @Published private var model : ARModel = ARModel()
+    @Published var model : ARModel = ARModel()
     
     var arView : ARView {
         model.arView
     }
+    
+    // Game Logic Below
+    var gameStage: GameStage {
+        model.gameStageVar
+    }
+    
+    func changeGameStage(newGameStage: GameStage) {
+        model.updateGameStage(gameStage: newGameStage)
+    }
+    
+    // Game Logic Above
+    
     
     var isSmiling: Bool {
         var temp = false
