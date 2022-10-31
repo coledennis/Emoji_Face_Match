@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Smiling face with sunglasses.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

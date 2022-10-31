@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Face with head-bandage.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

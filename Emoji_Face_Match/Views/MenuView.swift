@@ -11,8 +11,7 @@ struct MenuView: View {
    @ObservedObject var arViewModel : ARViewModel
     var body: some View {
         VStack {
-            Text("🥸")
-                .font(.largeTitle)
+            Image("Anguished face")
             Text("Emoji Face Match")
                 .font(.largeTitle)
             
