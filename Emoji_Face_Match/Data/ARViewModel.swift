@@ -27,6 +27,9 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     
     // Game Logic Above
     
+    var score: Int {
+        model.currentScore
+    }
     
 //    var isSmiling: Bool {
 //        var temp = false

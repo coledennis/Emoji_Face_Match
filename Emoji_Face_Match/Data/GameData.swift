@@ -21,6 +21,7 @@ enum faces {
     var name: String {
         switch self {
         case .Angry_face: return "Angry Face"
+        case .Clown_face: return "Clown Face"
         default: return "Clown face"
         }
     }
@@ -28,6 +29,7 @@ enum faces {
     var image: Image {
         switch self {
         case .Angry_face: return Image("Angry face")
+        case .Clown_face: return Image("Clown face")
         default: return Image("Clown face")
         }
     }
@@ -35,7 +37,8 @@ enum faces {
     
     var smileLeft: expressionScale {
         switch self {
-        case .Angry_face: return .heavy
+        case .Angry_face: return .light
+        case .Clown_face: return .heavy
         default: return .medium
         }
     }

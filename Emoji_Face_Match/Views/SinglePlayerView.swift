@@ -13,20 +13,35 @@ struct SinglePlayerView: View {
         ZStack {
             ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
             VStack {
+                HStack {
+                    Label(String(arViewModel.score), systemImage: "trophy")
+                        .bold()
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
+                    Spacer()
+                    Label("00:15", systemImage: "clock")
+                        .bold()
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
+                }
+                .padding(.horizontal)
+                Spacer()
+                
+            }
+            .padding(5)
+            // break this out into a separate view / variable
+            VStack {
                 VStack {
-                    faces.Angry_face.image
+                    if arViewModel.model.facesArray.count > 0 {
+                        arViewModel.model.facesArray.first?.image
+                    }
+//                    faces.Angry_face.image
                 }
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
                 Spacer()
-                
-                VStack {
-                    Text("Points: 0")
-                    Text("Timer: 0:15")
-                }
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
             }
+            .padding(5)
         }
     }
 }

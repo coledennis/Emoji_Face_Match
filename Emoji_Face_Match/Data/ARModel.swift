@@ -14,6 +14,10 @@ struct ARModel {
     
     var gameStageVar: GameStage = .menu
     
+    var currentScore: Int = 0
+    
+    var facesArray: Array<faces> = [.Angry_face, .Clown_face]
+    
     init() {
         arView = ARView(frame: .zero)
         arView.session.run(ARFaceTrackingConfiguration())
@@ -33,17 +37,22 @@ struct ARModel {
         
         // TOUNGE
         
-        
-        faceCheck(face: .Angry_face, smileLeft: smileLeft, smileRight: smileRight) // REMEMBER THAT THIS IS HARD CODED FOR ANGRY #######################
+        if facesArray.count > 0 {
+            faceCheck(face: facesArray.first!, smileLeft: smileLeft, smileRight: smileRight) // REMEMBER THAT THIS IS HARD CODED FOR ANGRY #######################
+        }
     }
     
     // Game Logic Below
     
     mutating func faceCheck(face: faces, smileLeft: Float, smileRight: Float) {
         if  smileLeft >= face.smileLeft.value {
-            updateGameStage(gameStage: .ending)
+            //            updateGameStage(gameStage: .ending)
+            if face == facesArray.first {
+                currentScore += 1
+                facesArray.remove(at: 0)
+            }
+            
         }
-        
     }
     
     mutating func updateGameStage(gameStage: GameStage) {

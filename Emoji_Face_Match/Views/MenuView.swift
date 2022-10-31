@@ -11,15 +11,33 @@ struct MenuView: View {
     @ObservedObject var arViewModel : ARViewModel
     var body: some View {
         VStack {
-            Image("Anguished face")
-            Text("Emoji Face Match")
-                .font(.largeTitle)
-            
+            HStack {
+//                Image(systemName: "face.dashed")
+//                    .font(.largeTitle)
+                Image("Anguished face")
+            }
+            Text("Emoji Face Match Party")
+                .font(.system(.largeTitle, design: .rounded, weight: .bold))
             Button {
                 arViewModel.changeGameStage(newGameStage: .singlePlayer)
             } label: {
-                Text("1 Player - Start")
+                GameButtonView(text: "1 Player - Start", color: .red, icon: "person")
             }
+            Button {
+                arViewModel.changeGameStage(newGameStage: .singlePlayer)
+            } label: {
+                GameButtonView(text: "2 Player - Competitive", color: .orange, icon: "person.2")
+            }
+            Button {
+                arViewModel.changeGameStage(newGameStage: .singlePlayer)
+            } label: {
+                GameButtonView(text: "2 Player - Collaborative", color: .green, icon: "person.2")
+            }
+            Button {
+                arViewModel.changeGameStage(newGameStage: .singlePlayer)
+            } label: {
+                GameButtonView(text: "Party Mode", color: .blue, icon: "person.2")
+            } // GENERALIZE THIS TO REDUCE CODE
         }
     }
 }
