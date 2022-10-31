@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SinglePlayerView: View {
+    @State private var timeRemaining = 15
     @ObservedObject var arViewModel : ARViewModel
     var body: some View {
         ZStack {
@@ -19,7 +20,7 @@ struct SinglePlayerView: View {
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
                     Spacer()
-                    Label("00:15", systemImage: "clock")
+                    Label(String(timeRemaining), systemImage: "clock")
                         .bold()
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
@@ -35,13 +36,23 @@ struct SinglePlayerView: View {
                     if arViewModel.model.facesArray.count > 0 {
                         arViewModel.model.facesArray.first?.image
                     }
-//                    faces.Angry_face.image
+                    //                    faces.Angry_face.image
                 }
                 .padding()
                 .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
                 Spacer()
             }
             .padding(5)
+        }
+        .task {
+             while timeRemaining > 0 {
+                 do {
+                     try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
+                     timeRemaining -= 1
+                 } catch {
+                     print ("error")
+                 }
+            }
         }
     }
 }
