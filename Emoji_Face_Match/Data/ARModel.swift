@@ -14,34 +14,40 @@ struct ARModel {
     
     var gameStageVar: GameStage = .menu
     
-    var smileRight: Float = 0
-    var smileLeft: Float = 0
-    
     init() {
         arView = ARView(frame: .zero)
         arView.session.run(ARFaceTrackingConfiguration())
     }
     
     mutating func update(faceAnchor: ARFaceAnchor){
-        smileRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileRight})?.value ?? 0)
-        smileLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileLeft})?.value ?? 0)
-        checkToSeeIfSmile()
+        
+        // LIPS
+        let smileRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileRight})?.value ?? 0)
+        let smileLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileLeft})?.value ?? 0)
+        
+        // EYES?
+        
+        
+        // EYEBROWS
+        
+        
+        // TOUNGE
+        
+        
+        faceCheck(face: .Angry_face, smileLeft: smileLeft, smileRight: smileRight) // REMEMBER THAT THIS IS HARD CODED FOR ANGRY #######################
     }
     
     // Game Logic Below
-    mutating func updateGameStage(gameStage: GameStage) {
-        gameStageVar = gameStage
-        print("Test 2 - gamestageVar = \(gameStageVar)")
+    
+    mutating func faceCheck(face: faces, smileLeft: Float, smileRight: Float) {
+        if  smileLeft >= face.smileLeft.value {
+            updateGameStage(gameStage: .ending)
+        }
+        
     }
     
-    
-    
-    mutating func checkToSeeIfSmile() {
-        print("running func")
-        if smileLeft > 0.3 || smileRight > 0.3 {
-            gameStageVar = .ending
-            print("should be changing to ending")
-        }
+    mutating func updateGameStage(gameStage: GameStage) {
+        gameStageVar = gameStage
     }
     // Game Logic Above
     

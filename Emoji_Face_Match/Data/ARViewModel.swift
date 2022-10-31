@@ -28,13 +28,13 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     // Game Logic Above
     
     
-    var isSmiling: Bool {
-        var temp = false
-        if model.smileLeft > 0.3 || model.smileRight > 0.3 {
-            temp = true
-        }
-        return temp
-    }
+//    var isSmiling: Bool {
+//        var temp = false
+//        if model.smileLeft > 0.3 || model.smileRight > 0.3 {
+//            temp = true
+//        }
+//        return temp
+//    }
     
     func startSessionDelegate() {
         model.arView.session.delegate = self

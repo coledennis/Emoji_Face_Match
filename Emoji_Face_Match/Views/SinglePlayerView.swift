@@ -10,16 +10,24 @@ import SwiftUI
 struct SinglePlayerView: View {
     @ObservedObject var arViewModel : ARViewModel
     var body: some View {
-                ZStack {
-                    ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
-                    VStack {
-                        Text(arViewModel.isSmiling ? "Smiling 😄" : "Not Smiling 😐")
-                            .padding()
-                            .foregroundColor(arViewModel.isSmiling ? .green : .red)
-                            .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
-                        Spacer()
-                    }
+        ZStack {
+            ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
+            VStack {
+                VStack {
+                    faces.Angry_face.image
                 }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
+                Spacer()
+                
+                VStack {
+                    Text("Points: 0")
+                    Text("Timer: 0:15")
+                }
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
+            }
+        }
     }
 }
 

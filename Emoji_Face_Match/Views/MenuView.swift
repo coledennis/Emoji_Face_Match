@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MenuView: View {
-   @ObservedObject var arViewModel : ARViewModel
+    @ObservedObject var arViewModel : ARViewModel
     var body: some View {
         VStack {
             Image("Anguished face")
@@ -20,7 +20,6 @@ struct MenuView: View {
             } label: {
                 Text("1 Player - Start")
             }
-
         }
     }
 }
