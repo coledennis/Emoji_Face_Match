@@ -39,38 +39,38 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
 //        return temp
 //    }
     // FOR TESTING ONLY
-    var smileLeft: Float {
-        model.smileLeftVar
-    }
-    var smileRight: Float {
-        model.smileRightVar
-    }
-    var frownLeft: Float {
-        model.frownLeftVar
-    }
-    var frownRight: Float {
-        model.frownRightVar
-    }
-    
-    var mouthFunnelVar: Float {
-        model.mouthFunnelVar
-    }
-    var mouthPuckerVar: Float {
-        model.mouthPuckerVar
-    }
-    var mouthCloseVar: Float {
-        model.mouthCloseVar
-    }
-    var tongueOutVar: Float {
-        model.tongueOutVar
-    }
+//    var smileLeft: Float {
+//        model.smileLeftVar
+//    }
+//    var smileRight: Float {
+//        model.smileRightVar
+//    }
+//    var frownLeft: Float {
+//        model.frownLeftVar
+//    }
+//    var frownRight: Float {
+//        model.frownRightVar
+//    }
+//    
+//    var mouthFunnelVar: Float {
+//        model.mouthFunnelVar
+//    }
+//    var mouthPuckerVar: Float {
+//        model.mouthPuckerVar
+//    }
+//    var mouthCloseVar: Float {
+//        model.mouthCloseVar
+//    }
+//    var tongueOutVar: Float {
+//        model.tongueOutVar
+//    }
     var mouthStatus: mouthScale {
         model.mouthStatus
     }
-    
-    var jawOpenVar: Float {
-        model.jawOpenVar
-    }
+//    
+//    var jawOpenVar: Float {
+//        model.jawOpenVar
+//    }
 //    var mouthLeft: Float {
 //        model.mouthLeftVar
 //    }
@@ -94,6 +94,10 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
 //    var eyebrowOuterUpLeft: Float {
 //        model.eyebrowOuterUpLeftVar
 //    }
+    
+    var eyebrowStatus: eyebrowScale {
+        model.eyebrowStatus
+    }
     
 //    var eyeWideLeftVar: Float {
 //            model.eyeWideLeftVar
@@ -136,9 +140,9 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     
     
     
-    var eyeBrowStatus: String {
-        model.eyebrowStatus.string
-    }
+//    var eyeBrowStatus: String {
+//        model.eyebrowStatus.string
+//    }
     ///
     
     func startSessionDelegate() {

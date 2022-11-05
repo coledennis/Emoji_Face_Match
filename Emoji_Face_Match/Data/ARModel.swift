@@ -16,20 +16,20 @@ struct ARModel {
     
     var currentScore: Int = 0
     
-    var facesArray: Array<faces> = [.Angry_face, .Clown_face]
+    var facesArray: Array<faces> = []
     
     
     
     // for testing only
-    var smileLeftVar : Float = 0
-    var smileRightVar: Float = 0
-    var frownLeftVar: Float = 0
-    var frownRightVar: Float = 0
-    var mouthCloseVar: Float = 0
-    var mouthFunnelVar: Float = 0
-    var mouthPuckerVar: Float = 0
-    var tongueOutVar: Float = 0
-    var jawOpenVar: Float = 0
+//    var smileLeftVar : Float = 0
+//    var smileRightVar: Float = 0
+//    var frownLeftVar: Float = 0
+//    var frownRightVar: Float = 0
+//    var mouthCloseVar: Float = 0
+//    var mouthFunnelVar: Float = 0
+//    var mouthPuckerVar: Float = 0
+//    var tongueOutVar: Float = 0
+//    var jawOpenVar: Float = 0
     
     var mouthStatus: mouthScale = .neutral
     
@@ -62,39 +62,43 @@ struct ARModel {
     init() {
         arView = ARView(frame: .zero)
         arView.session.run(ARFaceTrackingConfiguration())
+        for face in faces.allCases {
+            facesArray.append(face)
+        }
+        facesArray.shuffle()
     }
     
     mutating func update(faceAnchor: ARFaceAnchor){
         
         // LIPS
         let smileRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileRight})?.value ?? 0)
-        smileRightVar = smileRight
+//        smileRightVar = smileRight
         let smileLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileLeft})?.value ?? 0)
-        smileLeftVar = smileLeft
+//        smileLeftVar = smileLeft
         let frownRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthFrownRight})?.value ?? 0)
-        frownRightVar = frownRight
+//        frownRightVar = frownRight
         let frownLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthFrownLeft})?.value ?? 0)
-        frownLeftVar = frownLeft
+//        frownLeftVar = frownLeft
         
 //        let mouthLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthLeft})?.value ?? 0)
 //        mouthLeftVar = mouthLeft
 //        let mouthRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthRight})?.value ?? 0)
 //        mouthRightVar = mouthRight
         
-        let mouthClose = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthClose})?.value ?? 0)
-        mouthCloseVar = mouthClose
+//        let mouthClose = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthClose})?.value ?? 0)
+//        mouthCloseVar = mouthClose
         
         let mouthFunnel = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthFunnel})?.value ?? 0)
-        mouthFunnelVar = mouthFunnel
+//        mouthFunnelVar = mouthFunnel
         
         let mouthPucker = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthPucker})?.value ?? 0)
-        mouthPuckerVar = mouthPucker
+//        mouthPuckerVar = mouthPucker
         
         let tongueOut = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .tongueOut})?.value ?? 0)
-        tongueOutVar = tongueOut
+//        tongueOutVar = tongueOut
         
-        let jawOpen = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .jawOpen})?.value ?? 0)
-        jawOpenVar = jawOpen
+//        let jawOpen = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .jawOpen})?.value ?? 0)
+//        jawOpenVar = jawOpen
 //        smileRightVar = smileRight
 //        let mouthPucker = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouth})?.value ?? 0)
         
@@ -102,7 +106,7 @@ struct ARModel {
 //        smileRightVar = smileRight
         
         
-        mouthStatus = mouthCheck(tongueOut: tongueOut, frownLeft: frownLeft, frownRight: frownRight, smileLeft: smileLeft, smileRight: smileRight, mouthPucker: mouthPucker, mouthFunnel: mouthFunnel)
+        /*let*/ mouthStatus = mouthCheck(tongueOut: tongueOut, frownLeft: frownLeft, frownRight: frownRight, smileLeft: smileLeft, smileRight: smileRight, mouthPucker: mouthPucker, mouthFunnel: mouthFunnel)
         
         
         // EYES?
@@ -125,12 +129,12 @@ struct ARModel {
 //        eyeLookUpLeftVar = eyeLookUpLeft
         let eyeLookUpRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookUpRight})?.value ?? 0)
 //        eyeLookUpRightVar = eyeLookUpRight
-        let eyeRightLookLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookInRight})?.value ?? 0)
-//        eyeRightLookLeftVar = eyeRightLookLeft
-        let eyeLeftLookRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookInLeft})?.value ?? 0)
+//        let eyeRightLookLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookInRight})?.value ?? 0)
+////        eyeRightLookLeftVar = eyeRightLookLeft
+//        let eyeLeftLookRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookInLeft})?.value ?? 0)
 //        eyeLeftLookRightVar = eyeLeftLookRight
 
-        eyeStatus = eyeCheck(eyeBlinkLeft: eyeBlinkLeft, eyeBlinkRight: eyeBlinkRight, eyeWideLeft: eyeWideLeft, eyeWideRight: eyeWideRight, eyeLookUpLeft: eyeLookUpLeft, eyeLookUpRight: eyeLookUpRight, eyeSquintLeft: eyeSquintLeft, eyeSquintRight: eyeSquintRight)
+        /*let*/ eyeStatus = eyeCheck(eyeBlinkLeft: eyeBlinkLeft, eyeBlinkRight: eyeBlinkRight, eyeWideLeft: eyeWideLeft, eyeWideRight: eyeWideRight, eyeLookUpLeft: eyeLookUpLeft, eyeLookUpRight: eyeLookUpRight, eyeSquintLeft: eyeSquintLeft, eyeSquintRight: eyeSquintRight)
         
         
         
@@ -149,26 +153,32 @@ struct ARModel {
 //        let mouthRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthRight})?.value ?? 0)
 //        mouthRightVar = mouthRight
         
-        eyebrowStatus = eyebrowCheck(eyebrowInnerUp: eyebrowInnerUp, eyebrowDownLeft: eyebrowDownLeft, eyebrowDownRight: eyebrowDownRight)
+        /*let*/  eyebrowStatus = eyebrowCheck(eyebrowInnerUp: eyebrowInnerUp, eyebrowDownLeft: eyebrowDownLeft, eyebrowDownRight: eyebrowDownRight)
         
         // TOUNGE
         
         if facesArray.count > 0 {
-            faceCheck(face: facesArray.first!, smileLeft: smileLeft, smileRight: smileRight)
+//            faceCheck(face: facesArray.first!, smileLeft: smileLeft, smileRight: smileRight)
+            faceCheck(face: facesArray.first!, eyes: eyeStatus, eyebrows: eyebrowStatus, mouth: mouthStatus)
         }
     }
     
     // Game Logic Below
     
-    mutating func faceCheck(face: faces, smileLeft: Float, smileRight: Float) {
-        if  smileLeft >= face.smileLeft.value {
-            //            updateGameStage(gameStage: .ending)
-            if face == facesArray.first {
-                currentScore += 1
-                facesArray.remove(at: 0)
-            }
-            
+    mutating func faceCheck(face: faces, eyes: eyeScale, eyebrows: eyebrowScale, mouth: mouthScale ) {
+        if face.eyeScale == eyes && face.eyebrowScale == eyebrows && face.mouthScale == mouth {
+            currentScore += 1
+            facesArray.remove(at: 0)
         }
+        
+//        if  smileLeft >= face.smileLeft.value {
+//            //            updateGameStage(gameStage: .ending)
+//            if face == facesArray.first {
+//                currentScore += 1
+//                facesArray.remove(at: 0)
+//            }
+//
+//        }
     }
     
     mutating func eyebrowCheck(eyebrowInnerUp: Float, eyebrowDownLeft: Float, eyebrowDownRight: Float) -> eyebrowScale {
@@ -179,7 +189,7 @@ struct ARModel {
             result = .surprised
         } else if eyebrowInnerUp > 0.2 && ( (eyebrowDownLeft < 0.2 && eyebrowDownLeft > 0 ) || ( eyebrowDownRight < 0.2 && eyebrowDownRight > 0 )) {
                 result = .splitSkeptical
-        } else if eyebrowDownRight > 0.8 && eyebrowDownLeft > 0.8 {
+        } else if eyebrowDownRight > 0.7 && eyebrowDownLeft > 0.7 {
                 result = .furrowed
             }
         
