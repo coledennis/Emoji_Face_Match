@@ -18,6 +18,25 @@ struct ARModel {
     
     var facesArray: Array<faces> = [.Angry_face, .Clown_face]
     
+    
+    
+    // for testing only
+    var smileLeftVar : Float = 0
+    var smileRightVar: Float = 0
+    var frownLeftVar: Float = 0
+    var frownRightVar: Float = 0
+    var mouthLeftVar: Float = 0
+    var mouthRightVar: Float = 0
+    
+    
+    var eyebrowInnerUpVar : Float = 0
+    var eyebrowDownLeftVar: Float = 0
+    var eyebrowDownRightVar: Float = 0
+//    var eyebrowOuterUpLeftVar: Float = 0
+//    var eyebrowOuterUpRightVar: Float = 0
+    var eyebrowStatus: eyebrowScale = .neutral
+    //
+    
     init() {
         arView = ARView(frame: .zero)
         arView.session.run(ARFaceTrackingConfiguration())
@@ -27,18 +46,43 @@ struct ARModel {
         
         // LIPS
         let smileRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileRight})?.value ?? 0)
+        smileRightVar = smileRight
         let smileLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileLeft})?.value ?? 0)
+        smileLeftVar = smileLeft
+        let frownRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthFrownRight})?.value ?? 0)
+        frownRightVar = frownRight
+        let frownLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthFrownLeft})?.value ?? 0)
+        frownLeftVar = frownLeft
+        
+        let mouthLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthLeft})?.value ?? 0)
+        mouthLeftVar = mouthLeft
+        let mouthRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthRight})?.value ?? 0)
+        mouthRightVar = mouthRight
         
         // EYES?
         
         
         // EYEBROWS
+        let eyebrowInnerUp = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browInnerUp})?.value ?? 0)
+        eyebrowInnerUpVar = eyebrowInnerUp
+        let eyebrowDownLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browDownLeft})?.value ?? 0)
+        eyebrowDownLeftVar = eyebrowDownLeft
+        let eyebrowDownRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browDownRight})?.value ?? 0)
+        eyebrowDownRightVar = eyebrowDownRight
+//        let eyebrowOuterUpLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browOuterUpLeft})?.value ?? 0)
+//        eyebrowOuterUpLeftVar = eyebrowOuterUpLeft
+//        let eyebrowOuterUpRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browOuterUpRight})?.value ?? 0)
+//        eyebrowOuterUpRightVar = eyebrowOuterUpRight
+//        mouthLeftVar = mouthLeft
+//        let mouthRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthRight})?.value ?? 0)
+//        mouthRightVar = mouthRight
         
+        eyebrowStatus = eyebrowCheck(eyebrowInnerUp: eyebrowInnerUp, eyebrowDownLeft: eyebrowDownLeft, eyebrowDownRight: eyebrowDownRight)
         
         // TOUNGE
         
         if facesArray.count > 0 {
-            faceCheck(face: facesArray.first!, smileLeft: smileLeft, smileRight: smileRight) // REMEMBER THAT THIS IS HARD CODED FOR ANGRY #######################
+            faceCheck(face: facesArray.first!, smileLeft: smileLeft, smileRight: smileRight)
         }
     }
     
@@ -53,6 +97,21 @@ struct ARModel {
             }
             
         }
+    }
+    
+    mutating func eyebrowCheck(eyebrowInnerUp: Float, eyebrowDownLeft: Float, eyebrowDownRight: Float) -> eyebrowScale {
+
+        var result = eyebrowScale.neutral
+        
+        if eyebrowInnerUp > 0.6 && eyebrowDownLeft == 0 && eyebrowDownRight == 0 {
+            result = .surprised
+        } else if eyebrowInnerUp > 0.2 && ( (eyebrowDownLeft < 0.2 && eyebrowDownLeft > 0 ) || ( eyebrowDownRight < 0.2 && eyebrowDownRight > 0 )) {
+                result = .splitSkeptical
+        } else if eyebrowDownRight > 0.8 && eyebrowDownLeft > 0.8 {
+                result = .furrowed
+            }
+        
+        return result
     }
     
     mutating func updateGameStage(gameStage: GameStage) {

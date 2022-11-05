@@ -38,6 +38,47 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
 //        }
 //        return temp
 //    }
+    // FOR TESTING ONLY
+    var smileLeft: Float {
+        model.smileLeftVar
+    }
+    var smileRight: Float {
+        model.smileRightVar
+    }
+    var frownLeft: Float {
+        model.frownLeftVar
+    }
+    var frownRight: Float {
+        model.frownRightVar
+    }
+    var mouthLeft: Float {
+        model.mouthLeftVar
+    }
+    var mouthRight: Float {
+        model.mouthRightVar
+    }
+    
+    
+    var eyebrowInnerUp: Float {
+        model.eyebrowInnerUpVar
+    }
+    var eyebrowDownLeft: Float {
+        model.eyebrowDownLeftVar
+    }
+    var eyebrowDownRight: Float {
+        model.eyebrowDownRightVar
+    }
+//    var eyebrowOuterUpRight: Float {
+//        model.eyebrowOuterUpRightVar
+//    }
+//    var eyebrowOuterUpLeft: Float {
+//        model.eyebrowOuterUpLeftVar
+//    }
+    
+    var eyeBrowStatus: String {
+        model.eyebrowStatus.string
+    }
+    ///
     
     func startSessionDelegate() {
         model.arView.session.delegate = self

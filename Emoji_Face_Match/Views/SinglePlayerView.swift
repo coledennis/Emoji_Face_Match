@@ -43,6 +43,66 @@ struct SinglePlayerView: View {
                 Spacer()
             }
             .padding(5)
+            VStack {
+                Spacer()
+                HStack {
+                    Text("Inner")
+                    Text(arViewModel.eyebrowInnerUp.description)
+                }
+                HStack {
+                    Text("Down Left")
+                    Text(arViewModel.eyebrowDownLeft.description)
+                }
+                HStack {
+                    Text("Frown left")
+                    Text(arViewModel.eyebrowDownRight.description)
+                }
+//                HStack {
+//
+//                    Text("Outer Up Left")
+//                    Text(arViewModel.eyebrowOuterUpLeft.description)
+//                }
+//                HStack {
+//                    Text("Outer Up Right")
+//                    Text(arViewModel.eyebrowOuterUpRight.description)
+//                }
+                HStack {
+                                   Text("eyebrow status")
+                    Text(arViewModel.eyeBrowStatus)
+                }.bold()
+                    .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
+                
+            }
+//            VStack {
+//                Spacer()
+//                HStack {
+//                    Text("Smile left")
+//                    Text(arViewModel.smileLeft.description)
+//                }
+//                HStack {
+//                    Text("Smile right")
+//                    Text(arViewModel.smileRight.description)
+//                }
+//                HStack {
+//                    Text("Frown left")
+//                    Text(arViewModel.frownLeft.description)
+//                }
+//                HStack {
+//
+//                    Text("Frown Right")
+//                    Text(arViewModel.frownRight.description)
+//                }
+//                HStack {
+//                    Text("Mouth left")
+//                    Text(arViewModel.mouthLeft.description)
+//                }
+//                HStack {
+//
+//                    Text("Mouth Right")
+//                    Text(arViewModel.mouthRight.description)
+//                }
+//
+//            }
         }
         .task {
              while timeRemaining > 0 {
