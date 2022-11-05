@@ -102,3 +102,29 @@ enum eyeScale {
         }
     }
 }
+
+enum mouthScale {
+    case neutral, smile, frown, openMouthSmile, openMouthNeutral, tongueOut, openMouthTeethNoSmile, smileWithTeeth, kissFace
+    
+    var string: String {
+        switch self {
+        case .neutral: return "Neutral"
+        case .smile:
+            return "Smile"
+        case .frown:
+            return "Frown"
+        case .openMouthSmile:
+            return "Open Mouth Smile"
+        case .openMouthNeutral:
+            return "Open Mouth Neutral"
+        case .tongueOut:
+            return "Tongue Out"
+        case .openMouthTeethNoSmile:
+            return "Open Mouth Teeth No Smile"
+        case .smileWithTeeth:
+            return "Smile With Teetch"
+        case .kissFace:
+            return "Kiss Face"
+        }
+    }
+}

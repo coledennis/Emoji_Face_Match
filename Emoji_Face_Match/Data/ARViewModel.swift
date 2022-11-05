@@ -51,12 +51,32 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     var frownRight: Float {
         model.frownRightVar
     }
-    var mouthLeft: Float {
-        model.mouthLeftVar
+    
+    var mouthFunnelVar: Float {
+        model.mouthFunnelVar
     }
-    var mouthRight: Float {
-        model.mouthRightVar
+    var mouthPuckerVar: Float {
+        model.mouthPuckerVar
     }
+    var mouthCloseVar: Float {
+        model.mouthCloseVar
+    }
+    var tongueOutVar: Float {
+        model.tongueOutVar
+    }
+    var mouthStatus: mouthScale {
+        model.mouthStatus
+    }
+    
+    var jawOpenVar: Float {
+        model.jawOpenVar
+    }
+//    var mouthLeft: Float {
+//        model.mouthLeftVar
+//    }
+//    var mouthRight: Float {
+//        model.mouthRightVar
+//    }
     
     
 //    var eyebrowInnerUp: Float {
@@ -75,40 +95,40 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
 //        model.eyebrowOuterUpLeftVar
 //    }
     
-    var eyeWideLeftVar: Float {
-            model.eyeWideLeftVar
-        }
-    var eyeWideRightVar: Float {
-        model.eyeWideRightVar
-    }
-    
-    var eyeSquintLeftVar: Float {
-        model.eyeSquintLeftVar
-    }
-    var eyeSquintRightVar: Float {
-        model.eyeSquintRightVar
-    }
-    
-    var eyeBlinkLeftVar: Float {
-        model.eyeBlinkLeftVar
-    }
-    var eyeBlinkRightVar: Float {
-        model.eyeBlinkRightVar
-    }
-
-    var eyeLookUpLeftVar: Float {
-        model.eyeLookUpLeftVar
-    }
-    var eyeLookUpRightVar: Float {
-        model.eyeLookUpRightVar
-    }
-    
-    var eyeRightLookLeftVar: Float {
-        model.eyeRightLookLeftVar
-    }
-    var eyeLeftLookRightVar: Float {
-        model.eyeLeftLookRightVar
-    }
+//    var eyeWideLeftVar: Float {
+//            model.eyeWideLeftVar
+//        }
+//    var eyeWideRightVar: Float {
+//        model.eyeWideRightVar
+//    }
+//    
+//    var eyeSquintLeftVar: Float {
+//        model.eyeSquintLeftVar
+//    }
+//    var eyeSquintRightVar: Float {
+//        model.eyeSquintRightVar
+//    }
+//    
+//    var eyeBlinkLeftVar: Float {
+//        model.eyeBlinkLeftVar
+//    }
+//    var eyeBlinkRightVar: Float {
+//        model.eyeBlinkRightVar
+//    }
+//
+//    var eyeLookUpLeftVar: Float {
+//        model.eyeLookUpLeftVar
+//    }
+//    var eyeLookUpRightVar: Float {
+//        model.eyeLookUpRightVar
+//    }
+//    
+//    var eyeRightLookLeftVar: Float {
+//        model.eyeRightLookLeftVar
+//    }
+//    var eyeLeftLookRightVar: Float {
+//        model.eyeLeftLookRightVar
+//    }
     var eyeStatus: eyeScale {
         model.eyeStatus
     }

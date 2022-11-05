@@ -43,70 +43,134 @@ struct SinglePlayerView: View {
                 Spacer()
             }
             .padding(5)
-            VStack {
-                Spacer()
+                        VStack {
+                            Spacer()
+                            
+                            VStack {
+                                HStack {
+                                    Text("eyeWideLeftVar")
+//                                    Text(arViewModel.eyeWideLeftVar.description)
+                                }
+//                                HStack {
+//                                    Text("eyeWideRightVar")
+//                                    Text(arViewModel.eyeWideRightVar.description)
+//                                }
+//
+//                                HStack {
+//                                    Text("eyeSquintLeftVar")
+//                                    Text(arViewModel.eyeSquintLeftVar.description)
+//                                }
+//                                HStack {
+//                                    Text("eyeSquintRightVar")
+//                                    Text(arViewModel.eyeSquintRightVar.description)
+//                                }
+//
+//
+//                                HStack {
+//                                    Text("eyeBlinkLeftVar")
+//                                    Text(arViewModel.eyeBlinkLeftVar.description)
+//                                }
+//                                HStack {
+//                                    Text("eyeBlinkRightVar")
+//                                    Text(arViewModel.eyeBlinkRightVar.description)
+//                                }
+//                                Group {
+//                                    HStack {
+//                                        Text("eyeLookUpRightVar")
+//                                        Text(arViewModel.eyeLookUpRightVar.description)
+//                                    }
+//                                    HStack {
+//                                        Text("eyeLookUpRightVar")
+//                                        Text(arViewModel.eyeLookUpRightVar.description)
+//                                    }
+//
+//                                    HStack {
+//                                        Text("eyeRightLookLeftVar")
+//                                        Text(arViewModel.eyeRightLookLeftVar.description)
+//                                    }
+//                                    HStack {
+//                                        Text("eyeLeftLookRightVar")
+//                                        Text(arViewModel.eyeLeftLookRightVar.description)
+//                                    }
+//                                    HStack {
+//                                        Text("eye status")
+//                                        Text(arViewModel.eyeStatus.string)
+//                                    }
+//                                }
+                                //
+                                //                            HStack {
+                                //                                               Text("eyebrow status")
+                                //                                Text(arViewModel.eyeBrowStatus)
+                                //                            }
+            
+                            }
+                            .bold()
+                                .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
+                        }
+//            VStack {
+//                Spacer()
                 
-                VStack {
-                    HStack {
-                        Text("eyeWideLeftVar")
-                        Text(arViewModel.eyeWideLeftVar.description)
-                    }
-                    HStack {
-                        Text("eyeWideRightVar")
-                        Text(arViewModel.eyeWideRightVar.description)
-                    }
-                    
-                    HStack {
-                        Text("eyeSquintLeftVar")
-                        Text(arViewModel.eyeSquintLeftVar.description)
-                    }
-                    HStack {
-                        Text("eyeSquintRightVar")
-                        Text(arViewModel.eyeSquintRightVar.description)
-                    }
-                    
-                    
-                    HStack {
-                        Text("eyeBlinkLeftVar")
-                        Text(arViewModel.eyeBlinkLeftVar.description)
-                    }
-                    HStack {
-                        Text("eyeBlinkRightVar")
-                        Text(arViewModel.eyeBlinkRightVar.description)
-                    }
-                    Group {
-                        HStack {
-                            Text("eyeLookUpRightVar")
-                            Text(arViewModel.eyeLookUpRightVar.description)
-                        }
-                        HStack {
-                            Text("eyeLookUpRightVar")
-                            Text(arViewModel.eyeLookUpRightVar.description)
-                        }
-                        
-                        HStack {
-                            Text("eyeRightLookLeftVar")
-                            Text(arViewModel.eyeRightLookLeftVar.description)
-                        }
-                        HStack {
-                            Text("eyeLeftLookRightVar")
-                            Text(arViewModel.eyeLeftLookRightVar.description)
-                        }
-                        HStack {
-                            Text("eye status")
-                            Text(arViewModel.eyeStatus.string)
-                        }
-                    }
-                    //
-                    //                            HStack {
-                    //                                               Text("eyebrow status")
-                    //                                Text(arViewModel.eyeBrowStatus)
-                    //                            }
-                    
-                }
-                .bold()
-                    .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
-            }
+//                VStack {
+//                    HStack {
+//                        Text("eyeWideLeftVar")
+//                        Text(arViewModel.eyeWideLeftVar.description)
+//                    }
+//                    HStack {
+//                        Text("eyeWideRightVar")
+//                        Text(arViewModel.eyeWideRightVar.description)
+//                    }
+//
+//                    HStack {
+//                        Text("eyeSquintLeftVar")
+//                        Text(arViewModel.eyeSquintLeftVar.description)
+//                    }
+//                    HStack {
+//                        Text("eyeSquintRightVar")
+//                        Text(arViewModel.eyeSquintRightVar.description)
+//                    }
+//
+//
+//                    HStack {
+//                        Text("eyeBlinkLeftVar")
+//                        Text(arViewModel.eyeBlinkLeftVar.description)
+//                    }
+//                    HStack {
+//                        Text("eyeBlinkRightVar")
+//                        Text(arViewModel.eyeBlinkRightVar.description)
+//                    }
+//                    Group {
+//                        HStack {
+//                            Text("eyeLookUpRightVar")
+//                            Text(arViewModel.eyeLookUpRightVar.description)
+//                        }
+//                        HStack {
+//                            Text("eyeLookUpRightVar")
+//                            Text(arViewModel.eyeLookUpRightVar.description)
+//                        }
+//
+//                        HStack {
+//                            Text("eyeRightLookLeftVar")
+//                            Text(arViewModel.eyeRightLookLeftVar.description)
+//                        }
+//                        HStack {
+//                            Text("eyeLeftLookRightVar")
+//                            Text(arViewModel.eyeLeftLookRightVar.description)
+//                        }
+//                        HStack {
+//                            Text("eye status")
+//                            Text(arViewModel.eyeStatus.string)
+//                        }
+//                    }
+//                    //
+//                    //                            HStack {
+//                    //                                               Text("eyebrow status")
+//                    //                                Text(arViewModel.eyeBrowStatus)
+//                    //                            }
+//
+//                }
+//                .bold()
+//                    .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
+//            }
            
 //            VStack {
 //                Spacer()
@@ -138,36 +202,62 @@ struct SinglePlayerView: View {
 //                    .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
 //
 //            }
-//            VStack {
-//                Spacer()
-//                HStack {
-//                    Text("Smile left")
-//                    Text(arViewModel.smileLeft.description)
-//                }
-//                HStack {
-//                    Text("Smile right")
-//                    Text(arViewModel.smileRight.description)
-//                }
-//                HStack {
-//                    Text("Frown left")
-//                    Text(arViewModel.frownLeft.description)
-//                }
-//                HStack {
-//
-//                    Text("Frown Right")
-//                    Text(arViewModel.frownRight.description)
-//                }
-//                HStack {
-//                    Text("Mouth left")
-//                    Text(arViewModel.mouthLeft.description)
-//                }
-//                HStack {
-//
-//                    Text("Mouth Right")
-//                    Text(arViewModel.mouthRight.description)
-//                }
-//
-//            }
+            VStack {
+                Spacer()
+                VStack {
+                    HStack {
+                        Text("Smile left")
+                        Text(arViewModel.smileLeft.description)
+                    }
+                    HStack {
+                        Text("Smile right")
+                        Text(arViewModel.smileRight.description)
+                    }
+                    HStack {
+                        Text("Frown left")
+                        Text(arViewModel.frownLeft.description)
+                    }
+                    HStack {
+                        
+                        Text("Frown Right")
+                        Text(arViewModel.frownRight.description)
+                    }
+                    HStack {
+                        Text("Mouth Close")
+                        Text(arViewModel.mouthCloseVar.description)
+                    }
+                    HStack {
+                        
+                        Text("Mouth Pucker")
+                        Text(arViewModel.mouthPuckerVar.description)
+                    }
+                    HStack {
+                        
+                        Text("Mouth Funnel")
+                        Text(arViewModel.mouthFunnelVar.description)
+                    }
+                    HStack {
+                        
+                        Text("Tongue Out")
+                        Text(arViewModel.tongueOutVar.description)
+                    }
+                    
+                    HStack {
+                        
+                        Text("Jaw Open")
+                        Text(arViewModel.tongueOutVar.description)
+                    }
+                    
+                    HStack {
+                        
+                        Text("Mouth Status")
+                        Text(arViewModel.mouthStatus.string)
+                    }
+                }
+                .bold()
+                                    .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
+
+            }
         }
         .task {
              while timeRemaining > 0 {
