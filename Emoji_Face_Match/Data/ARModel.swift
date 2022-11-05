@@ -62,10 +62,11 @@ struct ARModel {
     init() {
         arView = ARView(frame: .zero)
         arView.session.run(ARFaceTrackingConfiguration())
-        for face in faces.allCases {
-            facesArray.append(face)
-        }
-        facesArray.shuffle()
+//        for face in faces.allCases {
+//            facesArray.append(face)
+//        }
+//        facesArray.shuffle()
+        facesArray = [.Angry_face, .Clown_face]
     }
     
     mutating func update(faceAnchor: ARFaceAnchor){
@@ -166,7 +167,7 @@ struct ARModel {
     // Game Logic Below
     
     mutating func faceCheck(face: faces, eyes: eyeScale, eyebrows: eyebrowScale, mouth: mouthScale ) {
-        if face.eyeScale == eyes && face.eyebrowScale == eyebrows && face.mouthScale == mouth {
+        if (face.eyeScale.contains(where: {$0 == eyes})) && face.eyebrowScale == eyebrows && face.mouthScale == mouth {
             currentScore += 1
             facesArray.remove(at: 0)
         }
@@ -187,7 +188,7 @@ struct ARModel {
         
         if eyebrowInnerUp > 0.6 && eyebrowDownLeft == 0 && eyebrowDownRight == 0 {
             result = .surprised
-        } else if eyebrowInnerUp > 0.2 && ( (eyebrowDownLeft < 0.2 && eyebrowDownLeft > 0 ) || ( eyebrowDownRight < 0.2 && eyebrowDownRight > 0 )) {
+        } else if eyebrowInnerUp > 0.1 && ( (eyebrowDownLeft < 0.3 && eyebrowDownLeft > 0 ) || ( eyebrowDownRight < 0.3 && eyebrowDownRight > 0 )) {
                 result = .splitSkeptical
         } else if eyebrowDownRight > 0.7 && eyebrowDownLeft > 0.7 {
                 result = .furrowed
@@ -220,20 +221,18 @@ struct ARModel {
 
         var result = mouthScale.neutral
 
-        if tongueOut > 0.9 {
+        if tongueOut > 0.2 {
             result = .tongueOut
         } else if mouthPucker > 0.7 {
             result = .kissFace
-        } else if frownLeft > 0.4 && frownRight > 0.4 {
+        } else if frownLeft > 0.35 && frownRight > 0.35 {
             result = .frown
-        } else if smileLeft > 0.6 && smileRight > 0.6 {
+        } else if smileLeft > 0.4 && smileRight > 0.4 {
             if mouthFunnel > 0.04 {
                 result = .openMouthSmile
             } else {
                 result = .smile
             }
-        } else if mouthFunnel > 0.05 && ( smileLeft > 0 && smileLeft < 0.2) && ( smileRight > 0 && smileRight < 0.2) {
-            result = .openMouthTeethNoSmile
         } else if mouthFunnel > 0.1 {
             result = .openMouthNeutral
         }
