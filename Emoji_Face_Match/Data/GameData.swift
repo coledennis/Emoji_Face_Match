@@ -80,3 +80,25 @@ enum eyebrowScale {
         }
     }
 }
+
+
+enum eyeScale {
+    case neutral, closed, wideOpen, rollingEyesUp, squinting, wink
+    
+    var string: String {
+        switch self {
+        case .neutral: return "Neutral"
+            
+        case .closed:
+            return "Closed"
+        case .wideOpen:
+            return "Wide Open"
+        case .rollingEyesUp:
+            return "Rolling Eyes Up"
+        case .squinting:
+            return "Squinting"
+        case .wink:
+            return "Winking"
+        }
+    }
+}

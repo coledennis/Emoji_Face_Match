@@ -45,34 +45,99 @@ struct SinglePlayerView: View {
             .padding(5)
             VStack {
                 Spacer()
-                HStack {
-                    Text("Inner")
-                    Text(arViewModel.eyebrowInnerUp.description)
-                }
-                HStack {
-                    Text("Down Left")
-                    Text(arViewModel.eyebrowDownLeft.description)
-                }
-                HStack {
-                    Text("Frown left")
-                    Text(arViewModel.eyebrowDownRight.description)
-                }
-//                HStack {
-//
-//                    Text("Outer Up Left")
-//                    Text(arViewModel.eyebrowOuterUpLeft.description)
-//                }
-//                HStack {
-//                    Text("Outer Up Right")
-//                    Text(arViewModel.eyebrowOuterUpRight.description)
-//                }
-                HStack {
-                                   Text("eyebrow status")
-                    Text(arViewModel.eyeBrowStatus)
-                }.bold()
-                    .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
                 
+                VStack {
+                    HStack {
+                        Text("eyeWideLeftVar")
+                        Text(arViewModel.eyeWideLeftVar.description)
+                    }
+                    HStack {
+                        Text("eyeWideRightVar")
+                        Text(arViewModel.eyeWideRightVar.description)
+                    }
+                    
+                    HStack {
+                        Text("eyeSquintLeftVar")
+                        Text(arViewModel.eyeSquintLeftVar.description)
+                    }
+                    HStack {
+                        Text("eyeSquintRightVar")
+                        Text(arViewModel.eyeSquintRightVar.description)
+                    }
+                    
+                    
+                    HStack {
+                        Text("eyeBlinkLeftVar")
+                        Text(arViewModel.eyeBlinkLeftVar.description)
+                    }
+                    HStack {
+                        Text("eyeBlinkRightVar")
+                        Text(arViewModel.eyeBlinkRightVar.description)
+                    }
+                    Group {
+                        HStack {
+                            Text("eyeLookUpRightVar")
+                            Text(arViewModel.eyeLookUpRightVar.description)
+                        }
+                        HStack {
+                            Text("eyeLookUpRightVar")
+                            Text(arViewModel.eyeLookUpRightVar.description)
+                        }
+                        
+                        HStack {
+                            Text("eyeRightLookLeftVar")
+                            Text(arViewModel.eyeRightLookLeftVar.description)
+                        }
+                        HStack {
+                            Text("eyeLeftLookRightVar")
+                            Text(arViewModel.eyeLeftLookRightVar.description)
+                        }
+                        HStack {
+                            Text("eye status")
+                            Text(arViewModel.eyeStatus.string)
+                        }
+                    }
+                    //
+                    //                            HStack {
+                    //                                               Text("eyebrow status")
+                    //                                Text(arViewModel.eyeBrowStatus)
+                    //                            }
+                    
+                }
+                .bold()
+                    .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
             }
+           
+//            VStack {
+//                Spacer()
+////                HStack {
+////                    Text("Inner")
+////                    Text(arViewModel.eyebrowInnerUp.description)
+////                }
+////                HStack {
+////                    Text("Down Left")
+////                    Text(arViewModel.eyebrowDownLeft.description)
+////                }
+////                HStack {
+////                    Text("Frown left")
+////                    Text(arViewModel.eyebrowDownRight.description)
+////                }
+////                HStack {
+////
+////                    Text("Outer Up Left")
+////                    Text(arViewModel.eyebrowOuterUpLeft.description)
+////                }
+////                HStack {
+////                    Text("Outer Up Right")
+////                    Text(arViewModel.eyebrowOuterUpRight.description)
+////                }
+//                HStack {
+//                                   Text("eyebrow status")
+//                    Text(arViewModel.eyeBrowStatus)
+//                }.bold()
+//                    .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
+//
+//            }
 //            VStack {
 //                Spacer()
 //                HStack {

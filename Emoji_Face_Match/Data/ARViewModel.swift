@@ -59,21 +59,62 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     }
     
     
-    var eyebrowInnerUp: Float {
-        model.eyebrowInnerUpVar
-    }
-    var eyebrowDownLeft: Float {
-        model.eyebrowDownLeftVar
-    }
-    var eyebrowDownRight: Float {
-        model.eyebrowDownRightVar
-    }
+//    var eyebrowInnerUp: Float {
+//        model.eyebrowInnerUpVar
+//    }
+//    var eyebrowDownLeft: Float {
+//        model.eyebrowDownLeftVar
+//    }
+//    var eyebrowDownRight: Float {
+//        model.eyebrowDownRightVar
+//    }
 //    var eyebrowOuterUpRight: Float {
 //        model.eyebrowOuterUpRightVar
 //    }
 //    var eyebrowOuterUpLeft: Float {
 //        model.eyebrowOuterUpLeftVar
 //    }
+    
+    var eyeWideLeftVar: Float {
+            model.eyeWideLeftVar
+        }
+    var eyeWideRightVar: Float {
+        model.eyeWideRightVar
+    }
+    
+    var eyeSquintLeftVar: Float {
+        model.eyeSquintLeftVar
+    }
+    var eyeSquintRightVar: Float {
+        model.eyeSquintRightVar
+    }
+    
+    var eyeBlinkLeftVar: Float {
+        model.eyeBlinkLeftVar
+    }
+    var eyeBlinkRightVar: Float {
+        model.eyeBlinkRightVar
+    }
+
+    var eyeLookUpLeftVar: Float {
+        model.eyeLookUpLeftVar
+    }
+    var eyeLookUpRightVar: Float {
+        model.eyeLookUpRightVar
+    }
+    
+    var eyeRightLookLeftVar: Float {
+        model.eyeRightLookLeftVar
+    }
+    var eyeLeftLookRightVar: Float {
+        model.eyeLeftLookRightVar
+    }
+    var eyeStatus: eyeScale {
+        model.eyeStatus
+    }
+    
+    
+    
     
     var eyeBrowStatus: String {
         model.eyebrowStatus.string

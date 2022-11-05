@@ -29,12 +29,28 @@ struct ARModel {
     var mouthRightVar: Float = 0
     
     
-    var eyebrowInnerUpVar : Float = 0
-    var eyebrowDownLeftVar: Float = 0
-    var eyebrowDownRightVar: Float = 0
+//    var eyebrowInnerUpVar : Float = 0
+//    var eyebrowDownLeftVar: Float = 0
+//    var eyebrowDownRightVar: Float = 0
 //    var eyebrowOuterUpLeftVar: Float = 0
 //    var eyebrowOuterUpRightVar: Float = 0
     var eyebrowStatus: eyebrowScale = .neutral
+    
+    var eyeWideLeftVar: Float = 0
+    var eyeWideRightVar: Float = 0
+    
+    var eyeSquintLeftVar: Float = 0
+    var eyeSquintRightVar: Float = 0
+    
+    var eyeBlinkLeftVar: Float = 0
+    var eyeBlinkRightVar: Float = 0
+
+    var eyeLookUpLeftVar: Float = 0
+    var eyeLookUpRightVar: Float = 0
+    
+    var eyeRightLookLeftVar: Float = 0
+    var eyeLeftLookRightVar: Float = 0
+    var eyeStatus: eyeScale = .neutral
     //
     
     init() {
@@ -60,15 +76,41 @@ struct ARModel {
         mouthRightVar = mouthRight
         
         // EYES?
+        let eyeWideLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeWideLeft})?.value ?? 0)
+        eyeWideLeftVar = eyeWideLeft
+        let eyeWideRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeWideRight})?.value ?? 0)
+        eyeWideRightVar = eyeWideRight
+        let eyeSquintLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeSquintLeft})?.value ?? 0)
+        eyeSquintLeftVar = eyeSquintLeft
+        let eyeSquintRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeSquintRight})?.value ?? 0)
+        eyeSquintRightVar = eyeSquintRight
+        
+        
+        let eyeBlinkLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeBlinkLeft})?.value ?? 0)
+        eyeBlinkLeftVar = eyeBlinkLeft
+        let eyeBlinkRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeBlinkRight})?.value ?? 0)
+        eyeBlinkRightVar = eyeBlinkRight
+
+        let eyeLookUpLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookUpLeft})?.value ?? 0)
+        eyeLookUpLeftVar = eyeLookUpLeft
+        let eyeLookUpRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookUpRight})?.value ?? 0)
+        eyeLookUpRightVar = eyeLookUpRight
+        let eyeRightLookLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookInRight})?.value ?? 0)
+        eyeRightLookLeftVar = eyeRightLookLeft
+        let eyeLeftLookRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookInLeft})?.value ?? 0)
+        eyeLeftLookRightVar = eyeLeftLookRight
+
+        eyeStatus = eyeCheck(eyeBlinkLeft: eyeBlinkLeft, eyeBlinkRight: eyeBlinkRight, eyeWideLeft: eyeWideLeft, eyeWideRight: eyeWideRight, eyeLookUpLeft: eyeLookUpLeft, eyeLookUpRight: eyeLookUpRight, eyeSquintLeft: eyeSquintLeft, eyeSquintRight: eyeSquintRight)
+        
         
         
         // EYEBROWS
         let eyebrowInnerUp = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browInnerUp})?.value ?? 0)
-        eyebrowInnerUpVar = eyebrowInnerUp
+//        eyebrowInnerUpVar = eyebrowInnerUp
         let eyebrowDownLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browDownLeft})?.value ?? 0)
-        eyebrowDownLeftVar = eyebrowDownLeft
+//        eyebrowDownLeftVar = eyebrowDownLeft
         let eyebrowDownRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browDownRight})?.value ?? 0)
-        eyebrowDownRightVar = eyebrowDownRight
+//        eyebrowDownRightVar = eyebrowDownRight
 //        let eyebrowOuterUpLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browOuterUpLeft})?.value ?? 0)
 //        eyebrowOuterUpLeftVar = eyebrowOuterUpLeft
 //        let eyebrowOuterUpRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browOuterUpRight})?.value ?? 0)
@@ -110,6 +152,26 @@ struct ARModel {
         } else if eyebrowDownRight > 0.8 && eyebrowDownLeft > 0.8 {
                 result = .furrowed
             }
+        
+        return result
+    }
+    
+    mutating func eyeCheck(eyeBlinkLeft: Float, eyeBlinkRight: Float, eyeWideLeft: Float, eyeWideRight: Float, eyeLookUpLeft: Float, eyeLookUpRight: Float, eyeSquintLeft: Float, eyeSquintRight: Float) -> eyeScale {
+
+        var result = eyeScale.neutral
+
+        if eyeLookUpLeft > 0.7 && eyeLookUpRight > 0.7 {
+            result = .rollingEyesUp
+        } else if eyeBlinkLeft > 0.8 && eyeBlinkRight > 0.8 {
+            result = .closed
+        } else if eyeWideLeft > 0.5 && eyeWideRight > 0.5 {
+            result = .wideOpen
+        }  else if (eyeBlinkLeft > 0.8 && eyeBlinkRight < 0.2) || (eyeBlinkRight > 0.8 && eyeBlinkLeft < 0.2) {
+            result = .wink
+        } else if eyeSquintLeft > 0.3 && eyeSquintRight > 0.3 {
+            result = .squinting
+        }
+
         
         return result
     }
