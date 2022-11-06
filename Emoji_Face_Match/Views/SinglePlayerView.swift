@@ -273,6 +273,9 @@ struct SinglePlayerView: View {
                  do {
                      try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
                      timeRemaining -= 1
+                     if timeRemaining == 0 {
+                         arViewModel.changeGameStage(newGameStage: .ending)
+                     }
                  } catch {
                      print ("error")
                  }

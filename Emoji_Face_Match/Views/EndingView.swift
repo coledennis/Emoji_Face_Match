@@ -10,7 +10,10 @@ import SwiftUI
 struct EndingView: View {
     @ObservedObject var arViewModel : ARViewModel
     var body: some View {
-        Text("Ya did it")
+        VStack {
+            Text("Ya did it")
+            Text("Score: \(arViewModel.score)")
+        }
     }
 }
 
