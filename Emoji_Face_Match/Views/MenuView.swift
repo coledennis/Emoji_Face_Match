@@ -12,18 +12,22 @@ struct MenuView: View {
     @State var backgroundImage: Image?
     var body: some View {
         ZStack {
-            LazyVGrid(columns: [GridItem.init(.adaptive(minimum: 20), spacing: 60)]) {
-                ForEach(1...100, id: \.self) { face in
-                   backgroundImage
+            LazyVGrid(columns: [GridItem.init(.adaptive(minimum: 20), spacing: 40)]) {
+                ForEach(1...120, id: \.self) { face in
+                    backgroundImage?
+                        .resizable()
+                        .frame(width: 50, height: 50)
                 }
             }
             .onAppear {
                 backgroundImage = arViewModel.facesArray.randomElement()?.image
             }
-            .blur(radius: 6)
-            .opacity(0.07)
+//            .blur(radius: 6)
+            .opacity(0.05)
             VStack {
-                backgroundImage
+                backgroundImage?
+                    .resizable()
+                    .frame(width: 100, height: 100)
                 Text("Emoji Face Match Party")
                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
                 Text("AR Party Game You Play With Your FACE!")
@@ -33,7 +37,7 @@ struct MenuView: View {
                     gameButton(gameStage: button.gameStage, text: button.string, color: button.color, icon: button.icon)
                 }
             }
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
     
     func gameButton(gameStage: GameStage, text: String, color: Color, icon: String) -> some View {
