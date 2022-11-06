@@ -144,6 +144,10 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
 //        model.eyebrowStatus.string
 //    }
     ///
+    ///
+    var facesArray: Array<faces> {
+        model.facesArray
+    }
     
     func startSessionDelegate() {
         model.arView.session.delegate = self

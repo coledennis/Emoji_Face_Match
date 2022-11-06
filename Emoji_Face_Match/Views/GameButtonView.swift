@@ -13,6 +13,7 @@ struct GameButtonView: View {
     var icon: String
     var body: some View {
         Label(text, systemImage: icon)
+            .frame(minWidth: 150)
 //        Text(text)
             .foregroundColor(color)
             .font(.system(.headline, design: .rounded, weight: .bold))

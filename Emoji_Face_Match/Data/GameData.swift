@@ -12,6 +12,39 @@ enum GameStage: CaseIterable {
     case menu, singlePlayer, ending
 }
 
+enum GameButtons: CaseIterable {
+    case singlePlayer, twoPlayer
+    
+    var string: String {
+        switch self {
+        case .singlePlayer: return "Single Player"
+        case .twoPlayer:
+            return "Two Player"
+        }
+    }
+    
+    var gameStage: GameStage {
+        switch self {
+        case .singlePlayer: return .singlePlayer
+        case .twoPlayer: return .ending // come back and fix this
+        }
+    }
+    
+    
+    var color: Color {
+        switch self {
+        case .singlePlayer: return .red
+        case .twoPlayer: return .orange
+        }
+    }
+    
+    var icon: String {
+        switch self {
+        case .singlePlayer: return "person"
+        case .twoPlayer: return "person.2"
+        }
+    }
+}
 
 
 enum faces: CaseIterable {
@@ -771,3 +804,6 @@ enum mouthScale {
         }
     }
 }
+
+
+
