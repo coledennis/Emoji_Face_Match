@@ -193,165 +193,163 @@ enum faces: CaseIterable {
     var eyeScale: Array<eyeScale> {
         switch self {
         case .Angry_face: return [.neutral, .squinting]
-//        case .Anguished_face:
-//            <#code#>
-//        case .Anxious_face_with_sweat:
-//            <#code#>
-//        case .Astonished_face:
-//            <#code#>
-//        case .Beaming_face_with_smiling_eyes:
-//            <#code#>
-//        case .Cat:
-//            <#code#>
-//        case .Clown_face:
-//            <#code#>
-//        case .Cold_face:
-//            <#code#>
-//        case .Confounded_face:
-//            <#code#>
-//        case .Cowboy_hat_face:
-//            <#code#>
-//        case .Crying_face:
-//            <#code#>
-//        case .Disappointed_face:
-//            <#code#>
-//        case .Dizzy_face:
-//            <#code#>
-//        case .Downcast_face_with_sweat:
-//            <#code#>
-//        case .Drooling_face:
-//            <#code#>
-//        case .Exploding_head:
-//            <#code#>
-//        case .Expressionless_face:
-//            <#code#>
-//        case .Face_blowing_a_kiss:
-//            <#code#>
-//        case .Face_savoring_food:
-//            <#code#>
-//        case .Face_screaming_in_fear:
-//            <#code#>
-//        case .Face_with_head_bandage:
-//            <#code#>
-//        case .Face_with_monocle:
-//            <#code#>
-//        case .Face_with_open_mouth:
-//            <#code#>
-//        case .Face_with_raised_eyebrow:
-//            <#code#>
-//        case .Face_with_rolling_eyes:
-//            <#code#>
-//        case .Face_with_steam_from_nose:
-//            <#code#>
-//        case .Face_with_tears_of_joy:
-//            <#code#>
-//        case .Face_with_thermometer:
-//            <#code#>
-//        case .Face_with_tongue:
-//            <#code#>
-//        case .Fearful_face:
-//            <#code#>
-//        case .Flushed_face:
-//            <#code#>
-//        case .Frowning_face_with_open_mouth:
-//            <#code#>
-//        case .Frowning_face:
-//            <#code#>
-//        case .Grimacing_face:
-//            <#code#>
-//        case .Grinning_face_with_big_eyes:
-//            <#code#>
-//        case .Grinning_face_with_sweat:
-//            <#code#>
-//        case .Grinning_face_1:
-//            <#code#>
-//        case .Grinning_face:
-//            <#code#>
-//        case .Grinning_squinting_face:
-//            <#code#>
-//        case .Hot_face:
-//            <#code#>
-//        case .Hushed_face:
-//            <#code#>
-//        case .Joker:
-//            <#code#>
-//        case .Kissing_face_with_closed_eyes:
-//            <#code#>
-//        case .Kissing_face_with_smiling_eyes:
-//            <#code#>
-//        case .Kissing_face:
-//            <#code#>
-//        case .Lion:
-//            <#code#>
-//        case .Loudly_crying_face:
-//            <#code#>
-//        case .Money_mouth_face_$:
-//            <#code#>
-//        case .Monkey:
-//            <#code#>
-//        case .Nauseated_face:
-//            <#code#>
-//        case .Nerd_face:
-//            <#code#>
-//        case .Neutral_face:
-//            <#code#>
-//        case .Panda:
-//            <#code#>
-//        case .Pensive_face:
-//            <#code#>
-//        case .Pile_of_poo:
-//            <#code#>
-//        case .Pleading_face:
-//            <#code#>
-//        case .Pouting_face:
-//            <#code#>
-//        case .Relieved_face:
-//            <#code#>
-//        case .Rolling_on_the_floor_laughing:
-//            <#code#>
-//        case .Sad_but_relieved_face:
-//            <#code#>
-//        case .Santa_Claus:
-//            <#code#>
-//        case .Sleep_face:
-//            <#code#>
-//        case .Sleepy_face:
-//            <#code#>
-//        case .Slightly_frowning_face:
-//            <#code#>
-//        case .Slightly_smiling_face:
-//            <#code#>
-//        case .Smiling_face_with_halo:
-//            <#code#>
-//        case .Smiling_face_with_heart_eyes:
-//            <#code#>
-//        case .Smiling_face_with_hearts:
-//            <#code#>
-//        case .Smiling_face_with_smiling_eyes:
-//            <#code#>
-//        case .Smiling_face:
-//            <#code#>
-//        case .Squinting_face_with_tongue:
-//            <#code#>
-//        case .Star_struck:
-//            <#code#>
-//        case .Thinking_face:
-//            <#code#>
-//        case .Tired_face:
-//            <#code#>
-//        case .Vomiting_face:
-//            <#code#>
-//        case .Weary_face:
-//            <#code#>
-//        case .Winking_face_with_tongue:
-//            <#code#>
-//        case .Winking_face:
-//            <#code#>
-//        case .Worried_face_1:
-//            <#code#>
-//        case .Worried_face:
-//            <#code#>
-        default: return [.rollingEyesUp]
+        case .Anguished_face: return [.neutral, .wideOpen]
+        case .Anxious_face_with_sweat:
+            return [.neutral, .wideOpen]
+        case .Astonished_face:
+            return [.wideOpen]
+        case .Beaming_face_with_smiling_eyes:
+            return [.squinting, .closed]
+        case .Cat:
+            return [.neutral]
+        case .Clown_face:
+            return [.neutral, .wideOpen]
+        case .Cold_face:
+            return [.neutral, .wideOpen]
+        case .Confounded_face:
+            return [.squinting, .closed]
+        case .Cowboy_hat_face:
+            return [.neutral]
+        case .Crying_face:
+            return [.neutral]
+        case .Disappointed_face:
+            return [.closed]
+        case .Dizzy_face:
+            return [.closed]
+        case .Downcast_face_with_sweat:
+            return [.closed]
+        case .Drooling_face:
+            return [.closed]
+        case .Exploding_head:
+            return [.neutral, .wideOpen]
+        case .Expressionless_face:
+            return [.neutral]
+        case .Face_blowing_a_kiss:
+            return [.wink]
+        case .Face_savoring_food:
+            return [.closed]
+        case .Face_screaming_in_fear:
+            return [.wideOpen]
+        case .Face_with_head_bandage:
+            return [.neutral]
+        case .Face_with_monocle:
+            return [.neutral, .squinting]
+        case .Face_with_open_mouth:
+            return [.wideOpen]
+        case .Face_with_raised_eyebrow:
+            return [.neutral, .squinting]
+        case .Face_with_rolling_eyes:
+            return [.rollingEyesUp]
+        case .Face_with_steam_from_nose:
+            return [.closed]
+        case .Face_with_tears_of_joy:
+            return [.closed]
+        case .Face_with_thermometer:
+            return [.neutral]
+        case .Face_with_tongue:
+            return [.neutral]
+        case .Fearful_face:
+            return [.wideOpen]
+        case .Flushed_face:
+            return [.wideOpen]
+        case .Frowning_face_with_open_mouth:
+            return [.wideOpen]
+        case .Frowning_face:
+            return [.neutral]
+        case .Grimacing_face:
+            return [.neutral, .wideOpen]
+        case .Grinning_face_with_big_eyes:
+            return [.neutral]
+        case .Grinning_face_with_sweat:
+            return [.closed]
+        case .Grinning_face_1:
+            return [.closed]
+        case .Grinning_face:
+            return [.neutral]
+        case .Grinning_squinting_face:
+            return [.closed]
+        case .Hot_face:
+            return [.neutral, .wideOpen]
+        case .Hushed_face:
+            return [.wideOpen]
+        case .Joker:
+            return [.neutral]
+        case .Kissing_face_with_closed_eyes:
+            return [.closed]
+        case .Kissing_face_with_smiling_eyes:
+            return [.closed]
+        case .Kissing_face:
+            return [.neutral]
+        case .Lion:
+            return [.neutral]
+        case .Loudly_crying_face:
+            return [.closed]
+        case .Money_mouth_face_$:
+            return [.neutral, .wideOpen]
+        case .Monkey:
+            return [.neutral]
+        case .Nauseated_face:
+            return [.neutral, .squinting]
+        case .Nerd_face:
+            return [.neutral]
+        case .Neutral_face:
+            return [.neutral]
+        case .Panda:
+            return [.neutral]
+        case .Pensive_face:
+            return [.closed]
+        case .Pile_of_poo:
+            return [.wideOpen]
+        case .Pleading_face:
+            return [.wideOpen]
+        case .Pouting_face:
+            return [.neutral, .squinting]
+        case .Relieved_face:
+            return [.closed]
+        case .Rolling_on_the_floor_laughing:
+            return [.closed]
+        case .Sad_but_relieved_face:
+            return [.neutral]
+        case .Santa_Claus:
+            return [.wink]
+        case .Sleep_face:
+            return [.closed]
+        case .Sleepy_face:
+            return [.closed]
+        case .Slightly_frowning_face:
+            return [.neutral]
+        case .Slightly_smiling_face:
+            return [.neutral]
+        case .Smiling_face_with_halo:
+            return [.closed]
+        case .Smiling_face_with_heart_eyes:
+            return [.wideOpen]
+        case .Smiling_face_with_hearts:
+            return [.closed]
+        case .Smiling_face_with_smiling_eyes:
+            return [.closed]
+        case .Smiling_face:
+            return [.closed]
+        case .Squinting_face_with_tongue:
+            return [.closed]
+        case .Star_struck:
+            return [.wideOpen]
+        case .Thinking_face:
+            return [.neutral, .squinting]
+        case .Tired_face:
+            return [.closed]
+        case .Vomiting_face:
+            return [.closed]
+        case .Weary_face:
+            return [.closed]
+        case .Winking_face_with_tongue:
+            return [.wink]
+        case .Winking_face:
+            return [.wink]
+        case .Worried_face_1:
+            return [.neutral]
+        case .Worried_face:
+            return [.neutral]
         }
     }
         
