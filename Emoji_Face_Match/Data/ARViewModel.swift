@@ -163,4 +163,7 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         model.facesArray.shuffle()
     }
     
+    func playEndingAudio() {
+        model.playEndingAudio()
+    }
 }

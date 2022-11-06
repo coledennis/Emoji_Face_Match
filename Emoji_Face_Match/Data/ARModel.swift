@@ -9,6 +9,8 @@ import Foundation
 import RealityKit
 import ARKit
 
+import AVFoundation
+
 struct ARModel {
     private(set) var arView : ARView
     
@@ -61,6 +63,8 @@ struct ARModel {
     
     var faceRing: FaceRing.Scene?
     
+    var successAudio: AVAudioPlayer?
+    var endingAudio: AVAudioPlayer?
     init() {
         arView = ARView(frame: .zero)
         let config = ARFaceTrackingConfiguration()
@@ -80,6 +84,20 @@ struct ARModel {
         faceRing = faceRingAnchor
 //        faceRingAnchor.name = "FaceRing"
         arView.scene.anchors.append(faceRingAnchor)
+        
+
+        let successPath = Bundle.main.path(forResource: "Success V5.wav", ofType:nil)!
+        let successUrl = URL(fileURLWithPath: successPath)
+        
+        let endingAudioPath = Bundle.main.path(forResource: "Ending Audio.wav", ofType:nil)!
+        let endingAudioUrl = URL(fileURLWithPath: endingAudioPath)
+        
+        do {
+            successAudio = try AVAudioPlayer(contentsOf: successUrl)
+            endingAudio = try AVAudioPlayer(contentsOf: endingAudioUrl)
+        } catch {
+            print("could not access success audio")
+        }
     }
     
     mutating func update(faceAnchor: ARFaceAnchor){
@@ -187,6 +205,8 @@ struct ARModel {
             
             
             faceRing?.notifications.ringAnimation.post()
+            
+            successAudio?.play()
 //            let FaceRing = arView.scene.anchors.first(where: {$0.name == "FaceRing"}) as FaceRing
 //            self.universalScene.notifications.gameOverTrigger.post()
         }
@@ -281,5 +301,9 @@ struct ARModel {
     func simpleSuccess() {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
+    }
+    
+    func playEndingAudio() {
+        endingAudio?.play()
     }
 }
