@@ -10,9 +10,18 @@ import SwiftUI
 struct EndingView: View {
     @ObservedObject var arViewModel : ARViewModel
     var body: some View {
-        VStack {
-            Text("Ya did it")
-            Text("Score: \(arViewModel.score)")
+        ZStack {
+            ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
+            VStack {
+                Text("Ya did it")
+                Text("Score: \(arViewModel.score)")
+            }
+            Button {
+                arViewModel.changeGameStage(newGameStage: .menu)
+            } label: {
+                Text("Back to menu")
+            }
+
         }
     }
 }
