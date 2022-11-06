@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B48B7DD829183C8D00522942 /* FaceRing.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = B48B7DD729183C8D00522942 /* FaceRing.rcproject */; };
+		B4CEBB7B29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CEBB7A29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift */; };
+		B4CEBB7D2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CEBB7C2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift */; };
 		B4EDFD75290F39F300663E7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDFD74290F39F300663E7C /* AppDelegate.swift */; };
 		B4EDFD77290F39F300663E7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDFD76290F39F300663E7C /* ContentView.swift */; };
 		B4EDFD7B290F39F400663E7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4EDFD7A290F39F400663E7C /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		B48B7DD729183C8D00522942 /* FaceRing.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = FaceRing.rcproject; sourceTree = "<group>"; };
+		B4CEBB7A29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerLocalColaborativeView.swift; sourceTree = "<group>"; };
+		B4CEBB7C2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerLocalCompetitiveView.swift; sourceTree = "<group>"; };
 		B4EDFD71290F39F300663E7C /* Emoji_Face_Match.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emoji_Face_Match.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4EDFD74290F39F300663E7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4EDFD76290F39F300663E7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 				B4EDFD76290F39F300663E7C /* ContentView.swift */,
 				B4EDFD88290F3B3300663E7C /* MenuView.swift */,
 				B4EDFD8C290F3D3D00663E7C /* SinglePlayerView.swift */,
+				B4CEBB7A29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift */,
+				B4CEBB7C2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift */,
 				B4EDFD8E290F3D4300663E7C /* EndingView.swift */,
 				B4EDFD92290F80E300663E7C /* GameButtonView.swift */,
 			);
@@ -177,9 +183,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4CEBB7D2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift in Sources */,
 				B4EDFD87290F3A8100663E7C /* ARViewModel.swift in Sources */,
 				B4EDFD89290F3B3300663E7C /* MenuView.swift in Sources */,
 				B4EDFD85290F3A7700663E7C /* ARModel.swift in Sources */,
+				B4CEBB7B29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift in Sources */,
 				B4EDFD8D290F3D3D00663E7C /* SinglePlayerView.swift in Sources */,
 				B4EDFD93290F80E300663E7C /* GameButtonView.swift in Sources */,
 				B4EDFD77290F39F300663E7C /* ContentView.swift in Sources */,
@@ -313,7 +321,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji_Face_Match/Preview Content\"";
 				DEVELOPMENT_TEAM = 6R7D5U33PL;
 				ENABLE_PREVIEWS = YES;
@@ -350,7 +358,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Emoji_Face_Match/Preview Content\"";
 				DEVELOPMENT_TEAM = 6R7D5U33PL;
 				ENABLE_PREVIEWS = YES;

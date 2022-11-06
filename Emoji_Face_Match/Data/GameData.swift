@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 enum GameStage: CaseIterable {
-    case menu, singlePlayer, ending
+    case menu, singlePlayer, twoPlayerCollaborativeLocal, twoPlayerCompetitiveLocal, ending
 }
 
 enum GameButtons: CaseIterable {

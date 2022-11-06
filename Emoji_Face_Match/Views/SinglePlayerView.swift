@@ -10,33 +10,37 @@ import SwiftUI
 struct SinglePlayerView: View {
     @State private var timeRemaining = 15
     @ObservedObject var arViewModel : ARViewModel
+    @State var frameSize: CGFloat = 100
     var body: some View {
         ZStack {
             ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
             topBar
             VStack {
-                    if arViewModel.model.facesArray.count > 0 {
-                        arViewModel.model.facesArray.first?.image
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
-                    }
+                if arViewModel.model.facesArray.count > 0 {
+                    arViewModel.model.facesArray.first?.image
+                        .resizable()
+                        .frame(width: frameSize, height: frameSize)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 25).fill(.regularMaterial))
+                        .onTapGesture {
+                            changeEmoji()
+                        }
+                }
                 Spacer()
             }
             .padding(5)
             
-//            VStack {
-//                Spacer()
-//                VStack {
-//                    Text("Eyes: \(arViewModel.eyeStatus.string)")
-//                    Text("Eyebrows: \(arViewModel.eyebrowStatus.string)")
-//                    Text("Mouth: \(arViewModel.mouthStatus.string)")
-//                }
-//                .bold()
-//                .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
-//
-//            } // Only for testing purposes
+            //            VStack {
+            //                Spacer()
+            //                VStack {
+            //                    Text("Eyes: \(arViewModel.eyeStatus.string)")
+            //                    Text("Eyebrows: \(arViewModel.eyebrowStatus.string)")
+            //                    Text("Mouth: \(arViewModel.mouthStatus.string)")
+            //                }
+            //                .bold()
+            //                .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
+            //
+            //            } // Only for testing purposes
         }
         .task {
             while timeRemaining > 0 {
@@ -74,6 +78,28 @@ struct SinglePlayerView: View {
         .padding(5)
     }
     
+    func changeEmoji() {
+        simpleSuccess()
+        arViewModel.shuffle()
+        withAnimation(.spring(dampingFraction: 0.5)) {
+            frameSize = 130
+        }
+        Task {
+            do {
+                try await Task.sleep(nanoseconds: UInt64(0_200_000_000))
+                withAnimation(.spring(dampingFraction: 0.5)) {
+                    frameSize = 100
+                }
+            } catch {
+                print ("error")
+            }
+        }
+    }
+    
+    func simpleSuccess() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
 }
 
 struct SinglePlayerView_Previews: PreviewProvider {

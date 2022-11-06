@@ -159,4 +159,8 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         }
     }
     
+    func shuffle() {
+        model.facesArray.shuffle()
+    }
+    
 }

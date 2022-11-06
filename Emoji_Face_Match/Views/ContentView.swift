@@ -16,6 +16,10 @@ struct ContentView : View {
             case .menu: MenuView(arViewModel: arViewModel)
             case .singlePlayer: SinglePlayerView(arViewModel: arViewModel)
             case .ending: EndingView(arViewModel: arViewModel)
+            case .twoPlayerCollaborativeLocal:
+                TwoPlayerLocalColaborativeView()
+            case .twoPlayerCompetitiveLocal:
+                TwoPlayerLocalCompetitiveView()
             }
         }
     }

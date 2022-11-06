@@ -10,17 +10,21 @@ import SwiftUI
 struct MenuView: View {
     @ObservedObject var arViewModel : ARViewModel
     @State var backgroundImage: Image?
+    @State var frameSize: CGFloat = 100
     var body: some View {
         ZStack {
             ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
                 .onAppear {
                     backgroundImage = arViewModel.facesArray.randomElement()?.image
                 }
-                Rectangle().fill(.thinMaterial)
+            Rectangle().fill(.thinMaterial)
             VStack {
                 backgroundImage?
                     .resizable()
-                    .frame(width: 100, height: 100)
+                    .frame(width: frameSize, height: frameSize)
+                    .onTapGesture {
+                        changeEmoji()
+                    }
                 Text("Emoji Face Match Party")
                     .font(.system(.largeTitle, design: .rounded, weight: .bold))
                 Text("Party Game You Play With Your FACE!")
@@ -30,7 +34,7 @@ struct MenuView: View {
                     gameButton(gameStage: button.gameStage, text: button.string, color: button.color, icon: button.icon)
                 }
             }
-           
+            
         }.edgesIgnoringSafeArea(.all)
     }
     
@@ -41,7 +45,31 @@ struct MenuView: View {
             GameButtonView(text: text, color: color, icon: icon)
         }
     }
+    
+    func changeEmoji() {
+        simpleSuccess()
+        backgroundImage = arViewModel.facesArray.randomElement()?.image
+        withAnimation(.spring(dampingFraction: 0.5)) {
+            frameSize = 130
+        }
+        Task {
+            do {
+                try await Task.sleep(nanoseconds: UInt64(0_200_000_000))
+                withAnimation(.spring(dampingFraction: 0.5)) {
+                    frameSize = 100
+                }
+            } catch {
+                print ("error")
+            }
+        }
+    }
+    
+    func simpleSuccess() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
 }
+
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {

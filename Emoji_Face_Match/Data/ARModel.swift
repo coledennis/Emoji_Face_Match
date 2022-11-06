@@ -64,7 +64,10 @@ struct ARModel {
     init() {
         arView = ARView(frame: .zero)
         let config = ARFaceTrackingConfiguration()
-        config.frameSemantics.insert(.personSegmentation)
+//        let config = ARWorldTrackingConfiguration()
+
+//        config.frameSemantics.insert(.personSegmentation)
+//        config.userFaceTrackingEnabled = true
         arView.session.run(config)
         for face in faces.allCases {
             facesArray.append(face)
