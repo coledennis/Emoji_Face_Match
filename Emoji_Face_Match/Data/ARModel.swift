@@ -62,11 +62,11 @@ struct ARModel {
     init() {
         arView = ARView(frame: .zero)
         arView.session.run(ARFaceTrackingConfiguration())
-//        for face in faces.allCases {
-//            facesArray.append(face)
-//        }
-//        facesArray.shuffle()
-        facesArray = [.Angry_face, .Clown_face]
+        for face in faces.allCases {
+            facesArray.append(face)
+        }
+        facesArray.shuffle()
+//        facesArray = [.Angry_face, .Clown_face]
     }
     
     mutating func update(faceAnchor: ARFaceAnchor){
@@ -169,6 +169,7 @@ struct ARModel {
     mutating func faceCheck(face: faces, eyes: eyeScale, eyebrows: eyebrowScale, mouth: mouthScale ) {
         if (face.eyeScale.contains(where: {$0 == eyes})) && face.eyebrowScale == eyebrows && face.mouthScale == mouth {
             currentScore += 1
+            simpleSuccess()
             facesArray.remove(at: 0)
         }
         
@@ -259,5 +260,8 @@ struct ARModel {
     }
     // Game Logic Above
     
-    
+    func simpleSuccess() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
 }
