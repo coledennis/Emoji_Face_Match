@@ -10,7 +10,6 @@
 		B48B7DD829183C8D00522942 /* FaceRing.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = B48B7DD729183C8D00522942 /* FaceRing.rcproject */; };
 		B4EDFD75290F39F300663E7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDFD74290F39F300663E7C /* AppDelegate.swift */; };
 		B4EDFD77290F39F300663E7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDFD76290F39F300663E7C /* ContentView.swift */; };
-		B4EDFD79290F39F300663E7C /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = B4EDFD78290F39F300663E7C /* Experience.rcproject */; };
 		B4EDFD7B290F39F400663E7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4EDFD7A290F39F400663E7C /* Assets.xcassets */; };
 		B4EDFD7E290F39F400663E7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4EDFD7D290F39F400663E7C /* Preview Assets.xcassets */; };
 		B4EDFD85290F3A7700663E7C /* ARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDFD84290F3A7700663E7C /* ARModel.swift */; };
@@ -27,7 +26,6 @@
 		B4EDFD71290F39F300663E7C /* Emoji_Face_Match.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emoji_Face_Match.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4EDFD74290F39F300663E7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4EDFD76290F39F300663E7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B4EDFD78290F39F300663E7C /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		B4EDFD7A290F39F400663E7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4EDFD7D290F39F400663E7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B4EDFD84290F3A7700663E7C /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
@@ -72,7 +70,6 @@
 				B4EDFD74290F39F300663E7C /* AppDelegate.swift */,
 				B4EDFD90290F431D00663E7C /* Views */,
 				B4EDFD91290F432300663E7C /* Data */,
-				B4EDFD78290F39F300663E7C /* Experience.rcproject */,
 				B48B7DD729183C8D00522942 /* FaceRing.rcproject */,
 				B4EDFD7A290F39F400663E7C /* Assets.xcassets */,
 				B4EDFD7C290F39F400663E7C /* Preview Content */,
@@ -190,7 +187,6 @@
 				B48B7DD829183C8D00522942 /* FaceRing.rcproject in Sources */,
 				B4EDFD8B290F3BCE00663E7C /* GameData.swift in Sources */,
 				B4EDFD75290F39F300663E7C /* AppDelegate.swift in Sources */,
-				B4EDFD79290F39F300663E7C /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

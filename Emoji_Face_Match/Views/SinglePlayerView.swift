@@ -26,17 +26,17 @@ struct SinglePlayerView: View {
             }
             .padding(5)
             
-            VStack {
-                Spacer()
-                VStack {
-                    Text("Eyes: \(arViewModel.eyeStatus.string)")
-                    Text("Eyebrows: \(arViewModel.eyebrowStatus.string)")
-                    Text("Mouth: \(arViewModel.mouthStatus.string)")
-                }
-                .bold()
-                .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
-                
-            } // Only for testing purposes
+//            VStack {
+//                Spacer()
+//                VStack {
+//                    Text("Eyes: \(arViewModel.eyeStatus.string)")
+//                    Text("Eyebrows: \(arViewModel.eyebrowStatus.string)")
+//                    Text("Mouth: \(arViewModel.mouthStatus.string)")
+//                }
+//                .bold()
+//                .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
+//
+//            } // Only for testing purposes
         }
         .task {
             while timeRemaining > 0 {
@@ -64,6 +64,7 @@ struct SinglePlayerView: View {
                 Label(String(timeRemaining), systemImage: "clock")
                     .bold()
                     .padding()
+                    .foregroundColor(timeRemaining > 5 ? Color(uiColor: .label) : .red)
                     .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
             }
             .padding(.horizontal)

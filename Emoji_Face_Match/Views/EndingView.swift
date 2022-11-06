@@ -11,18 +11,19 @@ struct EndingView: View {
     @ObservedObject var arViewModel : ARViewModel
     var body: some View {
         ZStack {
-            ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
+            ARViewContainer(arViewModel: arViewModel)
+            Rectangle().fill(.thinMaterial)
             VStack {
-                Text("Ya did it")
-                Text("Score: \(arViewModel.score)")
+                Text("Score: \(arViewModel.score)") .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                    .padding(.bottom)
+                    
+                Button {
+                    arViewModel.changeGameStage(newGameStage: .menu)
+                } label: {
+                    GameButtonView(text: "Back to Menu", color: .primary, icon: "arrowshape.turn.up.left")
+                }
             }
-            Button {
-                arViewModel.changeGameStage(newGameStage: .menu)
-            } label: {
-                Text("Back to menu")
-            }
-
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 

@@ -12,21 +12,10 @@ struct MenuView: View {
     @State var backgroundImage: Image?
     var body: some View {
         ZStack {
-            //            LazyVGrid(columns: [GridItem.init(.adaptive(minimum: 20), spacing: 40)]) {
-            //                ForEach(1...120, id: \.self) { face in
-            //                    backgroundImage?
-            //                        .resizable()
-            //                        .frame(width: 50, height: 50)
-            //                }
-            //            }
             ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
                 .onAppear {
                     backgroundImage = arViewModel.facesArray.randomElement()?.image
                 }
-            //            .blur(radius: 6)
-            //            .opacity(0.05)
-//                .blur(radius: 10)
-//                .opacity(0.2)
                 Rectangle().fill(.thinMaterial)
             VStack {
                 backgroundImage?
@@ -52,7 +41,6 @@ struct MenuView: View {
             GameButtonView(text: text, color: color, icon: icon)
         }
     }
-    
 }
 
 struct MenuView_Previews: PreviewProvider {
