@@ -59,14 +59,24 @@ struct ARModel {
     var eyeStatus: eyeScale = .neutral
     //
     
+    var faceRing: FaceRing.Scene?
+    
     init() {
         arView = ARView(frame: .zero)
-        arView.session.run(ARFaceTrackingConfiguration())
+        let config = ARFaceTrackingConfiguration()
+        config.frameSemantics.insert(.personSegmentation)
+        arView.session.run(config)
         for face in faces.allCases {
             facesArray.append(face)
         }
         facesArray.shuffle()
 //        facesArray = [.Angry_face, .Clown_face]
+        
+        
+        let faceRingAnchor = try! FaceRing.loadScene()
+        faceRing = faceRingAnchor
+//        faceRingAnchor.name = "FaceRing"
+        arView.scene.anchors.append(faceRingAnchor)
     }
     
     mutating func update(faceAnchor: ARFaceAnchor){
@@ -171,6 +181,11 @@ struct ARModel {
             currentScore += 1
             simpleSuccess()
             facesArray.remove(at: 0)
+            
+            
+            faceRing?.notifications.ringAnimation.post()
+//            let FaceRing = arView.scene.anchors.first(where: {$0.name == "FaceRing"}) as FaceRing
+//            self.universalScene.notifications.gameOverTrigger.post()
         }
         
 //        if  smileLeft >= face.smileLeft.value {
