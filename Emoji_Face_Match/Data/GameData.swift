@@ -356,7 +356,165 @@ enum faces: CaseIterable {
         var mouthScale: mouthScale {
             switch self {
             case .Angry_face: return .frown
-            default: return .kissFace
+            
+            case .Anguished_face:
+                return .frown
+            case .Anxious_face_with_sweat:
+                return .frown
+            case .Astonished_face:
+                return .openMouthNeutral
+            case .Beaming_face_with_smiling_eyes:
+                return .openMouthSmile
+            case .Cat:
+                return .tongueOut
+            case .Clown_face:
+                return .openMouthSmile
+            case .Cold_face:
+                return .openMouthNeutral
+            case .Confounded_face:
+                return .frown
+            case .Cowboy_hat_face:
+                return .openMouthSmile
+            case .Crying_face:
+                return .frown
+            case .Disappointed_face:
+                return .frown
+            case .Dizzy_face:
+                return .openMouthNeutral
+            case .Downcast_face_with_sweat:
+                return .frown
+            case .Drooling_face:
+                return .smile
+            case .Exploding_head:
+                return .openMouthNeutral
+            case .Expressionless_face:
+                return .neutral
+            case .Face_blowing_a_kiss:
+                return .kissFace
+            case .Face_savoring_food:
+                return .tongueOut
+            case .Face_screaming_in_fear:
+                return .openMouthNeutral
+            case .Face_with_head_bandage:
+                return .frown
+            case .Face_with_monocle:
+                return .frown
+            case .Face_with_open_mouth:
+                return .openMouthNeutral
+            case .Face_with_raised_eyebrow:
+                return .neutral
+            case .Face_with_rolling_eyes:
+                return .neutral
+            case .Face_with_steam_from_nose:
+                return .frown
+            case .Face_with_tears_of_joy:
+                return .openMouthSmile
+            case .Face_with_thermometer:
+                return .frown
+            case .Face_with_tongue:
+                return .tongueOut
+            case .Fearful_face:
+                return .frown
+            case .Flushed_face:
+                return .neutral
+            case .Frowning_face_with_open_mouth:
+                return .frown
+            case .Frowning_face:
+                return .frown
+            case .Grimacing_face:
+                return .openMouthNeutral
+            case .Grinning_face_with_big_eyes:
+                return .openMouthSmile
+            case .Grinning_face_with_sweat:
+                return .openMouthSmile
+            case .Grinning_face_1:
+                return .openMouthSmile
+            case .Grinning_face:
+                return .openMouthSmile
+            case .Grinning_squinting_face:
+                return .openMouthSmile
+            case .Hot_face:
+                return .tongueOut
+            case .Hushed_face:
+                return .openMouthNeutral
+            case .Joker:
+                return .smile
+            case .Kissing_face_with_closed_eyes:
+                return .kissFace
+            case .Kissing_face_with_smiling_eyes:
+                return .kissFace
+            case .Kissing_face:
+                return .kissFace
+            case .Lion:
+                return .tongueOut
+            case .Loudly_crying_face:
+                return .openMouthNeutral
+            case .Money_mouth_face_$:
+                return .tongueOut
+            case .Monkey:
+                return .openMouthSmile
+            case .Nauseated_face:
+                return .frown
+            case .Nerd_face:
+                return .smile
+            case .Neutral_face:
+                return .neutral
+            case .Panda:
+                return .tongueOut
+            case .Pensive_face:
+                return .neutral
+            case .Pile_of_poo:
+                return .smile
+            case .Pleading_face:
+                return .neutral
+            case .Pouting_face:
+                return .frown
+            case .Relieved_face:
+                return .smile
+            case .Rolling_on_the_floor_laughing:
+                return .openMouthSmile
+            case .Sad_but_relieved_face:
+                return .frown
+            case .Santa_Claus:
+                return .smile
+            case .Sleep_face:
+                return .openMouthNeutral
+            case .Sleepy_face:
+                return .frown
+            case .Slightly_frowning_face:
+                return .frown
+            case .Slightly_smiling_face:
+                return .smile
+            case .Smiling_face_with_halo:
+                return .smile
+            case .Smiling_face_with_heart_eyes:
+                return .openMouthSmile
+            case .Smiling_face_with_hearts:
+                return .smile
+            case .Smiling_face_with_smiling_eyes:
+                return .smile
+            case .Smiling_face:
+                return .smile
+            case .Squinting_face_with_tongue:
+                return .tongueOut
+            case .Star_struck:
+                return .openMouthSmile
+            case .Thinking_face:
+                return .frown
+            case .Tired_face:
+                return .openMouthNeutral
+            case .Vomiting_face:
+                return .openMouthNeutral
+            case .Weary_face:
+                return .openMouthNeutral
+            case .Winking_face_with_tongue:
+                return .tongueOut
+            case .Winking_face:
+                return .smile
+            case .Worried_face_1:
+                return .frown
+            case .Worried_face:
+                return .frown
             }
     }
     
@@ -436,7 +594,7 @@ enum eyeScale {
 }
 
 enum mouthScale {
-    case neutral, smile, frown, openMouthSmile, openMouthNeutral, tongueOut, smileWithTeeth, kissFace
+    case neutral, smile, frown, openMouthSmile, openMouthNeutral, tongueOut, kissFace
     
     var string: String {
         switch self {
@@ -451,8 +609,6 @@ enum mouthScale {
             return "Open Mouth Neutral"
         case .tongueOut:
             return "Tongue Out"
-        case .smileWithTeeth:
-            return "Smile With Teeth"
         case .kissFace:
             return "Kiss Face"
         }
