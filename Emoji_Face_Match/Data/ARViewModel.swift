@@ -8,10 +8,10 @@
 import Foundation
 import RealityKit
 import ARKit
+import CoreHaptics
 
 class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
-    
-    
+        
     // MARK: AR Setup
     @Published var model : ARModel = ARModel()
     
@@ -39,8 +39,11 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     }
     
     func changeGameStage(newGameStage: GameStage) {
-        model.setupARView(gameStage: gameStage)
+        model.setupARView(gameStage: newGameStage)
         model.updateGameStage(gameStage: newGameStage)
+        if gameStage == .menu || gameStage == .ending {
+            model.isGameActive = false
+        }
     }
     
     var isGameActive: Bool {
@@ -63,6 +66,22 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         model.gameSetup()
     }
     
+    // MARK: Haptics 
+    func simpleSuccess() {
+        model.simpleSuccess()
+    }
+    
+    func buttonHaptic() {
+        model.buttonTapHaptic()
+    }
+    
+    func endingHaptic() {
+        model.endingHaptic()
+    }
+    
+    func prepareHaptics() {
+        model.prepareHaptics()
+    }
     
     // MARK: Game Data
     var score: Int {

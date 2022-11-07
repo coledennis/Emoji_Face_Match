@@ -8,8 +8,8 @@
 import Foundation
 import RealityKit
 import ARKit
-
 import AVFoundation
+import CoreHaptics
 
 struct ARModel {
     // MARK: AR Setup
@@ -23,6 +23,7 @@ struct ARModel {
     // MARK: Game Setup
     var gameStageVar: GameStage = .menu
     var isGameActive: Bool = false
+    var engine: CHHapticEngine?
     
     // MARK: Game Data
     var facesArray: Array<faces> = []
@@ -34,134 +35,73 @@ struct ARModel {
     var endingAudio: AVAudioPlayer?
     var countdownAudio: AVAudioPlayer?
     
+    // MARK: INIT
     init() {
         arView = ARView(frame: .zero)
         setupARView(gameStage: .menu)
-        
-        for face in faces.allCases {
-            facesArray.append(face)
-        }
-        facesArray.shuffle()
         
         let faceRingAnchor = try! FaceRing.loadScene()
         faceRing = faceRingAnchor
         arView.scene.anchors.append(faceRingAnchor)
         
         gameSetup()
-
         audioSetup()
     }
     
+    // MARK: AR Logic
     mutating func setupARView(gameStage: GameStage){
         switch gameStage {
         case .twoPlayerCollaborativeLocal, .twoPlayerCompetitiveLocal:
             let config = ARWorldTrackingConfiguration()
-               config.frameSemantics.insert(.personSegmentation)
-               config.userFaceTrackingEnabled = true
-               arView.session.run(config)
+            config.frameSemantics.insert(.personSegmentation)
+            config.userFaceTrackingEnabled = true
+            arView.session.run(config)
         default :
             let config = ARFaceTrackingConfiguration()
-               config.frameSemantics.insert(.personSegmentation)
-               arView.session.run(config)
+            config.frameSemantics.insert(.personSegmentation)
+            arView.session.run(config)
         }
     }
+    
+    
+    // MARK: Face Logic
     
     mutating func update(faceAnchor: ARFaceAnchor){
         
         // LIPS
         let smileRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileRight})?.value ?? 0)
-//        smileRightVar = smileRight
         let smileLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthSmileLeft})?.value ?? 0)
-//        smileLeftVar = smileLeft
         let frownRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthFrownRight})?.value ?? 0)
-//        frownRightVar = frownRight
         let frownLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthFrownLeft})?.value ?? 0)
-//        frownLeftVar = frownLeft
-        
-//        let mouthLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthLeft})?.value ?? 0)
-//        mouthLeftVar = mouthLeft
-//        let mouthRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthRight})?.value ?? 0)
-//        mouthRightVar = mouthRight
-        
-//        let mouthClose = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthClose})?.value ?? 0)
-//        mouthCloseVar = mouthClose
-        
         let mouthFunnel = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthFunnel})?.value ?? 0)
-//        mouthFunnelVar = mouthFunnel
-        
         let mouthPucker = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthPucker})?.value ?? 0)
-//        mouthPuckerVar = mouthPucker
-        
         let tongueOut = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .tongueOut})?.value ?? 0)
-//        tongueOutVar = tongueOut
-        
-//        let jawOpen = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .jawOpen})?.value ?? 0)
-//        jawOpenVar = jawOpen
-//        smileRightVar = smileRight
-//        let mouthPucker = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouth})?.value ?? 0)
-        
-        
-//        smileRightVar = smileRight
-        
-        
         /*let*/ mouthStatus = mouthCheck(tongueOut: tongueOut, frownLeft: frownLeft, frownRight: frownRight, smileLeft: smileLeft, smileRight: smileRight, mouthPucker: mouthPucker, mouthFunnel: mouthFunnel)
         
         
         // EYES?
         let eyeWideLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeWideLeft})?.value ?? 0)
-//        eyeWideLeftVar = eyeWideLeft
         let eyeWideRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeWideRight})?.value ?? 0)
-//        eyeWideRightVar = eyeWideRight
         let eyeSquintLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeSquintLeft})?.value ?? 0)
-//        eyeSquintLeftVar = eyeSquintLeft
         let eyeSquintRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeSquintRight})?.value ?? 0)
-//        eyeSquintRightVar = eyeSquintRight
-        
-        
         let eyeBlinkLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeBlinkLeft})?.value ?? 0)
-//        eyeBlinkLeftVar = eyeBlinkLeft
         let eyeBlinkRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeBlinkRight})?.value ?? 0)
-//        eyeBlinkRightVar = eyeBlinkRight
-
         let eyeLookUpLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookUpLeft})?.value ?? 0)
-//        eyeLookUpLeftVar = eyeLookUpLeft
         let eyeLookUpRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookUpRight})?.value ?? 0)
-//        eyeLookUpRightVar = eyeLookUpRight
-//        let eyeRightLookLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookInRight})?.value ?? 0)
-////        eyeRightLookLeftVar = eyeRightLookLeft
-//        let eyeLeftLookRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .eyeLookInLeft})?.value ?? 0)
-//        eyeLeftLookRightVar = eyeLeftLookRight
-
         /*let*/ eyeStatus = eyeCheck(eyeBlinkLeft: eyeBlinkLeft, eyeBlinkRight: eyeBlinkRight, eyeWideLeft: eyeWideLeft, eyeWideRight: eyeWideRight, eyeLookUpLeft: eyeLookUpLeft, eyeLookUpRight: eyeLookUpRight, eyeSquintLeft: eyeSquintLeft, eyeSquintRight: eyeSquintRight)
-        
         
         
         // EYEBROWS
         let eyebrowInnerUp = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browInnerUp})?.value ?? 0)
-//        eyebrowInnerUpVar = eyebrowInnerUp
         let eyebrowDownLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browDownLeft})?.value ?? 0)
-//        eyebrowDownLeftVar = eyebrowDownLeft
         let eyebrowDownRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browDownRight})?.value ?? 0)
-//        eyebrowDownRightVar = eyebrowDownRight
-//        let eyebrowOuterUpLeft = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browOuterUpLeft})?.value ?? 0)
-//        eyebrowOuterUpLeftVar = eyebrowOuterUpLeft
-//        let eyebrowOuterUpRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browOuterUpRight})?.value ?? 0)
-//        eyebrowOuterUpRightVar = eyebrowOuterUpRight
-//        mouthLeftVar = mouthLeft
-//        let mouthRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .mouthRight})?.value ?? 0)
-//        mouthRightVar = mouthRight
-        
         /*let*/  eyebrowStatus = eyebrowCheck(eyebrowInnerUp: eyebrowInnerUp, eyebrowDownLeft: eyebrowDownLeft, eyebrowDownRight: eyebrowDownRight)
         
-        // TOUNGE
-        
         if facesArray.count > 0 {
-//            faceCheck(face: facesArray.first!, smileLeft: smileLeft, smileRight: smileRight)
             faceCheck(face: facesArray.first!, eyes: eyeStatus, eyebrows: eyebrowStatus, mouth: mouthStatus)
         }
     }
     
-    // Game Logic Below
     
     mutating func faceCheck(face: faces, eyes: eyeScale, eyebrows: eyebrowScale, mouth: mouthScale ) {
         if (face.eyeScale.contains(where: {$0 == eyes})) && face.eyebrowScale == eyebrows && face.mouthScale == mouth {
@@ -169,43 +109,31 @@ struct ARModel {
             simpleSuccess()
             facesArray.remove(at: 0)
             
-            
             faceRing?.notifications.ringAnimation.post()
             
-            successAudio?.play()
-//            let FaceRing = arView.scene.anchors.first(where: {$0.name == "FaceRing"}) as FaceRing
-//            self.universalScene.notifications.gameOverTrigger.post()
+            playSuccessAudio()
         }
-        
-//        if  smileLeft >= face.smileLeft.value {
-//            //            updateGameStage(gameStage: .ending)
-//            if face == facesArray.first {
-//                currentScore += 1
-//                facesArray.remove(at: 0)
-//            }
-//
-//        }
     }
     
     mutating func eyebrowCheck(eyebrowInnerUp: Float, eyebrowDownLeft: Float, eyebrowDownRight: Float) -> eyebrowScale {
-
+        
         var result = eyebrowScale.neutral
         
         if eyebrowInnerUp > 0.6 && eyebrowDownLeft == 0 && eyebrowDownRight == 0 {
             result = .surprised
         } else if eyebrowInnerUp > 0.1 && ( (eyebrowDownLeft < 0.3 && eyebrowDownLeft > 0 ) || ( eyebrowDownRight < 0.3 && eyebrowDownRight > 0 )) {
-                result = .splitSkeptical
+            result = .splitSkeptical
         } else if eyebrowDownRight > 0.7 && eyebrowDownLeft > 0.7 {
-                result = .furrowed
-            }
+            result = .furrowed
+        }
         
         return result
     }
     
     mutating func eyeCheck(eyeBlinkLeft: Float, eyeBlinkRight: Float, eyeWideLeft: Float, eyeWideRight: Float, eyeLookUpLeft: Float, eyeLookUpRight: Float, eyeSquintLeft: Float, eyeSquintRight: Float) -> eyeScale {
-
+        
         var result = eyeScale.neutral
-
+        
         if eyeLookUpLeft > 0.7 && eyeLookUpRight > 0.7 {
             result = .rollingEyesUp
         } else if eyeBlinkLeft > 0.8 && eyeBlinkRight > 0.8 {
@@ -217,15 +145,14 @@ struct ARModel {
         } else if eyeSquintLeft > 0.3 && eyeSquintRight > 0.3 {
             result = .squinting
         }
-
         
         return result
     }
     
     mutating func mouthCheck(tongueOut: Float, frownLeft: Float, frownRight: Float, smileLeft: Float, smileRight: Float, mouthPucker: Float, mouthFunnel: Float) -> mouthScale {
-
+        
         var result = mouthScale.neutral
-
+        
         if tongueOut > 0.2 {
             result = .tongueOut
         } else if mouthPucker > 0.7 {
@@ -242,39 +169,13 @@ struct ARModel {
             result = .openMouthNeutral
         }
         
-        
-//        if eyeLookUpLeft > 0.7 && eyeLookUpRight > 0.7 {
-//            result = .rollingEyesUp
-//        } else if eyeBlinkLeft > 0.8 && eyeBlinkRight > 0.8 {
-//            result = .closed
-//        } else if eyeWideLeft > 0.5 && eyeWideRight > 0.5 {
-//            result = .wideOpen
-//        }  else if (eyeBlinkLeft > 0.8 && eyeBlinkRight < 0.2) || (eyeBlinkRight > 0.8 && eyeBlinkLeft < 0.2) {
-//            result = .wink
-//        } else if eyeSquintLeft > 0.3 && eyeSquintRight > 0.3 {
-//            result = .squinting
-//        }
-
-        
         return result
     }
     
+    
+    // MARK: Game Setup Logic
     mutating func updateGameStage(gameStage: GameStage) {
         gameStageVar = gameStage
-    }
-    // Game Logic Above
-    
-    func simpleSuccess() {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-    }
-    
-    func playEndingAudio() {
-        endingAudio?.play()
-    }
-    
-    func playCountdownAudio() {
-        countdownAudio?.play()
     }
     
     mutating func toggleGameActiveBool() {
@@ -288,6 +189,12 @@ struct ARModel {
     mutating func gameSetup() {
         currentScore = 0
         gametime = 15
+        
+        facesArray = []
+        for face in faces.allCases {
+            facesArray.append(face)
+        }
+        facesArray.shuffle()
     }
     
     // MARK: Audio Setup
@@ -310,7 +217,65 @@ struct ARModel {
         }
     }
     
+    func playSuccessAudio() {
+        successAudio?.play()
+    }
     
+    func playEndingAudio() {
+        endingAudio?.play()
+    }
     
+    func playCountdownAudio() {
+        countdownAudio?.play()
+    }
+    
+    // MARK: Haptic Setup
+    mutating func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        
+        do {
+            engine = try CHHapticEngine()
+            try engine?.start()
+        } catch {
+            print("There was an error creating the engine: \(error.localizedDescription)")
+        }
+    }
+    
+    func simpleSuccess() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+    
+    func buttonTapHaptic() {
+        let impactMed = UIImpactFeedbackGenerator(style: .light)
+        impactMed.impactOccurred()
+    }
+    
+    func endingHaptic() {
+        // make sure that the device supports haptics
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+        var events = [CHHapticEvent]()
+        
+        for i in stride(from: 0, to: 0.4, by: 0.1) {
+            let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: Float(0.5))
+            let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: Float(0.2))
+            let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: i)
+            events.append(event)
+        }
+        
+        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
+        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 1)
+        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0.4)
+        events.append(event)
+        
+        // convert those events into a pattern and play it immediately
+        do {
+            let pattern = try CHHapticPattern(events: events, parameters: [])
+            let player = try engine?.makePlayer(with: pattern)
+            try player?.start(atTime: 0)
+        } catch {
+            print("Failed to play pattern: \(error.localizedDescription).")
+        }
+    }
     
 }

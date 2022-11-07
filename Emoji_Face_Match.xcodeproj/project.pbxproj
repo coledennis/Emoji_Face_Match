@@ -10,6 +10,7 @@
 		B45EE5FD291877D500ADA9FF /* Success V5.wav in Resources */ = {isa = PBXBuildFile; fileRef = B45EE5FC291877D500ADA9FF /* Success V5.wav */; };
 		B45EE5FF291879CD00ADA9FF /* Ending Audio.wav in Resources */ = {isa = PBXBuildFile; fileRef = B45EE5FE291879CD00ADA9FF /* Ending Audio.wav */; };
 		B45EE60129187DF500ADA9FF /* Countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = B45EE60029187DF500ADA9FF /* Countdown.wav */; };
+		B45EE6052918B73A00ADA9FF /* GenericGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EE6042918B73A00ADA9FF /* GenericGameView.swift */; };
 		B48B7DD829183C8D00522942 /* FaceRing.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = B48B7DD729183C8D00522942 /* FaceRing.rcproject */; };
 		B4CEBB7B29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CEBB7A29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift */; };
 		B4CEBB7D2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CEBB7C2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift */; };
@@ -30,6 +31,7 @@
 		B45EE5FC291877D500ADA9FF /* Success V5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Success V5.wav"; sourceTree = "<group>"; };
 		B45EE5FE291879CD00ADA9FF /* Ending Audio.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Ending Audio.wav"; sourceTree = "<group>"; };
 		B45EE60029187DF500ADA9FF /* Countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Countdown.wav; sourceTree = "<group>"; };
+		B45EE6042918B73A00ADA9FF /* GenericGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericGameView.swift; sourceTree = "<group>"; };
 		B48B7DD729183C8D00522942 /* FaceRing.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = FaceRing.rcproject; sourceTree = "<group>"; };
 		B4CEBB7A29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerLocalColaborativeView.swift; sourceTree = "<group>"; };
 		B4CEBB7C2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerLocalCompetitiveView.swift; sourceTree = "<group>"; };
@@ -38,7 +40,7 @@
 		B4EDFD76290F39F300663E7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B4EDFD7A290F39F400663E7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4EDFD7D290F39F400663E7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B4EDFD84290F3A7700663E7C /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; };
+		B4EDFD84290F3A7700663E7C /* ARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModel.swift; sourceTree = "<group>"; tabWidth = 5; };
 		B4EDFD86290F3A8100663E7C /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
 		B4EDFD88290F3B3300663E7C /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		B4EDFD8A290F3BCE00663E7C /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				B4EDFD8C290F3D3D00663E7C /* SinglePlayerView.swift */,
 				B4CEBB7A29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift */,
 				B4CEBB7C2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift */,
+				B45EE6042918B73A00ADA9FF /* GenericGameView.swift */,
 			);
 			path = "Game Views";
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B45EE6052918B73A00ADA9FF /* GenericGameView.swift in Sources */,
 				B4CEBB7D2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift in Sources */,
 				B4EDFD87290F3A8100663E7C /* ARViewModel.swift in Sources */,
 				B4EDFD89290F3B3300663E7C /* MenuView.swift in Sources */,

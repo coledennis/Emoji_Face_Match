@@ -42,6 +42,7 @@ struct MenuView: View {
     
     func gameButton(gameStage: GameStage, text: String, color: Color, icon: String) -> some View {
         Button {
+            arViewModel.buttonHaptic()
             arViewModel.changeGameStage(newGameStage: gameStage)
             arViewModel.gameSetup()
         } label: {
@@ -50,7 +51,8 @@ struct MenuView: View {
     }
     
     func changeEmoji() {
-        simpleSuccess()
+//        arViewModel.softHaptic()
+        arViewModel.buttonHaptic()
         backgroundImage = arViewModel.facesArray.randomElement()?.image
         withAnimation(.spring(dampingFraction: 0.5)) {
             frameSize = 130
@@ -61,6 +63,7 @@ struct MenuView: View {
                 withAnimation(.spring(dampingFraction: 0.5)) {
                     frameSize = 100
                 }
+                arViewModel.buttonHaptic()
             } catch {
                 print ("error")
             }

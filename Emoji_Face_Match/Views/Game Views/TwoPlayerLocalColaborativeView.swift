@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct TwoPlayerLocalColaborativeView: View {
+struct TwoPlayerLocalCollaborativeView: View {
+    @ObservedObject var arViewModel : ARViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GenericGameView(arViewModel: arViewModel)
     }
 }
 
 struct TwoPlayerLocalColaborativeView_Previews: PreviewProvider {
     static var previews: some View {
-        TwoPlayerLocalColaborativeView()
+        TwoPlayerLocalCollaborativeView(arViewModel: ARViewModel.init())
     }
 }

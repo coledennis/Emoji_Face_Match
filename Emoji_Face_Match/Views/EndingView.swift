@@ -18,10 +18,16 @@ struct EndingView: View {
                     .padding(.bottom)
                     
                 Button {
+                    arViewModel.buttonHaptic()
                     arViewModel.changeGameStage(newGameStage: .menu)
                 } label: {
                     GameButtonView(text: "Back to Menu", color: .primary, icon: "arrowshape.turn.up.left")
                 }
+            }
+            .onAppear {
+                arViewModel.prepareHaptics()
+                arViewModel.endingHaptic()
+                arViewModel.playEndingAudio()
             }
         }.edgesIgnoringSafeArea(.all)
     }
