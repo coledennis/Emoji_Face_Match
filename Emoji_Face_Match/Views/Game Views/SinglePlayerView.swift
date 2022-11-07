@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SinglePlayerView: View {
-    @State private var timeRemaining = 15
+//    @State private var timeRemaining = 15
     @ObservedObject var arViewModel : ARViewModel
     @State var frameSize: CGFloat = 100
     var body: some View {
@@ -46,16 +46,16 @@ struct SinglePlayerView: View {
             //            } // Only for testing purposes
         }
         .task {
-            while timeRemaining > 0 {
+            while arViewModel.gameTime > 0 {
                 do {
                     try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
-                    timeRemaining -= 1
+                    arViewModel.updateGameTime()
                     
-                    if timeRemaining < 6 && timeRemaining > 0 {
+                    if arViewModel.gameTime < 6 && arViewModel.gameTime > 0 {
                         arViewModel.playCountdownAudio()
                     }
                     
-                    if timeRemaining == 0 {
+                    if arViewModel.gameTime == 0 {
                         arViewModel.gameActiveToggle()
                         arViewModel.playEndingAudio()
                         arViewModel.changeGameStage(newGameStage: .ending)
@@ -75,10 +75,10 @@ struct SinglePlayerView: View {
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
                 Spacer()
-                Label(String(timeRemaining), systemImage: "clock")
+                Label(String(arViewModel.gameTime), systemImage: "clock")
                     .bold()
                     .padding()
-                    .foregroundColor(timeRemaining > 5 ? Color(uiColor: .label) : .red)
+                    .foregroundColor(arViewModel.gameTime > 5 ? Color(uiColor: .label) : .red)
                     .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
             }
             .padding(.horizontal)

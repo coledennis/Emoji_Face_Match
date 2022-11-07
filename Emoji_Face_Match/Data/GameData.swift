@@ -10,38 +10,47 @@ import SwiftUI
 
 enum GameStage: CaseIterable {
     case menu, singlePlayer, twoPlayerCollaborativeLocal, twoPlayerCompetitiveLocal, ending
-}
-
-enum GameButtons: CaseIterable {
-    case singlePlayer, twoPlayer
     
     var string: String {
         switch self {
         case .singlePlayer: return "Single Player"
-        case .twoPlayer:
-            return "Two Player"
+        case .menu:
+            return "Menu"
+        case .twoPlayerCollaborativeLocal:
+            return "Two Player Collaborative"
+        case .twoPlayerCompetitiveLocal:
+            return "Two Player Competitive"
+        case .ending:
+            return "Ending"
         }
     }
-    
-    var gameStage: GameStage {
-        switch self {
-        case .singlePlayer: return .singlePlayer
-        case .twoPlayer: return .ending // come back and fix this
-        }
-    }
-    
     
     var color: Color {
         switch self {
-        case .singlePlayer: return .red
-        case .twoPlayer: return .orange
+        case .singlePlayer:
+            return .red
+        case .menu:
+            return .clear
+        case .twoPlayerCollaborativeLocal:
+            return .orange
+        case .twoPlayerCompetitiveLocal:
+            return .yellow
+        case .ending:
+            return .clear
         }
     }
     
     var icon: String {
         switch self {
         case .singlePlayer: return "person"
-        case .twoPlayer: return "person.2"
+        case .menu:
+            return "list.bullet"
+        case .twoPlayerCollaborativeLocal:
+            return "person.2"
+        case .twoPlayerCompetitiveLocal:
+            return "person.2"
+        case .ending:
+            return "xmark"
         }
     }
 }

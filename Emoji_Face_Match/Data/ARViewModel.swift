@@ -39,6 +39,7 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     }
     
     func changeGameStage(newGameStage: GameStage) {
+        model.setupARView(gameStage: gameStage)
         model.updateGameStage(gameStage: newGameStage)
     }
     
@@ -58,6 +59,10 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         model.playCountdownAudio()
     }
     
+    func gameSetup() {
+        model.gameSetup()
+    }
+    
     
     // MARK: Game Data
     var score: Int {
@@ -70,6 +75,14 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     
     func shuffle() {
         model.facesArray.shuffle()
+    }
+    
+    var gameTime: Int {
+        model.gametime
+    }
+
+    func updateGameTime() {
+        model.updateGameTime()
     }
     
     

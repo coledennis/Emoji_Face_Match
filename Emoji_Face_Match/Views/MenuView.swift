@@ -13,7 +13,7 @@ struct MenuView: View {
     @State var frameSize: CGFloat = 100
     var body: some View {
         ZStack {
-            ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
+            ARViewContainer(arViewModel: arViewModel)
                 .onAppear {
                     backgroundImage = arViewModel.facesArray.randomElement()?.image
                 }
@@ -30,8 +30,10 @@ struct MenuView: View {
                 Text("Party Game You Play With Your FACE!")
                     .font(.system(.subheadline, design: .rounded, weight: .bold))
                 
-                ForEach(GameButtons.allCases, id: \.self) { button in
-                    gameButton(gameStage: button.gameStage, text: button.string, color: button.color, icon: button.icon)
+                ForEach(GameStage.allCases, id: \.self) { gameStage in
+                    if gameStage != GameStage.menu && gameStage != GameStage.ending {
+                        gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
+                    }
                 }
             }
             
@@ -41,6 +43,7 @@ struct MenuView: View {
     func gameButton(gameStage: GameStage, text: String, color: Color, icon: String) -> some View {
         Button {
             arViewModel.changeGameStage(newGameStage: gameStage)
+            arViewModel.gameSetup()
         } label: {
             GameButtonView(text: text, color: color, icon: icon)
         }

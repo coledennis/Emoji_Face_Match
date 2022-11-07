@@ -12,98 +12,57 @@ import ARKit
 import AVFoundation
 
 struct ARModel {
+    // MARK: AR Setup
     private(set) var arView : ARView
-    
-    var gameStageVar: GameStage = .menu
-    
-    var currentScore: Int = 0
-    
-    var facesArray: Array<faces> = []
-    
-    
-    
-    // for testing only
-//    var smileLeftVar : Float = 0
-//    var smileRightVar: Float = 0
-//    var frownLeftVar: Float = 0
-//    var frownRightVar: Float = 0
-//    var mouthCloseVar: Float = 0
-//    var mouthFunnelVar: Float = 0
-//    var mouthPuckerVar: Float = 0
-//    var tongueOutVar: Float = 0
-//    var jawOpenVar: Float = 0
+    var faceRing: FaceRing.Scene? // RCProject AR Ring On Success
     
     var mouthStatus: mouthScale = .neutral
-    
-    
-    
-//    var eyebrowInnerUpVar : Float = 0
-//    var eyebrowDownLeftVar: Float = 0
-//    var eyebrowDownRightVar: Float = 0
-//    var eyebrowOuterUpLeftVar: Float = 0
-//    var eyebrowOuterUpRightVar: Float = 0
     var eyebrowStatus: eyebrowScale = .neutral
-    
-//    var eyeWideLeftVar: Float = 0
-//    var eyeWideRightVar: Float = 0
-//
-//    var eyeSquintLeftVar: Float = 0
-//    var eyeSquintRightVar: Float = 0
-//
-//    var eyeBlinkLeftVar: Float = 0
-//    var eyeBlinkRightVar: Float = 0
-//
-//    var eyeLookUpLeftVar: Float = 0
-//    var eyeLookUpRightVar: Float = 0
-//
-//    var eyeRightLookLeftVar: Float = 0
-//    var eyeLeftLookRightVar: Float = 0
     var eyeStatus: eyeScale = .neutral
-    //
     
-    var faceRing: FaceRing.Scene?
+    // MARK: Game Setup
+    var gameStageVar: GameStage = .menu
+    var isGameActive: Bool = false
     
+    // MARK: Game Data
+    var facesArray: Array<faces> = []
+    var currentScore: Int = 0
+    var gametime: Int = 0
+    
+    // MARK: Audio Variables
     var successAudio: AVAudioPlayer?
     var endingAudio: AVAudioPlayer?
     var countdownAudio: AVAudioPlayer?
     
-    var isGameActive: Bool = false
     init() {
         arView = ARView(frame: .zero)
-        let config = ARFaceTrackingConfiguration()
-//        let config = ARWorldTrackingConfiguration()
-
-//        config.frameSemantics.insert(.personSegmentation)
-//        config.userFaceTrackingEnabled = true
-        arView.session.run(config)
+        setupARView(gameStage: .menu)
+        
         for face in faces.allCases {
             facesArray.append(face)
         }
         facesArray.shuffle()
-//        facesArray = [.Angry_face, .Clown_face]
-        
         
         let faceRingAnchor = try! FaceRing.loadScene()
         faceRing = faceRingAnchor
-//        faceRingAnchor.name = "FaceRing"
         arView.scene.anchors.append(faceRingAnchor)
         
+        gameSetup()
 
-        let successPath = Bundle.main.path(forResource: "Success V5.wav", ofType:nil)!
-        let successUrl = URL(fileURLWithPath: successPath)
-        
-        let endingAudioPath = Bundle.main.path(forResource: "Ending Audio.wav", ofType:nil)!
-        let endingAudioUrl = URL(fileURLWithPath: endingAudioPath)
-        
-        let countdownAudioPath = Bundle.main.path(forResource: "Countdown.wav", ofType:nil)!
-        let countdownAudioUrl = URL(fileURLWithPath: countdownAudioPath)
-        
-        do {
-            successAudio = try AVAudioPlayer(contentsOf: successUrl)
-            endingAudio = try AVAudioPlayer(contentsOf: endingAudioUrl)
-            countdownAudio = try AVAudioPlayer(contentsOf: countdownAudioUrl)
-        } catch {
-            print("could not access success audio")
+        audioSetup()
+    }
+    
+    mutating func setupARView(gameStage: GameStage){
+        switch gameStage {
+        case .twoPlayerCollaborativeLocal, .twoPlayerCompetitiveLocal:
+            let config = ARWorldTrackingConfiguration()
+               config.frameSemantics.insert(.personSegmentation)
+               config.userFaceTrackingEnabled = true
+               arView.session.run(config)
+        default :
+            let config = ARFaceTrackingConfiguration()
+               config.frameSemantics.insert(.personSegmentation)
+               arView.session.run(config)
         }
     }
     
@@ -321,4 +280,37 @@ struct ARModel {
     mutating func toggleGameActiveBool() {
         isGameActive.toggle()
     }
+    
+    mutating func updateGameTime() {
+        gametime -= 1
+    }
+    
+    mutating func gameSetup() {
+        currentScore = 0
+        gametime = 15
+    }
+    
+    // MARK: Audio Setup
+    mutating func audioSetup() {
+        let successPath = Bundle.main.path(forResource: "Success V5.wav", ofType:nil)!
+        let successUrl = URL(fileURLWithPath: successPath)
+        
+        let endingAudioPath = Bundle.main.path(forResource: "Ending Audio.wav", ofType:nil)!
+        let endingAudioUrl = URL(fileURLWithPath: endingAudioPath)
+        
+        let countdownAudioPath = Bundle.main.path(forResource: "Countdown.wav", ofType:nil)!
+        let countdownAudioUrl = URL(fileURLWithPath: countdownAudioPath)
+        
+        do {
+            successAudio = try AVAudioPlayer(contentsOf: successUrl)
+            endingAudio = try AVAudioPlayer(contentsOf: endingAudioUrl)
+            countdownAudio = try AVAudioPlayer(contentsOf: countdownAudioUrl)
+        } catch {
+            print("could not access success audio")
+        }
+    }
+    
+    
+    
+    
 }
