@@ -28,6 +28,9 @@ struct SinglePlayerView: View {
                 }
                 Spacer()
             }
+            .onAppear {
+                arViewModel.gameActiveToggle()
+            }
             .padding(5)
             
             //            VStack {
@@ -47,7 +50,13 @@ struct SinglePlayerView: View {
                 do {
                     try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
                     timeRemaining -= 1
+                    
+                    if timeRemaining < 6 && timeRemaining > 0 {
+                        arViewModel.playCountdownAudio()
+                    }
+                    
                     if timeRemaining == 0 {
+                        arViewModel.gameActiveToggle()
                         arViewModel.playEndingAudio()
                         arViewModel.changeGameStage(newGameStage: .ending)
                     }

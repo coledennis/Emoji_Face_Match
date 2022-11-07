@@ -154,8 +154,12 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     }
     
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
-        if let faceAnchor = anchors.first  as? ARFaceAnchor {
-            model.update(faceAnchor: faceAnchor)
+        
+        if model.isGameActive {
+            
+            if let faceAnchor = anchors.first  as? ARFaceAnchor {
+                model.update(faceAnchor: faceAnchor)
+            }
         }
     }
     
@@ -165,5 +169,17 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     
     func playEndingAudio() {
         model.playEndingAudio()
+    }
+    
+    func playCountdownAudio() {
+        model.playCountdownAudio()
+    }
+    
+    var isGameActive: Bool {
+        model.isGameActive
+    }
+    
+    func gameActiveToggle() {
+        model.toggleGameActiveBool()
     }
 }

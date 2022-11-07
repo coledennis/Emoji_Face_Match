@@ -65,6 +65,9 @@ struct ARModel {
     
     var successAudio: AVAudioPlayer?
     var endingAudio: AVAudioPlayer?
+    var countdownAudio: AVAudioPlayer?
+    
+    var isGameActive: Bool = false
     init() {
         arView = ARView(frame: .zero)
         let config = ARFaceTrackingConfiguration()
@@ -92,9 +95,13 @@ struct ARModel {
         let endingAudioPath = Bundle.main.path(forResource: "Ending Audio.wav", ofType:nil)!
         let endingAudioUrl = URL(fileURLWithPath: endingAudioPath)
         
+        let countdownAudioPath = Bundle.main.path(forResource: "Countdown.wav", ofType:nil)!
+        let countdownAudioUrl = URL(fileURLWithPath: countdownAudioPath)
+        
         do {
             successAudio = try AVAudioPlayer(contentsOf: successUrl)
             endingAudio = try AVAudioPlayer(contentsOf: endingAudioUrl)
+            countdownAudio = try AVAudioPlayer(contentsOf: countdownAudioUrl)
         } catch {
             print("could not access success audio")
         }
@@ -305,5 +312,13 @@ struct ARModel {
     
     func playEndingAudio() {
         endingAudio?.play()
+    }
+    
+    func playCountdownAudio() {
+        countdownAudio?.play()
+    }
+    
+    mutating func toggleGameActiveBool() {
+        isGameActive.toggle()
     }
 }

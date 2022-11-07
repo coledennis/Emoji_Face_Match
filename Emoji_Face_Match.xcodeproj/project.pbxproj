@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B45EE5FD291877D500ADA9FF /* Success V5.wav in Resources */ = {isa = PBXBuildFile; fileRef = B45EE5FC291877D500ADA9FF /* Success V5.wav */; };
 		B45EE5FF291879CD00ADA9FF /* Ending Audio.wav in Resources */ = {isa = PBXBuildFile; fileRef = B45EE5FE291879CD00ADA9FF /* Ending Audio.wav */; };
+		B45EE60129187DF500ADA9FF /* Countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = B45EE60029187DF500ADA9FF /* Countdown.wav */; };
 		B48B7DD829183C8D00522942 /* FaceRing.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = B48B7DD729183C8D00522942 /* FaceRing.rcproject */; };
 		B4CEBB7B29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CEBB7A29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift */; };
 		B4CEBB7D2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CEBB7C2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		B45EE5FC291877D500ADA9FF /* Success V5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Success V5.wav"; sourceTree = "<group>"; };
 		B45EE5FE291879CD00ADA9FF /* Ending Audio.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Ending Audio.wav"; sourceTree = "<group>"; };
+		B45EE60029187DF500ADA9FF /* Countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Countdown.wav; sourceTree = "<group>"; };
 		B48B7DD729183C8D00522942 /* FaceRing.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = FaceRing.rcproject; sourceTree = "<group>"; };
 		B4CEBB7A29184FEC00338B26 /* TwoPlayerLocalColaborativeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerLocalColaborativeView.swift; sourceTree = "<group>"; };
 		B4CEBB7C2918501500338B26 /* TwoPlayerLocalCompetitiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerLocalCompetitiveView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				B4EDFD7A290F39F400663E7C /* Assets.xcassets */,
 				B45EE5FC291877D500ADA9FF /* Success V5.wav */,
 				B45EE5FE291879CD00ADA9FF /* Ending Audio.wav */,
+				B45EE60029187DF500ADA9FF /* Countdown.wav */,
 				B4EDFD7C290F39F400663E7C /* Preview Content */,
 			);
 			path = Emoji_Face_Match;
@@ -179,6 +182,7 @@
 			files = (
 				B4EDFD7E290F39F400663E7C /* Preview Assets.xcassets in Resources */,
 				B45EE5FD291877D500ADA9FF /* Success V5.wav in Resources */,
+				B45EE60129187DF500ADA9FF /* Countdown.wav in Resources */,
 				B4EDFD7B290F39F400663E7C /* Assets.xcassets in Resources */,
 				B45EE5FF291879CD00ADA9FF /* Ending Audio.wav in Resources */,
 			);
