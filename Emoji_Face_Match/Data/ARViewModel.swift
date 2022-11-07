@@ -10,143 +10,13 @@ import RealityKit
 import ARKit
 
 class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
+    
+    
+    // MARK: AR Setup
     @Published var model : ARModel = ARModel()
     
     var arView : ARView {
         model.arView
-    }
-    
-    // Game Logic Below
-    var gameStage: GameStage {
-        model.gameStageVar
-    }
-    
-    func changeGameStage(newGameStage: GameStage) {
-        model.updateGameStage(gameStage: newGameStage)
-    }
-    
-    // Game Logic Above
-    
-    var score: Int {
-        model.currentScore
-    }
-    
-//    var isSmiling: Bool {
-//        var temp = false
-//        if model.smileLeft > 0.3 || model.smileRight > 0.3 {
-//            temp = true
-//        }
-//        return temp
-//    }
-    // FOR TESTING ONLY
-//    var smileLeft: Float {
-//        model.smileLeftVar
-//    }
-//    var smileRight: Float {
-//        model.smileRightVar
-//    }
-//    var frownLeft: Float {
-//        model.frownLeftVar
-//    }
-//    var frownRight: Float {
-//        model.frownRightVar
-//    }
-//    
-//    var mouthFunnelVar: Float {
-//        model.mouthFunnelVar
-//    }
-//    var mouthPuckerVar: Float {
-//        model.mouthPuckerVar
-//    }
-//    var mouthCloseVar: Float {
-//        model.mouthCloseVar
-//    }
-//    var tongueOutVar: Float {
-//        model.tongueOutVar
-//    }
-    var mouthStatus: mouthScale {
-        model.mouthStatus
-    }
-//    
-//    var jawOpenVar: Float {
-//        model.jawOpenVar
-//    }
-//    var mouthLeft: Float {
-//        model.mouthLeftVar
-//    }
-//    var mouthRight: Float {
-//        model.mouthRightVar
-//    }
-    
-    
-//    var eyebrowInnerUp: Float {
-//        model.eyebrowInnerUpVar
-//    }
-//    var eyebrowDownLeft: Float {
-//        model.eyebrowDownLeftVar
-//    }
-//    var eyebrowDownRight: Float {
-//        model.eyebrowDownRightVar
-//    }
-//    var eyebrowOuterUpRight: Float {
-//        model.eyebrowOuterUpRightVar
-//    }
-//    var eyebrowOuterUpLeft: Float {
-//        model.eyebrowOuterUpLeftVar
-//    }
-    
-    var eyebrowStatus: eyebrowScale {
-        model.eyebrowStatus
-    }
-    
-//    var eyeWideLeftVar: Float {
-//            model.eyeWideLeftVar
-//        }
-//    var eyeWideRightVar: Float {
-//        model.eyeWideRightVar
-//    }
-//    
-//    var eyeSquintLeftVar: Float {
-//        model.eyeSquintLeftVar
-//    }
-//    var eyeSquintRightVar: Float {
-//        model.eyeSquintRightVar
-//    }
-//    
-//    var eyeBlinkLeftVar: Float {
-//        model.eyeBlinkLeftVar
-//    }
-//    var eyeBlinkRightVar: Float {
-//        model.eyeBlinkRightVar
-//    }
-//
-//    var eyeLookUpLeftVar: Float {
-//        model.eyeLookUpLeftVar
-//    }
-//    var eyeLookUpRightVar: Float {
-//        model.eyeLookUpRightVar
-//    }
-//    
-//    var eyeRightLookLeftVar: Float {
-//        model.eyeRightLookLeftVar
-//    }
-//    var eyeLeftLookRightVar: Float {
-//        model.eyeLeftLookRightVar
-//    }
-    var eyeStatus: eyeScale {
-        model.eyeStatus
-    }
-    
-    
-    
-    
-//    var eyeBrowStatus: String {
-//        model.eyebrowStatus.string
-//    }
-    ///
-    ///
-    var facesArray: Array<faces> {
-        model.facesArray
     }
     
     func startSessionDelegate() {
@@ -163,8 +33,21 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         }
     }
     
-    func shuffle() {
-        model.facesArray.shuffle()
+    // MARK: Game Setup
+    var gameStage: GameStage {
+        model.gameStageVar
+    }
+    
+    func changeGameStage(newGameStage: GameStage) {
+        model.updateGameStage(gameStage: newGameStage)
+    }
+    
+    var isGameActive: Bool {
+        model.isGameActive
+    }
+    
+    func gameActiveToggle() {
+        model.toggleGameActiveBool()
     }
     
     func playEndingAudio() {
@@ -175,11 +58,32 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         model.playCountdownAudio()
     }
     
-    var isGameActive: Bool {
-        model.isGameActive
+    
+    // MARK: Game Data
+    var score: Int {
+        model.currentScore
     }
     
-    func gameActiveToggle() {
-        model.toggleGameActiveBool()
+    var facesArray: Array<faces> {
+        model.facesArray
     }
+    
+    func shuffle() {
+        model.facesArray.shuffle()
+    }
+    
+    
+    // MARK: Testing Data
+    //    var mouthStatus: mouthScale {
+    //        model.mouthStatus
+    //    }
+    //
+    //    var eyebrowStatus: eyebrowScale {
+    //        model.eyebrowStatus
+    //    }
+    //
+    //    var eyeStatus: eyeScale {
+    //        model.eyeStatus
+    //    }
+    
 }
