@@ -48,12 +48,13 @@ struct GenericGameView: View {
         VStack {
             HStack {
                 Label(String(arViewModel.score), systemImage: "trophy")
-                    .bold()
+                    
+//                    .bold()
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
                 Spacer()
                 Label(String(arViewModel.gameTime), systemImage: "clock")
-                    .bold()
+//                    .bold()
                     .padding()
                     .foregroundColor(arViewModel.gameTime > 5 ? Color(uiColor: .label) : .red)
                     .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
@@ -69,13 +70,13 @@ struct GenericGameView: View {
                     //
                 } label: {
                     Label(String("Menu"), systemImage: "arrowshape.turn.up.backward")
-                        .bold()
+//                        .bold()
                         .padding()
                         .foregroundColor(.primary)
                         .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
                 }
             }
-        }
+        }.font(.subheadline.weight(.bold))
         .padding(5)
     }
     
@@ -121,7 +122,6 @@ struct GenericGameView: View {
 //                Text("Eyebrows: \(arViewModel.eyebrowStatus.string)")
 //                Text("Mouth: \(arViewModel.mouthStatus.string)")
             }
-            .bold()
             .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
             
         }

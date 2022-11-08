@@ -26,9 +26,9 @@ struct MenuView: View {
                         changeEmoji()
                     }
                 Text("Emoji Face Match Party")
-                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                    .font(.system(.largeTitle, design: .rounded).bold())
                 Text("Party Game You Play With Your FACE!")
-                    .font(.system(.subheadline, design: .rounded, weight: .bold))
+                    .font(.system(.subheadline, design: .rounded).bold())
                 
                 ForEach(GameStage.allCases, id: \.self) { gameStage in
                     if gameStage != GameStage.menu && gameStage != GameStage.ending {

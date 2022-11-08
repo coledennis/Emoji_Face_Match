@@ -14,7 +14,7 @@ struct EndingView: View {
             ARViewContainer(arViewModel: arViewModel)
             Rectangle().fill(.thinMaterial)
             VStack {
-                Text("Score: \(arViewModel.score)") .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                Text("Score: \(arViewModel.score)")  .font(.system(.headline, design: .rounded).bold())
                     .padding(.bottom)
                     
                 Button {

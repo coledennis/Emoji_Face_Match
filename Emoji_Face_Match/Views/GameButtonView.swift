@@ -15,7 +15,7 @@ struct GameButtonView: View {
         Label(text, systemImage: icon)
             .frame(minWidth: 150)
             .foregroundColor(color)
-            .font(.system(.headline, design: .rounded, weight: .bold))
+            .font(.system(.headline, design: .rounded).bold())
             .padding()
             .background(RoundedRectangle(cornerRadius: 15).fill(color.opacity(0.15)))
     }
