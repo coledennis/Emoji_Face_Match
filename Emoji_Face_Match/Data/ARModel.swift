@@ -104,7 +104,7 @@ struct ARModel {
     
     
     mutating func faceCheck(face: faces, eyes: eyeScale, eyebrows: eyebrowScale, mouth: mouthScale ) {
-        if (face.eyeScale.contains(where: {$0 == eyes})) && face.eyebrowScale == eyebrows && face.mouthScale == mouth {
+        if (face.eyeScale.contains(where: {$0 == eyes})) && (face.eyebrowScale.contains(where: {$0 == eyebrows})) && (face.mouthScale.contains(where: {$0 == mouth})) {
             currentScore += 1
             simpleSuccess()
             facesArray.remove(at: 0)

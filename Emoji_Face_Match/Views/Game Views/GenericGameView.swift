@@ -26,7 +26,7 @@ struct GenericGameView: View {
             while arViewModel.gameTime > 0 && arViewModel.isGameActive { // SHOULD THIS LOGIC BE IN ARMODEL?
                 do {
                     try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
-                    arViewModel.updateGameTime()
+//                    arViewModel.updateGameTime()
                     
                     if arViewModel.gameTime < 6 && arViewModel.gameTime > 0 {
                         arViewModel.playCountdownAudio()

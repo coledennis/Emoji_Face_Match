@@ -60,13 +60,13 @@ enum faces: CaseIterable {
     case Angry_face, Anguished_face, Anxious_face_with_sweat, Astonished_face, Beaming_face_with_smiling_eyes, Cat, Clown_face, Cold_face, Confounded_face, Cowboy_hat_face, Crying_face, Disappointed_face, Dizzy_face, Downcast_face_with_sweat, Drooling_face, Exploding_head, Expressionless_face, Face_blowing_a_kiss, Face_savoring_food, Face_screaming_in_fear, Face_with_head_bandage, Face_with_monocle, Face_with_open_mouth, Face_with_raised_eyebrow, Face_with_rolling_eyes, Face_with_steam_from_nose, Face_with_tears_of_joy, Face_with_thermometer, Face_with_tongue, Fearful_face, Flushed_face, Frowning_face_with_open_mouth, Frowning_face, Grimacing_face, Grinning_face_with_big_eyes, Grinning_face_with_sweat, Grinning_face_1, Grinning_face, Grinning_squinting_face, Hot_face, Hushed_face, Joker, Kissing_face_with_closed_eyes, Kissing_face_with_smiling_eyes, Kissing_face, Lion, Loudly_crying_face, Money_mouth_face_$, Monkey, Nauseated_face, Nerd_face, Neutral_face, Panda, Pensive_face, Pile_of_poo, Pleading_face, Pouting_face, Relieved_face, Rolling_on_the_floor_laughing, Sad_but_relieved_face, Santa_Claus, Sleep_face, Sleepy_face, Slightly_frowning_face, Slightly_smiling_face, Smiling_face_with_halo, Smiling_face_with_heart_eyes, Smiling_face_with_hearts, Smiling_face_with_smiling_eyes, Smiling_face, Squinting_face_with_tongue, Star_struck, Thinking_face, Tired_face, Vomiting_face, Weary_face, Winking_face_with_tongue, Winking_face, Worried_face_1, Worried_face
     
     
-    var name: String {
-        switch self {
-        case .Angry_face: return "Angry Face"
-        case .Clown_face: return "Clown Face"
-        default: return "Clown face"
-        }
-    }
+//    var name: String {
+//        switch self {
+//        case .Angry_face: return "Angry Face"
+//        case .Clown_face: return "Clown Face"
+//        default: return "Clown face"
+//        }
+//    }
     
     var image: Image {
         switch self {
@@ -243,7 +243,7 @@ enum faces: CaseIterable {
         case .Beaming_face_with_smiling_eyes:
             return [.squinting, .closed]
         case .Cat:
-            return [.neutral]
+            return [.neutral, .wideOpen]
         case .Clown_face:
             return [.neutral, .wideOpen]
         case .Cold_face:
@@ -251,13 +251,13 @@ enum faces: CaseIterable {
         case .Confounded_face:
             return [.squinting, .closed]
         case .Cowboy_hat_face:
-            return [.neutral]
+            return [.neutral, .wideOpen]
         case .Crying_face:
-            return [.neutral]
+            return [.neutral, .squinting]
         case .Disappointed_face:
             return [.closed]
         case .Dizzy_face:
-            return [.closed]
+            return [.closed, .wideOpen]
         case .Downcast_face_with_sweat:
             return [.closed]
         case .Drooling_face:
@@ -265,7 +265,7 @@ enum faces: CaseIterable {
         case .Exploding_head:
             return [.neutral, .wideOpen]
         case .Expressionless_face:
-            return [.neutral]
+            return [.neutral, .closed]
         case .Face_blowing_a_kiss:
             return [.wink]
         case .Face_savoring_food:
@@ -291,17 +291,17 @@ enum faces: CaseIterable {
         case .Face_with_tongue:
             return [.neutral]
         case .Fearful_face:
-            return [.wideOpen]
+            return [.wideOpen, .neutral]
         case .Flushed_face:
             return [.wideOpen]
         case .Frowning_face_with_open_mouth:
-            return [.wideOpen]
+            return [.wideOpen, .neutral]
         case .Frowning_face:
             return [.neutral]
         case .Grimacing_face:
             return [.neutral, .wideOpen]
         case .Grinning_face_with_big_eyes:
-            return [.neutral]
+            return [.neutral, .wideOpen]
         case .Grinning_face_with_sweat:
             return [.closed]
         case .Grinning_face_1:
@@ -313,7 +313,7 @@ enum faces: CaseIterable {
         case .Hot_face:
             return [.neutral, .wideOpen]
         case .Hushed_face:
-            return [.wideOpen]
+            return [.wideOpen, .neutral]
         case .Joker:
             return [.neutral]
         case .Kissing_face_with_closed_eyes:
@@ -323,21 +323,21 @@ enum faces: CaseIterable {
         case .Kissing_face:
             return [.neutral]
         case .Lion:
-            return [.neutral]
+            return [.neutral, .wideOpen]
         case .Loudly_crying_face:
             return [.closed]
         case .Money_mouth_face_$:
             return [.neutral, .wideOpen]
         case .Monkey:
-            return [.neutral]
+            return [.neutral, .wideOpen]
         case .Nauseated_face:
-            return [.neutral, .squinting]
+            return [.neutral, .squinting, .wideOpen]
         case .Nerd_face:
             return [.neutral]
         case .Neutral_face:
             return [.neutral]
         case .Panda:
-            return [.neutral]
+            return [.neutral, .wideOpen]
         case .Pensive_face:
             return [.closed]
         case .Pile_of_poo:
@@ -351,7 +351,7 @@ enum faces: CaseIterable {
         case .Rolling_on_the_floor_laughing:
             return [.closed]
         case .Sad_but_relieved_face:
-            return [.neutral]
+            return [.neutral, .squinting]
         case .Santa_Claus:
             return [.wink]
         case .Sleep_face:
@@ -389,338 +389,339 @@ enum faces: CaseIterable {
         case .Winking_face:
             return [.wink]
         case .Worried_face_1:
-            return [.neutral]
+            return [.neutral, .wideOpen]
         case .Worried_face:
             return [.neutral]
         }
     }
         
-        var mouthScale: mouthScale {
+        var mouthScale: Array<mouthScale> {
             switch self {
-            case .Angry_face: return .frown
-            
+            case .Angry_face:
+                return [.frown]
             case .Anguished_face:
-                return .frown
+                return [.frown, .openMouthNeutral]
             case .Anxious_face_with_sweat:
-                return .frown
+                return [.frown]
             case .Astonished_face:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Beaming_face_with_smiling_eyes:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Cat:
-                return .tongueOut
+                return [.tongueOut]
             case .Clown_face:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Cold_face:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Confounded_face:
-                return .frown
+                return [.frown]
             case .Cowboy_hat_face:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Crying_face:
-                return .frown
+                return [.frown]
             case .Disappointed_face:
-                return .frown
+                return [.frown]
             case .Dizzy_face:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Downcast_face_with_sweat:
-                return .frown
+                return [.frown]
             case .Drooling_face:
-                return .smile
+                return [.smile]
             case .Exploding_head:
-                return .openMouthNeutral
+                return [.openMouthNeutral, .frown]
             case .Expressionless_face:
-                return .neutral
+                return [.neutral]
             case .Face_blowing_a_kiss:
-                return .kissFace
+                return [.kissFace]
             case .Face_savoring_food:
-                return .tongueOut
+                return [.tongueOut, .smile]
             case .Face_screaming_in_fear:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Face_with_head_bandage:
-                return .frown
+                return [.frown]
             case .Face_with_monocle:
-                return .frown
+                return [.frown, .neutral]
             case .Face_with_open_mouth:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Face_with_raised_eyebrow:
-                return .neutral
+                return [.neutral]
             case .Face_with_rolling_eyes:
-                return .neutral
+                return [.neutral]
             case .Face_with_steam_from_nose:
-                return .frown
+                return [.frown]
             case .Face_with_tears_of_joy:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Face_with_thermometer:
-                return .frown
+                return [.frown]
             case .Face_with_tongue:
-                return .tongueOut
+                return [.tongueOut]
             case .Fearful_face:
-                return .frown
+                return [.frown, .openMouthNeutral]
             case .Flushed_face:
-                return .neutral
+                return [.neutral]
             case .Frowning_face_with_open_mouth:
-                return .frown
+                return [.frown, .openMouthNeutral]
             case .Frowning_face:
-                return .frown
+                return [.frown]
             case .Grimacing_face:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Grinning_face_with_big_eyes:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Grinning_face_with_sweat:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Grinning_face_1:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Grinning_face:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Grinning_squinting_face:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Hot_face:
-                return .tongueOut
+                return [.tongueOut]
             case .Hushed_face:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Joker:
-                return .smile
+                return [.smile]
             case .Kissing_face_with_closed_eyes:
-                return .kissFace
+                return [.kissFace]
             case .Kissing_face_with_smiling_eyes:
-                return .kissFace
+                return [.kissFace]
             case .Kissing_face:
-                return .kissFace
+                return [.kissFace]
             case .Lion:
-                return .tongueOut
+                return [.tongueOut]
             case .Loudly_crying_face:
-                return .openMouthNeutral
+                return [.openMouthNeutral, .frown]
             case .Money_mouth_face_$:
-                return .tongueOut
+                return [.tongueOut]
             case .Monkey:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Nauseated_face:
-                return .frown
+                return [.frown]
             case .Nerd_face:
-                return .smile
+                return [.smile]
             case .Neutral_face:
-                return .neutral
+                return [.neutral]
             case .Panda:
-                return .tongueOut
+                return [.tongueOut]
             case .Pensive_face:
-                return .neutral
+                return [.neutral]
             case .Pile_of_poo:
-                return .smile
+                return [.smile]
             case .Pleading_face:
-                return .neutral
+                return [.neutral]
             case .Pouting_face:
-                return .frown
+                return [.frown]
             case .Relieved_face:
-                return .smile
+                return [.smile]
             case .Rolling_on_the_floor_laughing:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Sad_but_relieved_face:
-                return .frown
+                return [.frown]
             case .Santa_Claus:
-                return .smile
+                return [.smile, .openMouthSmile]
             case .Sleep_face:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Sleepy_face:
-                return .frown
+                return [.frown, .openMouthNeutral]
             case .Slightly_frowning_face:
-                return .frown
+                return [.frown]
             case .Slightly_smiling_face:
-                return .smile
+                return [.smile]
             case .Smiling_face_with_halo:
-                return .smile
+                return [.smile]
             case .Smiling_face_with_heart_eyes:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Smiling_face_with_hearts:
-                return .smile
+                return [.smile, .openMouthSmile]
             case .Smiling_face_with_smiling_eyes:
-                return .smile
+                return [.smile]
             case .Smiling_face:
-                return .smile
+                return [.smile, .openMouthSmile]
             case .Squinting_face_with_tongue:
-                return .tongueOut
+                return [.tongueOut]
             case .Star_struck:
-                return .openMouthSmile
+                return [.openMouthSmile]
             case .Thinking_face:
-                return .frown
+                return [.frown, .neutral]
             case .Tired_face:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Vomiting_face:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Weary_face:
-                return .openMouthNeutral
+                return [.openMouthNeutral]
             case .Winking_face_with_tongue:
-                return .tongueOut
+                return [.tongueOut]
             case .Winking_face:
-                return .smile
+                return [.smile, .openMouthSmile]
             case .Worried_face_1:
-                return .frown
+                return [.frown, .openMouthNeutral]
             case .Worried_face:
-                return .frown
+                return [.frown]
             }
     }
     
-    var eyebrowScale: eyebrowScale {
+    var eyebrowScale: Array<eyebrowScale> {
         switch self {
-        case .Angry_face: return .furrowed
+        case .Angry_face:
+            return [.furrowed]
         case .Anguished_face:
-            return .surprised
+            return [.surprised]
         case .Anxious_face_with_sweat:
-            return.neutral
+            return [.neutral, .surprised]
         case .Astonished_face:
-            return .surprised
+            return [.surprised, .neutral]
         case .Beaming_face_with_smiling_eyes:
-            return .neutral
+            return [.neutral]
         case .Cat:
-            return .neutral
+            return [.neutral, .surprised]
         case .Clown_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Cold_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Confounded_face:
-            return .neutral
+            return [.neutral, .furrowed]
         case .Cowboy_hat_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Crying_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Disappointed_face:
-            return .neutral
+            return [.neutral, .furrowed]
         case .Dizzy_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Downcast_face_with_sweat:
-            return .neutral
+            return [.neutral, .furrowed]
         case .Drooling_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Exploding_head:
-            return .surprised
+            return [.surprised]
         case .Expressionless_face:
-            return .neutral
+            return [.neutral]
         case .Face_blowing_a_kiss:
-            return .splitSkeptical
+            return [.splitSkeptical]
         case .Face_savoring_food:
-            return .neutral
+            return [.neutral, .surprised]
         case .Face_screaming_in_fear:
-            return .surprised
+            return [.surprised]
         case .Face_with_head_bandage:
-            return .neutral
+            return [.neutral]
         case .Face_with_monocle:
-            return .splitSkeptical
+            return [.splitSkeptical, .furrowed]
         case .Face_with_open_mouth:
-            return .surprised
+            return [.surprised]
         case .Face_with_raised_eyebrow:
-            return .splitSkeptical
+            return [.splitSkeptical]
         case .Face_with_rolling_eyes:
-            return .surprised
+            return [.surprised, .neutral]
         case .Face_with_steam_from_nose:
-            return .furrowed
+            return [.furrowed, .neutral, .surprised]
         case .Face_with_tears_of_joy:
-            return .neutral
+            return [.neutral, .furrowed, .surprised]
         case .Face_with_thermometer:
-            return .neutral
+            return [.neutral]
         case .Face_with_tongue:
-            return .neutral
+            return [.neutral, .surprised]
         case .Fearful_face:
-            return .surprised
+            return [.surprised, .neutral]
         case .Flushed_face:
-            return .surprised
+            return [.surprised, .neutral]
         case .Frowning_face_with_open_mouth:
-            return .surprised
+            return [.surprised, .neutral]
         case .Frowning_face:
-            return .neutral
+            return [.neutral, .furrowed]
         case .Grimacing_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Grinning_face_with_big_eyes:
-            return .neutral
+            return [.neutral, .surprised]
         case .Grinning_face_with_sweat:
-            return .surprised
+            return [.surprised, .neutral]
         case .Grinning_face_1:
-            return .surprised
+            return [.surprised, .neutral]
         case .Grinning_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Grinning_squinting_face:
-            return .surprised
+            return [.surprised, .neutral]
         case .Hot_face:
-            return .surprised
+            return [.surprised, .neutral]
         case .Hushed_face:
-            return .surprised
+            return [.surprised]
         case .Joker:
-            return .neutral
+            return [.neutral, .surprised]
         case .Kissing_face_with_closed_eyes:
-            return .neutral
+            return [.neutral, .surprised]
         case .Kissing_face_with_smiling_eyes:
-            return .neutral
+            return [.neutral, .surprised]
         case .Kissing_face:
-            return .neutral
+            return [.neutral]
         case .Lion:
-            return .neutral
+            return [.neutral, .surprised]
         case .Loudly_crying_face:
-            return .furrowed
+            return [.furrowed, .neutral]
         case .Money_mouth_face_$:
-            return .neutral
+            return [.neutral, .surprised]
         case .Monkey:
-            return .neutral
+            return [.neutral, .surprised]
         case .Nauseated_face:
-            return .furrowed
+            return [.furrowed, .neutral]
         case .Nerd_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Neutral_face:
-            return .neutral
+            return [.neutral]
         case .Panda:
-            return .neutral
+            return [.neutral, .surprised]
         case .Pensive_face:
-            return .neutral
+            return [.neutral, .furrowed]
         case .Pile_of_poo:
-            return .neutral
+            return [.neutral, .surprised]
         case .Pleading_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Pouting_face:
-            return .furrowed
+            return [.furrowed]
         case .Relieved_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Rolling_on_the_floor_laughing:
-            return .surprised
+            return [.surprised, .neutral]
         case .Sad_but_relieved_face:
-            return .furrowed
+            return [.furrowed, .neutral]
         case .Santa_Claus:
-            return .splitSkeptical
+            return [.splitSkeptical]
         case .Sleep_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Sleepy_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Slightly_frowning_face:
-            return .neutral
+            return [.neutral]
         case .Slightly_smiling_face:
-            return .neutral
+            return [.neutral]
         case .Smiling_face_with_halo:
-            return .neutral
+            return [.neutral, .surprised]
         case .Smiling_face_with_heart_eyes:
-            return .surprised
+            return [.surprised, .neutral]
         case .Smiling_face_with_hearts:
-            return .neutral
+            return [.neutral, .surprised]
         case .Smiling_face_with_smiling_eyes:
-            return .neutral
+            return [.neutral, .surprised]
         case .Smiling_face:
-            return .neutral
+            return [.neutral, .surprised]
         case .Squinting_face_with_tongue:
-            return .neutral
+            return [.neutral, .surprised]
         case .Star_struck:
-            return .surprised
+            return [.surprised, .neutral]
         case .Thinking_face:
-            return .splitSkeptical
+            return [.splitSkeptical, .furrowed]
         case .Tired_face:
-            return .furrowed
+            return [.furrowed, .neutral]
         case .Vomiting_face:
-            return .furrowed
+            return [.furrowed, .surprised, .neutral]
         case .Weary_face:
-            return .furrowed
+            return [.furrowed, .surprised, .neutral]
         case .Winking_face_with_tongue:
-            return .splitSkeptical
+            return [.splitSkeptical]
         case .Winking_face:
-            return .splitSkeptical
+            return [.splitSkeptical]
         case .Worried_face_1:
-            return .neutral
+            return [.neutral, .surprised]
         case .Worried_face:
-            return .neutral
+            return [.neutral]
         }
     }
     
