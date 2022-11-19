@@ -17,7 +17,7 @@ enum GameStage: CaseIterable {
         case .menu:
             return "Menu"
         case .twoPlayerCollaborativeLocal:
-            return "Two Player Collaborative"
+            return "Two Player"
         case .twoPlayerCompetitiveLocal:
             return "Two Player Competitive"
         case .ending:

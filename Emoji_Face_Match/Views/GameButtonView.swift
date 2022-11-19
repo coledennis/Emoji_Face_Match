@@ -14,10 +14,10 @@ struct GameButtonView: View {
     var body: some View {
         Label(text, systemImage: icon)
             .frame(minWidth: 150)
-            .foregroundColor(color)
+            .foregroundColor(/*color*/.primary)
             .font(.system(.headline, design: .rounded).bold())
             .padding()
-            .background(RoundedRectangle(cornerRadius: 15).fill(color.opacity(0.15)))
+            .background(RoundedRectangle(cornerRadius: 15).fill(color.opacity(/*0.15*/0.5)))
     }
 }
 

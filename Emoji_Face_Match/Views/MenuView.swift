@@ -31,7 +31,7 @@ struct MenuView: View {
                     .font(.system(.subheadline, design: .rounded).bold())
                 
                 ForEach(GameStage.allCases, id: \.self) { gameStage in
-                    if gameStage != GameStage.menu && gameStage != GameStage.ending {
+                    if gameStage != GameStage.menu && gameStage != GameStage.ending && gameStage != GameStage.twoPlayerCompetitiveLocal {
                         gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
                     }
                 }
