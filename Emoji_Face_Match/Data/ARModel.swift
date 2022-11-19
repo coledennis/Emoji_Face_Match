@@ -30,6 +30,7 @@ struct ARModel {
     var currentScore: Int = 0
     var gametime: Int = 0
     var switchPlayer: Bool = false
+    var countdownTime: Int = 3
     
     // MARK: Audio Variables
     var successAudio: AVAudioPlayer?
@@ -182,11 +183,16 @@ struct ARModel {
         gametime -= 1
     }
     
+    mutating func countdownTimeUpdate() {
+        countdownTime -= 1
+    }
+    
     mutating func countUpGameTime() {
         gametime += 1
     }
     
     mutating func gameSetup() {
+        countdownTime = 3
         currentScore = 0
         gametime = 15
         
@@ -198,6 +204,7 @@ struct ARModel {
     }
     
     mutating func countUpGameSetup() {
+        countdownTime = 3
         currentScore = 0
         gametime = 0
         

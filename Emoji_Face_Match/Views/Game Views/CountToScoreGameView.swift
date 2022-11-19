@@ -32,11 +32,7 @@ struct CountToScoreGameView: View {
                     
                     try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
                     arViewModel.countUpGameTime()
-                    
-//                    if arViewModel.gameTime < 6 && arViewModel.gameTime > 0 {
-//                        arViewModel.playCountdownAudio()
-//                        arViewModel.buttonHaptic()
-//                    }
+                
                 } catch {
                     print ("error 1")
                 }

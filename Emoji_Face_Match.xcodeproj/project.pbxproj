@@ -16,6 +16,7 @@
 		B4BEB7F1292934B40066D3A7 /* CountToScoreGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BEB7F0292934B40066D3A7 /* CountToScoreGameView.swift */; };
 		B4BEB7F3292936AF0066D3A7 /* CountUpEndingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BEB7F2292936AF0066D3A7 /* CountUpEndingView.swift */; };
 		B4BEB7F529293BF30066D3A7 /* SwitchPlayersPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BEB7F429293BF30066D3A7 /* SwitchPlayersPopUpView.swift */; };
+		B4BEB7F7292970600066D3A7 /* CountdownToStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BEB7F6292970600066D3A7 /* CountdownToStartView.swift */; };
 		B4EDFD75290F39F300663E7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDFD74290F39F300663E7C /* AppDelegate.swift */; };
 		B4EDFD77290F39F300663E7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EDFD76290F39F300663E7C /* ContentView.swift */; };
 		B4EDFD7B290F39F400663E7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4EDFD7A290F39F400663E7C /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		B4BEB7F0292934B40066D3A7 /* CountToScoreGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountToScoreGameView.swift; sourceTree = "<group>"; };
 		B4BEB7F2292936AF0066D3A7 /* CountUpEndingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountUpEndingView.swift; sourceTree = "<group>"; };
 		B4BEB7F429293BF30066D3A7 /* SwitchPlayersPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchPlayersPopUpView.swift; sourceTree = "<group>"; };
+		B4BEB7F6292970600066D3A7 /* CountdownToStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownToStartView.swift; sourceTree = "<group>"; };
 		B4EDFD71290F39F300663E7C /* Emoji_Face_Match.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emoji_Face_Match.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4EDFD74290F39F300663E7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4EDFD76290F39F300663E7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				B4BEB7EE292933AE0066D3A7 /* HotPotatoView.swift */,
 				B45EE6042918B73A00ADA9FF /* GenericGameView.swift */,
 				B4BEB7F0292934B40066D3A7 /* CountToScoreGameView.swift */,
+				B4BEB7F6292970600066D3A7 /* CountdownToStartView.swift */,
 				B4EDFD8E290F3D4300663E7C /* EndingView.swift */,
 				B4BEB7F2292936AF0066D3A7 /* CountUpEndingView.swift */,
 				B4BEB7F429293BF30066D3A7 /* SwitchPlayersPopUpView.swift */,
@@ -222,6 +225,7 @@
 			files = (
 				B4BEB7F3292936AF0066D3A7 /* CountUpEndingView.swift in Sources */,
 				B45EE6052918B73A00ADA9FF /* GenericGameView.swift in Sources */,
+				B4BEB7F7292970600066D3A7 /* CountdownToStartView.swift in Sources */,
 				B4EDFD87290F3A8100663E7C /* ARViewModel.swift in Sources */,
 				B4EDFD89290F3B3300663E7C /* MenuView.swift in Sources */,
 				B4EDFD85290F3A7700663E7C /* ARModel.swift in Sources */,

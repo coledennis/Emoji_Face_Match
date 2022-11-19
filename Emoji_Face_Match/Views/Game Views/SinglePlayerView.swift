@@ -10,7 +10,11 @@ import SwiftUI
 struct SinglePlayerView: View {
     @ObservedObject var arViewModel : ARViewModel
     var body: some View {
-        GenericGameView(arViewModel: arViewModel)
+        if arViewModel.countdownTime > 0 {
+            CountdownToStartView(arViewModel: arViewModel)
+        } else {
+            GenericGameView(arViewModel: arViewModel)
+        }
     }
 }
 

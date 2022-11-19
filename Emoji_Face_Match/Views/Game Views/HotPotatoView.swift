@@ -11,17 +11,21 @@ struct HotPotatoView: View {
     @ObservedObject var arViewModel : ARViewModel
     @State var switchPlayers = false
     var body: some View {
-        CountToScoreGameView(arViewModel: arViewModel)
-            .sheet(isPresented: $switchPlayers) {
-                arViewModel.switchPlayerToggle()
-            } content: {
-                SwitchPlayersPopUpView(arViewModel: arViewModel)
-            }
-            .onChange(of: arViewModel.score) { newValue in
-                if arViewModel.score < 10 {
-                    switchPlayers = true
+        if arViewModel.countdownTime > 0 {
+            CountdownToStartView(arViewModel: arViewModel)
+        } else {
+            CountToScoreGameView(arViewModel: arViewModel)
+                .sheet(isPresented: $switchPlayers) {
+                    arViewModel.switchPlayerToggle()
+                } content: {
+                    SwitchPlayersPopUpView(arViewModel: arViewModel)
                 }
-            }
+                .onChange(of: arViewModel.score) { newValue in
+                    if arViewModel.score < 10 {
+                        switchPlayers = true
+                    }
+                }
+        }
     }
 }
 
