@@ -32,7 +32,7 @@ struct MenuView: View {
                 
                 ForEach(GameStage.allCases, id: \.self) { gameStage in
                     switch gameStage {
-                    case .singlePlayer, .hotPotato:  gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
+                    case .singlePlayer, .hotPotato, .tutorial:  gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
                     default: EmptyView()
                     }
                 }
@@ -53,6 +53,8 @@ struct MenuView: View {
             case .ending:
                 break
             case .countUpEnding:
+                break
+            case .tutorial:
                 break
             }
         } label: {

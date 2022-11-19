@@ -58,8 +58,6 @@ struct CountdownToStartView: View {
             .onAppear {
                 arViewModel.prepareHaptics()
             }
-        
-        
     }
 }
 

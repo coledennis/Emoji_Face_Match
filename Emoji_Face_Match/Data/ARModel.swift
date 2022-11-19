@@ -92,7 +92,7 @@ struct ARModel {
         let eyebrowDownRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browDownRight})?.value ?? 0)
         /*let*/  eyebrowStatus = eyebrowCheck(eyebrowInnerUp: eyebrowInnerUp, eyebrowDownLeft: eyebrowDownLeft, eyebrowDownRight: eyebrowDownRight)
         
-        if facesArray.count > 0 && switchPlayer == false {
+        if facesArray.count > 0 && switchPlayer == false && countdownTime == 0 {
             faceCheck(face: facesArray.first!, eyes: eyeStatus, eyebrows: eyebrowStatus, mouth: mouthStatus)
         }
     }

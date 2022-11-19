@@ -20,6 +20,8 @@ struct ContentView : View {
                 HotPotatoView(arViewModel: arViewModel)
             case .countUpEnding:
                 CountUpEndingView(arViewModel: arViewModel)
+            case .tutorial:
+                TutorialView(arViewModel: arViewModel)
             }
         }
     }

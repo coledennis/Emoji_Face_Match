@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 enum GameStage: CaseIterable {
-    case menu, singlePlayer, hotPotato, ending, countUpEnding
+    case menu, singlePlayer, hotPotato, ending, countUpEnding, tutorial
     
     var string: String {
         switch self {
@@ -22,6 +22,8 @@ enum GameStage: CaseIterable {
             return "Hot Potato"
         case .countUpEnding:
             return "Ending"
+        case .tutorial:
+            return "Tutorial"
         }
     }
     
@@ -37,6 +39,8 @@ enum GameStage: CaseIterable {
             return .blue
         case .countUpEnding:
             return .clear
+        case .tutorial:
+            return .purple
         }
     }
     
@@ -51,6 +55,8 @@ enum GameStage: CaseIterable {
             return "arrow.turn.up.forward.iphone"
         case .countUpEnding:
             return "xmark"
+        case .tutorial:
+            return "person.fill.questionmark"
         }
     }
 }
@@ -747,7 +753,7 @@ enum faces: CaseIterable {
 //    }
 //}
 
-enum eyebrowScale {
+enum eyebrowScale: CaseIterable {
     case neutral, surprised, furrowed, splitSkeptical
     
     var string: String {
@@ -764,13 +770,13 @@ enum eyebrowScale {
 }
 
 
-enum eyeScale {
+enum eyeScale: CaseIterable {
     case neutral, closed, wideOpen, rollingEyesUp, squinting, wink
     
     var string: String {
         switch self {
-        case .neutral: return "Neutral"
-            
+        case .neutral:
+            return "Neutral"
         case .closed:
             return "Closed"
         case .wideOpen:
@@ -785,7 +791,7 @@ enum eyeScale {
     }
 }
 
-enum mouthScale {
+enum mouthScale: CaseIterable {
     case neutral, smile, frown, openMouthSmile, openMouthNeutral, tongueOut, kissFace
     
     var string: String {
