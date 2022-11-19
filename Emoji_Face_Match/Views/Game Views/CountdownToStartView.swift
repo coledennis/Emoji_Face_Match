@@ -13,37 +13,51 @@ struct CountdownToStartView: View {
         ZStack {
             ARViewContainer(arViewModel: arViewModel)
             Rectangle().fill(.thinMaterial)
-            VStack {
+            VStack(alignment: .center) {
+                
                 switch arViewModel.gameStage {
                 case .singlePlayer:
-                    Text("Use your eyebrows, eyes, and mouth to recreate the emoji's on screen!")
-                    Text("Collect 10 points to stop the clock and win!")
+                    Text("""
+    Use your eyebrows, eyes, and mouth to recreate the emoji's on screen!
+    
+    Collect 10 points to stop the clock and win!
+    """)
+                    .font(.system(.title3, design: .rounded).bold())
+                    .padding(.bottom)
                 case .hotPotato:
-                    Text("Use your eyebrows, eyes, and mouth to recreate the emoji's on screen!")
-                    Text("When you score a point, hand the phone off to the next player as fast as possible as the timer won't stop until the game ends!")
-                    Text("Collect 10 points to stop the clock and win!")
+                    Text("""
+    Use your eyebrows, eyes, and mouth to recreate the emoji's on screen!
+    
+    When you score a point, hand the phone off to the next player as fast as possible as the timer won't stop until the game ends!
+    
+    Collect 10 points to stop the clock and win!
+    """)
+                    .font(.system(.title3, design: .rounded).bold())
+                    .padding(.bottom)
                 default:
                     EmptyView()
                 }
+                
                 Text(String(arViewModel.countdownTime))
-            }
+                    .font(.system(.largeTitle, design: .rounded).bold())
+            }.padding(40)
         }.edgesIgnoringSafeArea(.all)
         
         
-        .task {
-            while arViewModel.countdownTime > 0 { // SHOULD THIS LOGIC BE IN ARMODEL?
-                do {
-                    try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
-                    arViewModel.countdownTimeUpdate()
-                    arViewModel.buttonHaptic()
-                } catch {
-                    print ("error 1")
+            .task {
+                while arViewModel.countdownTime > 0 { // SHOULD THIS LOGIC BE IN ARMODEL?
+                    do {
+                        try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
+                        arViewModel.countdownTimeUpdate()
+                        arViewModel.buttonHaptic()
+                    } catch {
+                        print ("error 1")
+                    }
                 }
             }
-        }
-        .onAppear {
-            arViewModel.prepareHaptics()
-        }
+            .onAppear {
+                arViewModel.prepareHaptics()
+            }
         
         
     }

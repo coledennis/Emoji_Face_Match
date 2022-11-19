@@ -27,10 +27,11 @@ struct ARModel {
     
     // MARK: Game Data
     var facesArray: Array<faces> = []
+    var collectedFaces: Array<faces> = []
     var currentScore: Int = 0
     var gametime: Int = 0
     var switchPlayer: Bool = false
-    var countdownTime: Int = 3
+    var countdownTime: Int = 5
     
     // MARK: Audio Variables
     var successAudio: AVAudioPlayer?
@@ -104,6 +105,7 @@ struct ARModel {
                 switchPlayer = true
             }
             simpleSuccess()
+            collectedFaces.append(facesArray[0])
             facesArray.remove(at: 0)
             
             faceRing?.notifications.ringAnimation.post()
@@ -192,7 +194,7 @@ struct ARModel {
     }
     
     mutating func gameSetup() {
-        countdownTime = 3
+        countdownTime = 5
         currentScore = 0
         gametime = 15
         
@@ -204,7 +206,7 @@ struct ARModel {
     }
     
     mutating func countUpGameSetup() {
-        countdownTime = 3
+        countdownTime = 5
         currentScore = 0
         gametime = 0
         

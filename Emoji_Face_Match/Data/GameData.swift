@@ -34,7 +34,7 @@ enum GameStage: CaseIterable {
         case .ending:
             return .clear
         case .hotPotato:
-            return .green
+            return .blue
         case .countUpEnding:
             return .clear
         }
@@ -438,7 +438,7 @@ enum faces: CaseIterable {
             case .Face_with_raised_eyebrow:
                 return [.neutral]
             case .Face_with_rolling_eyes:
-                return [.neutral]
+                return [.neutral, .frown]
             case .Face_with_steam_from_nose:
                 return [.frown]
             case .Face_with_tears_of_joy:

@@ -12,13 +12,19 @@ struct SwitchPlayersPopUpView: View {
     @ObservedObject var arViewModel : ARViewModel
     var body: some View {
         VStack {
-            Text("Switch Players")
+            Text("Switch Players!")
+                .font(.system(.largeTitle, design: .rounded).bold())
+                .padding(.bottom)
             Text("Time: \(arViewModel.gameTime)")
+                .font(.system(.title3, design: .rounded).bold())
+                .padding(.bottom)
             Text("Score: \(arViewModel.score) out of 10")
+                .font(.system(.title3, design: .rounded).bold())
+                .padding(.bottom)
             Button {
                 presentationMode.wrappedValue.dismiss()
             } label: {
-                GameButtonView(text: "Resume Game", color: Color.green, icon: "play")
+                GameButtonView(text: "Next Player Ready", color: Color.green, icon: "play")
             }
 
         }
