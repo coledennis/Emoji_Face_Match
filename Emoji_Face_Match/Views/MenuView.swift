@@ -31,8 +31,9 @@ struct MenuView: View {
                     .font(.system(.subheadline, design: .rounded).bold())
                 
                 ForEach(GameStage.allCases, id: \.self) { gameStage in
-                    if gameStage != GameStage.menu && gameStage != GameStage.ending && gameStage != GameStage.twoPlayerCompetitiveLocal && gameStage != GameStage.countUpEnding {
-                        gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
+                    switch gameStage {
+                    case .singlePlayer, .hotPotato:  gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
+                    default: EmptyView()
                     }
                 }
             }
@@ -44,10 +45,15 @@ struct MenuView: View {
         Button {
             arViewModel.buttonHaptic()
             arViewModel.changeGameStage(newGameStage: gameStage)
-            if gameStage == .singlePlayer || gameStage == .twoPlayerCollaborativeLocal {
-                arViewModel.gameSetup()
-            } else {
-                arViewModel.countUpGameSetup()
+            switch gameStage {
+            case .singlePlayer: arViewModel.gameSetup()
+            case .hotPotato: arViewModel.countUpGameSetup()
+            case .menu:
+                break
+            case .ending:
+                break
+            case .countUpEnding:
+                break
             }
         } label: {
             GameButtonView(text: text, color: color, icon: icon)
@@ -55,7 +61,6 @@ struct MenuView: View {
     }
     
     func changeEmoji() {
-//        arViewModel.softHaptic()
         arViewModel.buttonHaptic()
         backgroundImage = arViewModel.facesArray.randomElement()?.image
         withAnimation(.spring(dampingFraction: 0.5)) {

@@ -9,17 +9,13 @@ import Foundation
 import SwiftUI
 
 enum GameStage: CaseIterable {
-    case menu, singlePlayer, twoPlayerCollaborativeLocal, twoPlayerCompetitiveLocal, hotPotato, ending, countUpEnding
+    case menu, singlePlayer, hotPotato, ending, countUpEnding
     
     var string: String {
         switch self {
         case .singlePlayer: return "Single Player"
         case .menu:
             return "Menu"
-        case .twoPlayerCollaborativeLocal:
-            return "Two Player"
-        case .twoPlayerCompetitiveLocal:
-            return "Two Player Competitive"
         case .ending:
             return "Ending"
         case .hotPotato:
@@ -35,10 +31,6 @@ enum GameStage: CaseIterable {
             return .red
         case .menu:
             return .clear
-        case .twoPlayerCollaborativeLocal:
-            return .orange
-        case .twoPlayerCompetitiveLocal:
-            return .yellow
         case .ending:
             return .clear
         case .hotPotato:
@@ -53,10 +45,6 @@ enum GameStage: CaseIterable {
         case .singlePlayer: return "person"
         case .menu:
             return "list.bullet"
-        case .twoPlayerCollaborativeLocal:
-            return "person.2"
-        case .twoPlayerCompetitiveLocal:
-            return "person.2"
         case .ending:
             return "xmark"
         case .hotPotato:
@@ -71,14 +59,6 @@ enum GameStage: CaseIterable {
 enum faces: CaseIterable {
     case Angry_face, Anguished_face, Anxious_face_with_sweat, Astonished_face, Beaming_face_with_smiling_eyes, Cat, Clown_face, Cold_face, Confounded_face, Cowboy_hat_face, Crying_face, Disappointed_face, Dizzy_face, Downcast_face_with_sweat, Drooling_face, Exploding_head, Expressionless_face, Face_blowing_a_kiss, Face_savoring_food, Face_screaming_in_fear, Face_with_head_bandage, Face_with_monocle, Face_with_open_mouth, Face_with_raised_eyebrow, Face_with_rolling_eyes, Face_with_steam_from_nose, Face_with_tears_of_joy, Face_with_thermometer, Face_with_tongue, Fearful_face, Flushed_face, Frowning_face_with_open_mouth, Frowning_face, Grimacing_face, Grinning_face_with_big_eyes, Grinning_face_with_sweat, Grinning_face_1, Grinning_face, Grinning_squinting_face, Hot_face, Hushed_face, Joker, Kissing_face_with_closed_eyes, Kissing_face_with_smiling_eyes, Kissing_face, Lion, Loudly_crying_face, Money_mouth_face_$, Monkey, Nauseated_face, Nerd_face, Neutral_face, Panda, Pensive_face, Pile_of_poo, Pleading_face, Pouting_face, Relieved_face, Rolling_on_the_floor_laughing, Sad_but_relieved_face, Santa_Claus, Sleep_face, Sleepy_face, Slightly_frowning_face, Slightly_smiling_face, Smiling_face_with_halo, Smiling_face_with_heart_eyes, Smiling_face_with_hearts, Smiling_face_with_smiling_eyes, Smiling_face, Squinting_face_with_tongue, Star_struck, Thinking_face, Tired_face, Vomiting_face, Weary_face, Winking_face_with_tongue, Winking_face, Worried_face_1, Worried_face
     
-    
-//    var name: String {
-//        switch self {
-//        case .Angry_face: return "Angry Face"
-//        case .Clown_face: return "Clown Face"
-//        default: return "Clown face"
-//        }
-//    }
     
     var image: Image {
         switch self {

@@ -16,10 +16,6 @@ struct ContentView : View {
             case .menu: MenuView(arViewModel: arViewModel)
             case .singlePlayer: SinglePlayerView(arViewModel: arViewModel)
             case .ending: EndingView(arViewModel: arViewModel)
-            case .twoPlayerCollaborativeLocal:
-                TwoPlayerLocalCollaborativeView(arViewModel: arViewModel)
-            case .twoPlayerCompetitiveLocal:
-                TwoPlayerLocalCompetitiveView()
             case .hotPotato:
                 HotPotatoView(arViewModel: arViewModel)
             case .countUpEnding:

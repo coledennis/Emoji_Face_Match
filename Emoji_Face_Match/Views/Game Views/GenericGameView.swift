@@ -48,13 +48,10 @@ struct GenericGameView: View {
         VStack {
             HStack {
                 Label(String(arViewModel.score), systemImage: "trophy")
-                    
-//                    .bold()
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
                 Spacer()
                 Label(String(arViewModel.gameTime), systemImage: "clock")
-//                    .bold()
                     .padding()
                     .foregroundColor(arViewModel.gameTime > 5 ? Color(uiColor: .label) : .red)
                     .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
@@ -67,10 +64,8 @@ struct GenericGameView: View {
                 Button {
                     arViewModel.buttonHaptic()
                     arViewModel.changeGameStage(newGameStage: .menu)
-                    //
                 } label: {
                     Label(String("Menu"), systemImage: "arrowshape.turn.up.backward")
-//                        .bold()
                         .padding()
                         .foregroundColor(.primary)
                         .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
@@ -114,18 +109,18 @@ struct GenericGameView: View {
         }
     }
     
-    var testingData: some View {
-        VStack {
-            Spacer()
-            VStack {
+//    var testingData: some View {
+//        VStack {
+//            Spacer()
+//            VStack {
 //                Text("Eyes: \(arViewModel.eyeStatus.string)")
 //                Text("Eyebrows: \(arViewModel.eyebrowStatus.string)")
 //                Text("Mouth: \(arViewModel.mouthStatus.string)")
-            }
-            .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
-            
-        }
-    }
+//            }
+//            .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
+//
+//        }
+//    }
 }
 
 struct GenericGameView_Previews: PreviewProvider {

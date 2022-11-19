@@ -51,17 +51,9 @@ struct ARModel {
     
     // MARK: AR Logic
     mutating func setupARView(gameStage: GameStage){
-        switch gameStage {
-        case .twoPlayerCollaborativeLocal, .twoPlayerCompetitiveLocal:
-            let config = ARWorldTrackingConfiguration()
-            config.frameSemantics.insert(.personSegmentation)
-            config.userFaceTrackingEnabled = true
-            arView.session.run(config)
-        default :
-            let config = ARFaceTrackingConfiguration()
-            config.frameSemantics.insert(.personSegmentation)
-            arView.session.run(config)
-        }
+        let config = ARFaceTrackingConfiguration()
+        config.frameSemantics.insert(.personSegmentation)
+        arView.session.run(config)
     }
     
     

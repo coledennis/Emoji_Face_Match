@@ -121,16 +121,16 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     }
     
     // MARK: Testing Data
-    //    var mouthStatus: mouthScale {
-    //        model.mouthStatus
-    //    }
-    //
-    //    var eyebrowStatus: eyebrowScale {
-    //        model.eyebrowStatus
-    //    }
-    //
-    //    var eyeStatus: eyeScale {
-    //        model.eyeStatus
-    //    }
+//        var mouthStatus: mouthScale {
+//            model.mouthStatus
+//        }
+//    
+//        var eyebrowStatus: eyebrowScale {
+//            model.eyebrowStatus
+//        }
+//    
+//        var eyeStatus: eyeScale {
+//            model.eyeStatus
+//        }
     
 }
