@@ -31,7 +31,7 @@ struct MenuView: View {
                     .font(.system(.subheadline, design: .rounded).bold())
                 
                 ForEach(GameStage.allCases, id: \.self) { gameStage in
-                    if gameStage != GameStage.menu && gameStage != GameStage.ending && gameStage != GameStage.twoPlayerCompetitiveLocal {
+                    if gameStage != GameStage.menu && gameStage != GameStage.ending && gameStage != GameStage.twoPlayerCompetitiveLocal && gameStage != GameStage.countUpEnding {
                         gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
                     }
                 }
@@ -44,7 +44,11 @@ struct MenuView: View {
         Button {
             arViewModel.buttonHaptic()
             arViewModel.changeGameStage(newGameStage: gameStage)
-            arViewModel.gameSetup()
+            if gameStage == .singlePlayer || gameStage == .twoPlayerCollaborativeLocal {
+                arViewModel.gameSetup()
+            } else {
+                arViewModel.countUpGameSetup()
+            }
         } label: {
             GameButtonView(text: text, color: color, icon: icon)
         }

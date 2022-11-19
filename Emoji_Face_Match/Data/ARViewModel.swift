@@ -66,6 +66,10 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         model.gameSetup()
     }
     
+    func countUpGameSetup() {
+        model.countUpGameSetup()
+    }
+    
     // MARK: Haptics 
     func simpleSuccess() {
         model.simpleSuccess()
@@ -102,6 +106,10 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
 
     func updateGameTime() {
         model.updateGameTime()
+    }
+    
+    func countUpGameTime() {
+        model.countUpGameTime()
     }
     
     

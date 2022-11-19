@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 enum GameStage: CaseIterable {
-    case menu, singlePlayer, twoPlayerCollaborativeLocal, twoPlayerCompetitiveLocal, ending
+    case menu, singlePlayer, twoPlayerCollaborativeLocal, twoPlayerCompetitiveLocal, hotPotato, ending, countUpEnding
     
     var string: String {
         switch self {
@@ -21,6 +21,10 @@ enum GameStage: CaseIterable {
         case .twoPlayerCompetitiveLocal:
             return "Two Player Competitive"
         case .ending:
+            return "Ending"
+        case .hotPotato:
+            return "Hot Potato"
+        case .countUpEnding:
             return "Ending"
         }
     }
@@ -37,6 +41,10 @@ enum GameStage: CaseIterable {
             return .yellow
         case .ending:
             return .clear
+        case .hotPotato:
+            return .green
+        case .countUpEnding:
+            return .clear
         }
     }
     
@@ -50,6 +58,10 @@ enum GameStage: CaseIterable {
         case .twoPlayerCompetitiveLocal:
             return "person.2"
         case .ending:
+            return "xmark"
+        case .hotPotato:
+            return "arrow.turn.up.forward.iphone"
+        case .countUpEnding:
             return "xmark"
         }
     }

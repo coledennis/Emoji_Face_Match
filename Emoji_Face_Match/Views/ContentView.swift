@@ -20,6 +20,10 @@ struct ContentView : View {
                 TwoPlayerLocalCollaborativeView(arViewModel: arViewModel)
             case .twoPlayerCompetitiveLocal:
                 TwoPlayerLocalCompetitiveView()
+            case .hotPotato:
+                HotPotatoView(arViewModel: arViewModel)
+            case .countUpEnding:
+                CountUpEndingView(arViewModel: arViewModel)
             }
         }
     }

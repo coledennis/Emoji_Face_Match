@@ -186,9 +186,24 @@ struct ARModel {
         gametime -= 1
     }
     
+    mutating func countUpGameTime() {
+        gametime += 1
+    }
+    
     mutating func gameSetup() {
         currentScore = 0
         gametime = 15
+        
+        facesArray = []
+        for face in faces.allCases {
+            facesArray.append(face)
+        }
+        facesArray.shuffle()
+    }
+    
+    mutating func countUpGameSetup() {
+        currentScore = 0
+        gametime = 0
         
         facesArray = []
         for face in faces.allCases {
