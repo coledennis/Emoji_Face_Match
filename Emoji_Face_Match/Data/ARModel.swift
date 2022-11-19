@@ -29,6 +29,7 @@ struct ARModel {
     var facesArray: Array<faces> = []
     var currentScore: Int = 0
     var gametime: Int = 0
+    var switchPlayer: Bool = false
     
     // MARK: Audio Variables
     var successAudio: AVAudioPlayer?
@@ -97,7 +98,7 @@ struct ARModel {
         let eyebrowDownRight = Float(truncating: faceAnchor.blendShapes.first(where: {$0.key == .browDownRight})?.value ?? 0)
         /*let*/  eyebrowStatus = eyebrowCheck(eyebrowInnerUp: eyebrowInnerUp, eyebrowDownLeft: eyebrowDownLeft, eyebrowDownRight: eyebrowDownRight)
         
-        if facesArray.count > 0 {
+        if facesArray.count > 0 && switchPlayer == false {
             faceCheck(face: facesArray.first!, eyes: eyeStatus, eyebrows: eyebrowStatus, mouth: mouthStatus)
         }
     }
@@ -106,6 +107,9 @@ struct ARModel {
     mutating func faceCheck(face: faces, eyes: eyeScale, eyebrows: eyebrowScale, mouth: mouthScale ) {
         if (face.eyeScale.contains(where: {$0 == eyes})) && (face.eyebrowScale.contains(where: {$0 == eyebrows})) && (face.mouthScale.contains(where: {$0 == mouth})) {
             currentScore += 1
+            if gameStageVar == .hotPotato {
+                switchPlayer = true
+            }
             simpleSuccess()
             facesArray.remove(at: 0)
             
@@ -211,6 +215,11 @@ struct ARModel {
         }
         facesArray.shuffle()
     }
+    
+    mutating func switchPlayers() {
+        switchPlayer.toggle()
+    }
+    
     
     // MARK: Audio Setup
     mutating func audioSetup() {

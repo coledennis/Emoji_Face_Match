@@ -112,6 +112,13 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         model.countUpGameTime()
     }
     
+    var switchPlayer: Bool {
+        model.switchPlayer
+    }
+    
+    func switchPlayerToggle() {
+        model.switchPlayers()
+    }
     
     // MARK: Testing Data
     //    var mouthStatus: mouthScale {

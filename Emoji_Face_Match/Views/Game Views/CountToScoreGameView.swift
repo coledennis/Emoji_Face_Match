@@ -23,8 +23,13 @@ struct CountToScoreGameView: View {
             arViewModel.prepareHaptics()
         }
         .task {
-            while arViewModel.score < 10 && arViewModel.isGameActive { // SHOULD THIS LOGIC BE IN ARMODEL?
+            while arViewModel.isGameActive { // SHOULD THIS LOGIC BE IN ARMODEL?
                 do {
+                    if arViewModel.score > 9 {
+                        arViewModel.gameActiveToggle()
+                        arViewModel.changeGameStage(newGameStage: .countUpEnding)
+                    }
+                    
                     try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
                     arViewModel.countUpGameTime()
                     
@@ -32,11 +37,6 @@ struct CountToScoreGameView: View {
 //                        arViewModel.playCountdownAudio()
 //                        arViewModel.buttonHaptic()
 //                    }
-                    
-                    if arViewModel.score > 9 {
-                        arViewModel.gameActiveToggle()
-                        arViewModel.changeGameStage(newGameStage: .countUpEnding)
-                    }
                 } catch {
                     print ("error 1")
                 }
