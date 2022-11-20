@@ -16,6 +16,8 @@ struct ARModel {
     private(set) var arView : ARView
     var faceRing: FaceRing.Scene? // RCProject AR Ring On Success
     
+    var faceTrackingEnabled: Bool = true
+    
     var mouthStatus: mouthScale = .neutral
     var eyebrowStatus: eyebrowScale = .neutral
     var eyeStatus: eyeScale = .neutral
@@ -53,6 +55,9 @@ struct ARModel {
     
     // MARK: AR Logic
     mutating func setupARView(gameStage: GameStage){
+        if !ARWorldTrackingConfiguration.supportsUserFaceTracking {
+            faceTrackingEnabled = false
+       }
         let config = ARFaceTrackingConfiguration()
         config.frameSemantics.insert(.personSegmentation)
         arView.session.run(config)

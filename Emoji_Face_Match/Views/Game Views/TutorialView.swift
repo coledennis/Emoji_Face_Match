@@ -20,7 +20,7 @@ struct TutorialView: View {
                             .font(.system(.title, design: .rounded).bold())
                         Text("Match the 'Moji!")
                             .font(.system(.largeTitle, design: .rounded).bold())
-                        Text("To play, you will need make different facial expressions using your Eyebrows, Eyes, and Mouth.")
+                        Text("To play, you will need make different facial expressions using your Eyebrows, Eyes, and Mouth. Try it out by making the below facial expressions!")
                             .font(.system(.headline, design: .rounded).bold())
                         
                         Group {

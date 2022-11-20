@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 enum GameStage: CaseIterable {
-    case menu, singlePlayer, hotPotato, ending, countUpEnding, tutorial
+    case tutorial, menu, singlePlayer, hotPotato, ending, countUpEnding
     
     var string: String {
         switch self {
@@ -29,8 +29,10 @@ enum GameStage: CaseIterable {
     
     var color: Color {
         switch self {
-        case .singlePlayer:
+        case .tutorial:
             return .red
+        case .singlePlayer:
+            return .green
         case .menu:
             return .clear
         case .ending:
@@ -39,8 +41,7 @@ enum GameStage: CaseIterable {
             return .blue
         case .countUpEnding:
             return .clear
-        case .tutorial:
-            return .purple
+ 
         }
     }
     

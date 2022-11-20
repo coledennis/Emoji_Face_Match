@@ -156,4 +156,8 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         })
     }
     
+    var faceTrackingEnabled: Bool {
+        model.faceTrackingEnabled
+    }
+    
 }
