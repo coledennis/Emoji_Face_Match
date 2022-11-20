@@ -62,6 +62,10 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         model.playCountdownAudio()
     }
     
+    func playSuccessAudio() {
+        model.playSuccessAudio()
+    }
+    
     func gameSetup() {
         model.gameSetup()
     }
@@ -109,6 +113,10 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     func updateGameTime() {
         model.updateGameTime()
     }
+    
+//    func correctAnswerAddGameTime() {
+//        model.correctAnswerAddGameTime()
+//    }
     
     var countdownTime: Int {
         model.countdownTime

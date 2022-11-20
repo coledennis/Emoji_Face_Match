@@ -31,7 +31,7 @@ struct ARModel {
     var currentScore: Int = 0
     var gametime: Int = 0
     var switchPlayer: Bool = false
-    var countdownTime: Int = 5
+    var countdownTime: Int = 3
     
     // MARK: Audio Variables
     var successAudio: AVAudioPlayer?
@@ -100,7 +100,10 @@ struct ARModel {
     
     mutating func faceCheck(face: faces, eyes: eyeScale, eyebrows: eyebrowScale, mouth: mouthScale ) {
         if (face.eyeScale.contains(where: {$0 == eyes})) && (face.eyebrowScale.contains(where: {$0 == eyebrows})) && (face.mouthScale.contains(where: {$0 == mouth})) {
-            currentScore += 1
+//            if gameStageVar == .singlePlayer {
+//                correctAnswerAddGameTime()
+//            }
+                currentScore += 1
             if gameStageVar == .hotPotato {
                 switchPlayer = true
             }
@@ -185,6 +188,10 @@ struct ARModel {
         gametime -= 1
     }
     
+//    mutating func correctAnswerAddGameTime() {
+//        gametime += 1
+//    }
+    
     mutating func countdownTimeUpdate() {
         countdownTime -= 1
     }
@@ -194,7 +201,7 @@ struct ARModel {
     }
     
     mutating func gameSetup() {
-        countdownTime = 5
+        countdownTime = 3
         currentScore = 0
         gametime = 15
         
@@ -206,7 +213,7 @@ struct ARModel {
     }
     
     mutating func countUpGameSetup() {
-        countdownTime = 5
+        countdownTime = 3
         currentScore = 0
         gametime = 0
         

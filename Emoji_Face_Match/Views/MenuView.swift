@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MenuView: View {
-//    @AppStorage(StorageKeys.endingHighestScore.rawValue) var endingHighestScore: Int?
-//    @AppStorage(StorageKeys.endingLowestTime.rawValue) var endingLowestTime: Int?
     @ObservedObject var arViewModel : ARViewModel
     @State var backgroundImage: Image?
     @State var frameSize: CGFloat = 100
@@ -37,34 +35,10 @@ struct MenuView: View {
                     switch gameStage {
                     case .singlePlayer, .hotPotato, .tutorial:  gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
                             .padding(5)
-//                        if gameStage == .singlePlayer {
-//                            if endingHighestScore != nil {
-//                                Text("Single Player High Score: \(String(Int(endingHighestScore!)))")
-//                                    .foregroundColor(gameStage.color)
-//                                    .font(.system(.body, design: .rounded).bold())
-//                            } else {
-//                                Text("No Single Player High Score - Yet!")
-//                                    .foregroundColor(gameStage.color)
-//                                    .font(.system(.body, design: .rounded).bold())
-//                            }
-//                        }
-//                        if gameStage == .hotPotato {
-//                            if endingLowestTime != nil {
-//                                Text("Single Player High Score: \(String(Int(endingLowestTime!)))")
-//                                    .foregroundColor(gameStage.color)
-//                                    .font(.system(.body, design: .rounded).bold())
-//                            } else {
-//                                Text("No Hot Potato High Score - Yet!")
-//                                    .foregroundColor(gameStage.color)
-//                                    .font(.system(.body, design: .rounded).bold())
-//                            }
-//                        }
-//                        
                     default: EmptyView()
                     }
                 }
             }
-            
         }.edgesIgnoringSafeArea(.all)
     }
     

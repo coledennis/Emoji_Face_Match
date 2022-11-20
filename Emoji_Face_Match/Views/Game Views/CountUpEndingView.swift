@@ -30,7 +30,7 @@ struct CountUpEndingView: View {
                 }
                 .padding()
                 Text("Time: \(arViewModel.gameTime) Seconds")  .font(.system(.largeTitle, design: .rounded).bold())
-//                    .padding(.bottom)
+                //                    .padding(.bottom)
                 if endingLowestTime != nil {
                     if arViewModel.gameTime >= previousHighScore {
                         Text("High Score: \(endingLowestTime!) Seconds")
@@ -41,10 +41,10 @@ struct CountUpEndingView: View {
                     Text("New High Score!")
                         .font(.system(.title2, design: .rounded).bold())
                         .foregroundColor(.green)
-//                        .padding(.bottom)
+                    //                        .padding(.bottom)
                     Text("Previous High Score: \(previousHighScore)")
                         .font(.system(.title2, design: .rounded).bold())
-//                        .foregroundColor(.green)
+                    //                        .foregroundColor(.green)
                 }
                 
                 Button {

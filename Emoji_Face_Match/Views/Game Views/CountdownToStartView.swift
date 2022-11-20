@@ -43,40 +43,12 @@ struct CountdownToStartView: View {
                 Text(String(arViewModel.countdownTime))
                     .font(.system(.largeTitle, design: .rounded).bold())
                 
-                
-                
-                
                 Button {
                     arViewModel.buttonHaptic()
                     arViewModel.changeGameStage(newGameStage: .menu)
                 } label: {
                     GameButtonView(text: "Back To Menu", color: .gray, icon: "arrowshape.turn.up.backward")
                 }
-//                .padding(.bottom)
-                
-//                if arViewModel.gameStage == .singlePlayer {
-//                    if endingHighestScore != nil {
-//                        Text("Single Player High Score: \(String(Int(endingHighestScore!)))")
-//                            .foregroundColor(arViewModel.gameStage.color)
-//                            .font(.system(.title2, design: .rounded).bold())
-//                    } else {
-//                        Text("No Single Player High Score - Yet!")
-//                            .foregroundColor(arViewModel.gameStage.color)
-//                            .font(.system(.title2, design: .rounded).bold())
-//                    }
-//                }
-//                if arViewModel.gameStage == .hotPotato {
-//                    if endingLowestTime != nil {
-//                        Text("Single Player High Score: \(String(Int(endingLowestTime!)))")
-//                            .foregroundColor(arViewModel.gameStage.color)
-//                            .font(.system(.title2, design: .rounded).bold())
-//                    } else {
-//                        Text("No Hot Potato High Score - Yet!")
-//                            .foregroundColor(arViewModel.gameStage.color)
-//                            .font(.system(.title2, design: .rounded).bold())
-//                    }
-//                }
-                
             }.padding(40)
         }.edgesIgnoringSafeArea(.all)
         
@@ -87,8 +59,14 @@ struct CountdownToStartView: View {
                         try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
                         if arViewModel.countdownTime > 0  && arViewModel.gameStage == .singlePlayer || arViewModel.gameStage == .hotPotato {
                             arViewModel.countdownTimeUpdate()
+                            if arViewModel.countdownTime > 0 {
+                                arViewModel.playCountdownAudio()
+                            } else {
+                                arViewModel.playSuccessAudio()
+                            }
                             arViewModel.buttonHaptic()
                         }
+                        
                     } catch {
                         print ("error 1")
                     }
