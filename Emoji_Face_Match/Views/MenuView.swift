@@ -22,11 +22,11 @@ struct MenuView: View {
                 switch verticalSizeClass {
                 case .compact:
                     VStack {
-                        Text("Emoji Face Match")
+                        Text("Match the 'Moji")
                             .font(.system(.largeTitle, design: .rounded).bold())
                         Text("Games You Play With Your FACE!")
                             .font(.system(.subheadline, design: .rounded).bold())
-                            .padding(.bottom, 5)
+//                            .padding(.bottom, 5)
                         HStack {
                             backgroundImage?
                                 .resizable()
@@ -53,11 +53,11 @@ struct MenuView: View {
                             .onTapGesture {
                                 changeEmoji()
                             }
-                        Text("Emoji Face Match")
+                        Text("Match the 'Moji")
                             .font(.system(.largeTitle, design: .rounded).bold())
                         Text("Games You Play With Your FACE!")
                             .font(.system(.subheadline, design: .rounded).bold())
-                            .padding(.bottom, 5)
+//                            .padding(.bottom, 5)
                         
                         ForEach(GameStage.allCases, id: \.self) { gameStage in
                             switch gameStage {

@@ -18,7 +18,7 @@ struct TutorialView: View {
                     VStack(alignment: .center) {
                         Text("Welcome to")
                             .font(.system(.title, design: .rounded).bold())
-                        Text("Emoji Face Match!")
+                        Text("Match the 'Moji!")
                             .font(.system(.largeTitle, design: .rounded).bold())
                         Text("To play, you will need make different facial expressions using your Eyebrows, Eyes, and Mouth.")
                             .font(.system(.headline, design: .rounded).bold())
