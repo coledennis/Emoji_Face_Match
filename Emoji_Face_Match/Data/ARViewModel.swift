@@ -9,6 +9,7 @@ import Foundation
 import RealityKit
 import ARKit
 import CoreHaptics
+import SwiftUI
 
 class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         
@@ -21,6 +22,7 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     
     func startSessionDelegate() {
         model.arView.session.delegate = self
+        requestPermission()
     }
     
     func session(_ session: ARSession, didUpdate anchors: [ARAnchor]) {
@@ -141,5 +143,17 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
 //        var eyeStatus: eyeScale {
 //            model.eyeStatus
 //        }
+ 
+    @Published var permissionGranted = true
+    
+    func requestPermission() {
+        AVCaptureDevice.requestAccess(for: .video, completionHandler: {accessGranted in
+            DispatchQueue.main.async {
+                withAnimation() {
+                    self.permissionGranted = accessGranted
+                }
+            }
+        })
+    }
     
 }

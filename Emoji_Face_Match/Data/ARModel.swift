@@ -42,11 +42,11 @@ struct ARModel {
     init() {
         arView = ARView(frame: .zero)
         setupARView(gameStage: .menu)
-        
+
         let faceRingAnchor = try! FaceRing.loadScene()
         faceRing = faceRingAnchor
         arView.scene.anchors.append(faceRingAnchor)
-        
+
         gameSetup()
         audioSetup()
     }
@@ -103,7 +103,7 @@ struct ARModel {
             if gameStageVar == .hotPotato {
                 switchPlayer = true
             }
-                currentScore += 1
+            currentScore += 1
             
             simpleSuccess()
             collectedFaces.append(facesArray[0])
@@ -207,7 +207,7 @@ struct ARModel {
         } else if gameStageVar == .hotPotato {
             gametime = 0
         }
-            
+        
         facesArray = []
         for face in faces.allCases {
             facesArray.append(face)
@@ -301,5 +301,4 @@ struct ARModel {
             print("Failed to play pattern: \(error.localizedDescription).")
         }
     }
-    
 }

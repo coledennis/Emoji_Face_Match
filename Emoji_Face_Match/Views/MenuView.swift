@@ -26,7 +26,6 @@ struct MenuView: View {
                             .font(.system(.largeTitle, design: .rounded).bold())
                         Text("Games You Play With Your FACE!")
                             .font(.system(.subheadline, design: .rounded).bold())
-//                            .padding(.bottom, 5)
                         HStack {
                             backgroundImage?
                                 .resizable()
@@ -57,7 +56,7 @@ struct MenuView: View {
                             .font(.system(.largeTitle, design: .rounded).bold())
                         Text("Games You Play With Your FACE!")
                             .font(.system(.subheadline, design: .rounded).bold())
-//                            .padding(.bottom, 5)
+                        //                            .padding(.bottom, 5)
                         
                         ForEach(GameStage.allCases, id: \.self) { gameStage in
                             switch gameStage {
@@ -68,7 +67,36 @@ struct MenuView: View {
                         }
                     }
                 }
-//            }
+            if !arViewModel.permissionGranted {
+                Rectangle().fill(.ultraThinMaterial).edgesIgnoringSafeArea(.all)
+
+                VStack {
+                    Text("""
+Thank you for downloading Match the 'Moji! 🎉 👋
+
+Match the 'Moji is a game that is played by using your device's camera 🤳 to recognize your facial expressions 🫥.
+
+In order for this game to function, it needs your permission to access to your camera 📷.
+
+This app is not internet-enabled and does not store or transmit your face data in any way 🔒.
+
+To enable camera access, please tap the below button to open the Settings app and toggle "Camera" to on ✅.
+""")
+                    .font(.system(.subheadline, design: .rounded).bold())
+                    .padding()
+                    Button(action: {self.settingsOpener()} ){
+                        GameButtonView(text: "Open App Settings", color: .gray, icon: "gear")
+                        
+                    }
+                }
+            }
+        }
+    }
+    private func settingsOpener(){
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
         }
     }
     
