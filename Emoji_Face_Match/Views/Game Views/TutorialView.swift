@@ -14,14 +14,14 @@ struct TutorialView: View {
             ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
             Rectangle().fill(.thinMaterial).edgesIgnoringSafeArea(.all)
             VStack {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(alignment: .center) {
                         Text("Welcome to")
                             .font(.system(.title, design: .rounded).bold())
                         Text("Emoji Face Match!")
                             .font(.system(.largeTitle, design: .rounded).bold())
                         Text("To play, you will need make different facial expressions using your Eyebrows, Eyes, and Mouth.")
-                            .padding(.horizontal)
+                            .font(.system(.headline, design: .rounded).bold())
                         
                         Group {
                             Text("Eyebrows")
@@ -59,9 +59,10 @@ struct TutorialView: View {
                     }.padding()
                 }
                 Button {
+                    arViewModel.buttonHaptic()
                     arViewModel.changeGameStage(newGameStage: .menu)
                 } label: {
-                    GameButtonView(text: "Back To Menu", color: .green, icon: "arrowshape.turn.up.backward")
+                    GameButtonView(text: "Back To Menu", color: .gray, icon: "arrowshape.turn.up.backward")
                 }
             }
         }

@@ -815,3 +815,6 @@ enum mouthScale: CaseIterable {
 
 
 
+enum StorageKeys: String {
+    case endingHighestScore, endingLowestTime
+}

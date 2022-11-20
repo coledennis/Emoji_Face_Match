@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CountUpEndingView: View {
+    @AppStorage(StorageKeys.endingLowestTime.rawValue) var endingLowestTime: Int = 999
     @ObservedObject var arViewModel : ARViewModel
+    @State var previousHighScore = 0
     var body: some View {
         ZStack {
             ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
@@ -27,8 +29,23 @@ struct CountUpEndingView: View {
                     }
                 }
                 .padding()
-                Text("Time: \(arViewModel.gameTime)")  .font(.system(.largeTitle, design: .rounded).bold())
-                    .padding(.bottom)
+                Text("Time: \(arViewModel.gameTime) Seconds")  .font(.system(.largeTitle, design: .rounded).bold())
+//                    .padding(.bottom)
+                if endingLowestTime != 999 {
+                    if arViewModel.gameTime >= previousHighScore {
+                        Text("High Score: \(endingLowestTime) Seconds")
+                            .font(.system(.title3, design: .rounded).bold())
+                    }
+                }
+                if arViewModel.gameTime < previousHighScore {
+                    Text("New High Score!")
+                        .font(.system(.title2, design: .rounded).bold())
+                        .foregroundColor(.green)
+//                        .padding(.bottom)
+                    Text("Previous High Score: \(previousHighScore)")
+                        .font(.system(.title2, design: .rounded).bold())
+//                        .foregroundColor(.green)
+                }
                 
                 Button {
                     arViewModel.buttonHaptic()
@@ -38,6 +55,7 @@ struct CountUpEndingView: View {
                 }
             }
             .onAppear {
+                previousHighScore = endingLowestTime
                 arViewModel.prepareHaptics()
                 arViewModel.endingHaptic()
                 arViewModel.playEndingAudio()

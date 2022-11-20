@@ -18,7 +18,7 @@ struct SwitchPlayersPopUpView: View {
             Text("Time: \(arViewModel.gameTime)")
                 .font(.system(.title3, design: .rounded).bold())
                 .padding(.bottom)
-            Text("Score: \(arViewModel.score) out of 10")
+            Text("Round \(arViewModel.score) out of 10")
                 .font(.system(.title3, design: .rounded).bold())
                 .padding(.bottom)
             Button {

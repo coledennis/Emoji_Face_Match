@@ -18,21 +18,21 @@ struct CountdownToStartView: View {
                 switch arViewModel.gameStage {
                 case .singlePlayer:
                     Text("""
-    Use your eyebrows, eyes, and mouth to recreate the emoji's on screen!
+    Match your face to the emoji to collect points before the timer ends!
     
-    Collect 10 points to stop the clock and win!
+    Game starts in...
     """)
-                    .font(.system(.title3, design: .rounded).bold())
+                    .font(.system(.title2, design: .rounded).bold())
                     .padding(.bottom)
                 case .hotPotato:
                     Text("""
-    Use your eyebrows, eyes, and mouth to recreate the emoji's on screen!
+    Hand the device off to the next player as fast as possible between turns - the timer won't stop until the game ends!
     
-    When you score a point, hand the phone off to the next player as fast as possible as the timer won't stop until the game ends!
+    Collect 10 points to stop the clock and end the game!
     
-    Collect 10 points to stop the clock and win!
+    Game starts in...
     """)
-                    .font(.system(.title3, design: .rounded).bold())
+                    .font(.system(.title2, design: .rounded).bold())
                     .padding(.bottom)
                 default:
                     EmptyView()
@@ -40,16 +40,24 @@ struct CountdownToStartView: View {
                 
                 Text(String(arViewModel.countdownTime))
                     .font(.system(.largeTitle, design: .rounded).bold())
+                Button {
+                    arViewModel.buttonHaptic()
+                    arViewModel.changeGameStage(newGameStage: .menu)
+                } label: {
+                    GameButtonView(text: "Back To Menu", color: .gray, icon: "arrowshape.turn.up.backward")
+                }
             }.padding(40)
         }.edgesIgnoringSafeArea(.all)
         
         
             .task {
-                while arViewModel.countdownTime > 0 { // SHOULD THIS LOGIC BE IN ARMODEL?
+                while arViewModel.countdownTime > 0  && arViewModel.gameStage == .singlePlayer || arViewModel.gameStage == .hotPotato { // SHOULD THIS LOGIC BE IN ARMODEL?
                     do {
                         try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
-                        arViewModel.countdownTimeUpdate()
-                        arViewModel.buttonHaptic()
+                        if arViewModel.countdownTime > 0  && arViewModel.gameStage == .singlePlayer || arViewModel.gameStage == .hotPotato {
+                            arViewModel.countdownTimeUpdate()
+                            arViewModel.buttonHaptic()
+                        }
                     } catch {
                         print ("error 1")
                     }

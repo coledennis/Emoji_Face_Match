@@ -25,14 +25,16 @@ struct MenuView: View {
                     .onTapGesture {
                         changeEmoji()
                     }
-                Text("Emoji Face Match Party")
+                Text("Emoji Face Match")
                     .font(.system(.largeTitle, design: .rounded).bold())
-                Text("Party Game You Play With Your FACE!")
+                Text("Game You Play With Your FACE!")
                     .font(.system(.subheadline, design: .rounded).bold())
+                    .padding(.bottom, 5)
                 
                 ForEach(GameStage.allCases, id: \.self) { gameStage in
                     switch gameStage {
                     case .singlePlayer, .hotPotato, .tutorial:  gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
+                            .padding(5)
                     default: EmptyView()
                     }
                 }
