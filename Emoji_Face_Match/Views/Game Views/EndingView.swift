@@ -31,29 +31,22 @@ struct EndingView: View {
                 }
                 .padding()
                 if arViewModel.gameStage == .ending {
-                    //                Text("Score: \(arViewModel.score)")
                     Label("Score: \(arViewModel.score)", systemImage: "gamecontroller")
                         .font(.system(.largeTitle, design: .rounded).bold())
                     if arViewModel.score <= previousHighScore {
-                        //                    Text("High Score: \(endingHighestScore ?? 0)")
                         Label("High Score: \(endingHighestScore ?? 0)", systemImage: "trophy")
                             .font(.system(.title3, design: .rounded).bold())
                     }
                     
                     if arViewModel.score > previousHighScore {
-                        //                    Text("New High Score!")
                         Label("New High Score!", systemImage: "trophy")
                             .font(.system(.title2, design: .rounded).bold())
                             .foregroundColor(.yellow)
-                        //                        .padding(.bottom)
                         Text("Previous High Score: \(previousHighScore)")
                             .font(.system(.title2, design: .rounded).bold())
-                        //                        .foregroundColor(.green)
-                        //                        .padding(.bottom)
                     }
                 } else if arViewModel.gameStage == .countUpEnding {
                     Text("Time: \(arViewModel.gameTime) Seconds")  .font(.system(.largeTitle, design: .rounded).bold())
-                    //                    .padding(.bottom)
                     if endingLowestTime != nil {
                         if arViewModel.gameTime >= previousHighScore {
                             Text("High Score: \(endingLowestTime!) Seconds")
@@ -64,11 +57,9 @@ struct EndingView: View {
                         Text("New High Score!")
                             .font(.system(.title2, design: .rounded).bold())
                             .foregroundColor(.yellow)
-                        //                        .padding(.bottom)
                         if endingLowestTime != nil && previousHighScore != 999 {
                             Text("Previous High Score: \(previousHighScore)")
                                 .font(.system(.title2, design: .rounded).bold())
-                            //                        .foregroundColor(.green)
                         }
                     }
                 }

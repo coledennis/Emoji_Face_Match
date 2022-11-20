@@ -54,24 +54,18 @@ struct CountdownToStartView: View {
         
         
             .task {
-                while arViewModel.countdownTime > 0  && arViewModel.gameStage == .singlePlayer || arViewModel.gameStage == .hotPotato { // SHOULD THIS LOGIC BE IN ARMODEL?
+                while arViewModel.countdownTime > 0  && arViewModel.gameStage == .singlePlayer || arViewModel.gameStage == .hotPotato {
                     do {
-                        print("test 1")
                         try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
-                        print("test 2")
                         if arViewModel.countdownTime > 0  && arViewModel.gameStage == .singlePlayer || arViewModel.gameStage == .hotPotato {
-                            print("test 3")
                             arViewModel.countdownTimeUpdate()
                             if arViewModel.countdownTime > 0 {
-                                print("test 4")
                                 arViewModel.playCountdownAudio()
                             } else {
-                                print("test 5")
                                 arViewModel.playSuccessAudio()
                             }
                             arViewModel.buttonHaptic()
                         }
-                        
                     } catch {
                         print ("error 3")
                     }

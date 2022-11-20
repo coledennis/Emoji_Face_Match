@@ -723,35 +723,7 @@ enum faces: CaseIterable {
         }
     }
     
-//    var smileLeft: expressionScale {
-//        switch self {
-//        case .Angry_face: return .light
-//        case .Clown_face: return .heavy
-//        default: return .medium
-//        }
-//    }
-    
-    
 }
-
-
-
-//enum expressionScale {
-//    case none, light, medium, heavy
-//
-//    var value : Float {
-//        switch self {
-//        case .none:
-//            return 0
-//        case .light:
-//            return 0.3
-//        case .medium:
-//            return 0.5
-//        case .heavy:
-//            return 0.7
-//        }
-//    }
-//}
 
 enum eyebrowScale: CaseIterable {
     case neutral, surprised, furrowed, splitSkeptical

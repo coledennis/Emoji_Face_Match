@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MenuView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     @ObservedObject var arViewModel : ARViewModel
     @State var backgroundImage: Image?
     @State var frameSize: CGFloat = 100
@@ -18,27 +19,56 @@ struct MenuView: View {
                     backgroundImage = arViewModel.facesArray.randomElement()?.image
                 }
             Rectangle().fill(.thinMaterial).edgesIgnoringSafeArea(.all)
-            VStack {
-                backgroundImage?
-                    .resizable()
-                    .frame(width: frameSize, height: frameSize)
-                    .onTapGesture {
-                        changeEmoji()
+                switch verticalSizeClass {
+                case .compact:
+                    VStack {
+                        Text("Emoji Face Match")
+                            .font(.system(.largeTitle, design: .rounded).bold())
+                        Text("Games You Play With Your FACE!")
+                            .font(.system(.subheadline, design: .rounded).bold())
+                            .padding(.bottom, 5)
+                        HStack {
+                            backgroundImage?
+                                .resizable()
+                                .frame(width: frameSize*2, height: frameSize*2)
+                                .onTapGesture {
+                                    changeEmoji()
+                                }
+                            VStack {
+                                ForEach(GameStage.allCases, id: \.self) { gameStage in
+                                    switch gameStage {
+                                    case .singlePlayer, .hotPotato, .tutorial:  gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
+                                            .padding(5)
+                                    default: EmptyView()
+                                    }
+                                }
+                            }
+                        }
                     }
-                Text("Emoji Face Match")
-                    .font(.system(.largeTitle, design: .rounded).bold())
-                Text("Games You Play With Your FACE!")
-                    .font(.system(.subheadline, design: .rounded).bold())
-                    .padding(.bottom, 5)
-                
-                ForEach(GameStage.allCases, id: \.self) { gameStage in
-                    switch gameStage {
-                    case .singlePlayer, .hotPotato, .tutorial:  gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
-                            .padding(5)
-                    default: EmptyView()
+                default:
+                    VStack {
+                        backgroundImage?
+                            .resizable()
+                            .frame(width: frameSize*1.5, height: frameSize*1.5)
+                            .onTapGesture {
+                                changeEmoji()
+                            }
+                        Text("Emoji Face Match")
+                            .font(.system(.largeTitle, design: .rounded).bold())
+                        Text("Games You Play With Your FACE!")
+                            .font(.system(.subheadline, design: .rounded).bold())
+                            .padding(.bottom, 5)
+                        
+                        ForEach(GameStage.allCases, id: \.self) { gameStage in
+                            switch gameStage {
+                            case .singlePlayer, .hotPotato, .tutorial:  gameButton(gameStage: gameStage, text: gameStage.string, color: gameStage.color, icon: gameStage.icon)
+                                    .padding(5)
+                            default: EmptyView()
+                            }
+                        }
                     }
                 }
-            }
+//            }
         }
     }
     

@@ -100,9 +100,6 @@ struct ARModel {
     
     mutating func faceCheck(face: faces, eyes: eyeScale, eyebrows: eyebrowScale, mouth: mouthScale ) {
         if (face.eyeScale.contains(where: {$0 == eyes})) && (face.eyebrowScale.contains(where: {$0 == eyebrows})) && (face.mouthScale.contains(where: {$0 == mouth})) {
-//            if gameStageVar == .singlePlayer {
-//                correctAnswerAddGameTime()
-//            }
             if gameStageVar == .hotPotato {
                 switchPlayer = true
             }
