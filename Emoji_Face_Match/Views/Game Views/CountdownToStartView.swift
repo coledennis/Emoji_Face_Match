@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CountdownToStartView: View {
+    @AppStorage(StorageKeys.endingHighestScore.rawValue) var endingHighestScore: Int?
+    @AppStorage(StorageKeys.endingLowestTime.rawValue) var endingLowestTime: Int?
     @ObservedObject var arViewModel : ARViewModel
     var body: some View {
         ZStack {
@@ -40,12 +42,41 @@ struct CountdownToStartView: View {
                 
                 Text(String(arViewModel.countdownTime))
                     .font(.system(.largeTitle, design: .rounded).bold())
+                
+                
+                
+                
                 Button {
                     arViewModel.buttonHaptic()
                     arViewModel.changeGameStage(newGameStage: .menu)
                 } label: {
                     GameButtonView(text: "Back To Menu", color: .gray, icon: "arrowshape.turn.up.backward")
                 }
+//                .padding(.bottom)
+                
+//                if arViewModel.gameStage == .singlePlayer {
+//                    if endingHighestScore != nil {
+//                        Text("Single Player High Score: \(String(Int(endingHighestScore!)))")
+//                            .foregroundColor(arViewModel.gameStage.color)
+//                            .font(.system(.title2, design: .rounded).bold())
+//                    } else {
+//                        Text("No Single Player High Score - Yet!")
+//                            .foregroundColor(arViewModel.gameStage.color)
+//                            .font(.system(.title2, design: .rounded).bold())
+//                    }
+//                }
+//                if arViewModel.gameStage == .hotPotato {
+//                    if endingLowestTime != nil {
+//                        Text("Single Player High Score: \(String(Int(endingLowestTime!)))")
+//                            .foregroundColor(arViewModel.gameStage.color)
+//                            .font(.system(.title2, design: .rounded).bold())
+//                    } else {
+//                        Text("No Hot Potato High Score - Yet!")
+//                            .foregroundColor(arViewModel.gameStage.color)
+//                            .font(.system(.title2, design: .rounded).bold())
+//                    }
+//                }
+                
             }.padding(40)
         }.edgesIgnoringSafeArea(.all)
         

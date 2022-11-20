@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CountUpEndingView: View {
-    @AppStorage(StorageKeys.endingLowestTime.rawValue) var endingLowestTime: Int = 999
+    @AppStorage(StorageKeys.endingLowestTime.rawValue) var endingLowestTime: Int?
     @ObservedObject var arViewModel : ARViewModel
     @State var previousHighScore = 0
     var body: some View {
@@ -31,13 +31,13 @@ struct CountUpEndingView: View {
                 .padding()
                 Text("Time: \(arViewModel.gameTime) Seconds")  .font(.system(.largeTitle, design: .rounded).bold())
 //                    .padding(.bottom)
-                if endingLowestTime != 999 {
+                if endingLowestTime != nil {
                     if arViewModel.gameTime >= previousHighScore {
-                        Text("High Score: \(endingLowestTime) Seconds")
+                        Text("High Score: \(endingLowestTime!) Seconds")
                             .font(.system(.title3, design: .rounded).bold())
                     }
                 }
-                if arViewModel.gameTime < previousHighScore {
+                if arViewModel.gameTime < previousHighScore && endingLowestTime != nil {
                     Text("New High Score!")
                         .font(.system(.title2, design: .rounded).bold())
                         .foregroundColor(.green)
@@ -55,7 +55,7 @@ struct CountUpEndingView: View {
                 }
             }
             .onAppear {
-                previousHighScore = endingLowestTime
+                previousHighScore = endingLowestTime ?? 0
                 arViewModel.prepareHaptics()
                 arViewModel.endingHaptic()
                 arViewModel.playEndingAudio()

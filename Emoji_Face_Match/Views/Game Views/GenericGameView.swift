@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GenericGameView: View {
+    @AppStorage(StorageKeys.endingHighestScore.rawValue) var endingHighestScore: Int?
     @ObservedObject var arViewModel : ARViewModel
     @State var frameSize: CGFloat = 100
     var body: some View {
@@ -46,10 +47,18 @@ struct GenericGameView: View {
     
     var topBar: some View {
         VStack {
-            HStack {
-                Label(String(arViewModel.score), systemImage: "trophy")
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
+            HStack(alignment: .top) {
+                VStack {
+                    Label(String(arViewModel.score), systemImage: "gamecontroller")
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
+                    if endingHighestScore != nil {
+                        Label(String(endingHighestScore ?? 0), systemImage: "trophy")
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
+                            .foregroundColor(.yellow)
+                    }
+                }
                 Spacer()
                 Label(String(arViewModel.gameTime), systemImage: "clock")
                     .padding()
