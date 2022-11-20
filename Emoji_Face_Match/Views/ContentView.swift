@@ -16,10 +16,6 @@ struct ContentView : View {
             case .menu: MenuView(arViewModel: arViewModel)
             case .singlePlayer, .hotPotato: SinglePlayerView(arViewModel: arViewModel)
             case .ending, .countUpEnding: EndingView(arViewModel: arViewModel)
-//            case .hotPotato:
-//                HotPotatoView(arViewModel: arViewModel)
-//            case .countUpEnding:
-//                CountUpEndingView(arViewModel: arViewModel)
             case .tutorial:
                 TutorialView(arViewModel: arViewModel)
             }

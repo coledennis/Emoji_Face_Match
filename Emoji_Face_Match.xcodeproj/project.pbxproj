@@ -12,9 +12,6 @@
 		B45EE60129187DF500ADA9FF /* Countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = B45EE60029187DF500ADA9FF /* Countdown.wav */; };
 		B45EE6052918B73A00ADA9FF /* GenericGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EE6042918B73A00ADA9FF /* GenericGameView.swift */; };
 		B48B7DD829183C8D00522942 /* FaceRing.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = B48B7DD729183C8D00522942 /* FaceRing.rcproject */; };
-		B4BEB7EF292933AE0066D3A7 /* HotPotatoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BEB7EE292933AE0066D3A7 /* HotPotatoView.swift */; };
-		B4BEB7F1292934B40066D3A7 /* CountToScoreGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BEB7F0292934B40066D3A7 /* CountToScoreGameView.swift */; };
-		B4BEB7F3292936AF0066D3A7 /* CountUpEndingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BEB7F2292936AF0066D3A7 /* CountUpEndingView.swift */; };
 		B4BEB7F529293BF30066D3A7 /* SwitchPlayersPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BEB7F429293BF30066D3A7 /* SwitchPlayersPopUpView.swift */; };
 		B4BEB7F7292970600066D3A7 /* CountdownToStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BEB7F6292970600066D3A7 /* CountdownToStartView.swift */; };
 		B4BEB7FB2929911F0066D3A7 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BEB7FA2929911F0066D3A7 /* TutorialView.swift */; };
@@ -37,9 +34,6 @@
 		B45EE60029187DF500ADA9FF /* Countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Countdown.wav; sourceTree = "<group>"; };
 		B45EE6042918B73A00ADA9FF /* GenericGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericGameView.swift; sourceTree = "<group>"; };
 		B48B7DD729183C8D00522942 /* FaceRing.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = FaceRing.rcproject; sourceTree = "<group>"; };
-		B4BEB7EE292933AE0066D3A7 /* HotPotatoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPotatoView.swift; sourceTree = "<group>"; };
-		B4BEB7F0292934B40066D3A7 /* CountToScoreGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountToScoreGameView.swift; sourceTree = "<group>"; };
-		B4BEB7F2292936AF0066D3A7 /* CountUpEndingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountUpEndingView.swift; sourceTree = "<group>"; };
 		B4BEB7F429293BF30066D3A7 /* SwitchPlayersPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchPlayersPopUpView.swift; sourceTree = "<group>"; };
 		B4BEB7F6292970600066D3A7 /* CountdownToStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownToStartView.swift; sourceTree = "<group>"; };
 		B4BEB7FA2929911F0066D3A7 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
@@ -72,12 +66,9 @@
 			isa = PBXGroup;
 			children = (
 				B4EDFD8C290F3D3D00663E7C /* SinglePlayerView.swift */,
-				B4BEB7EE292933AE0066D3A7 /* HotPotatoView.swift */,
 				B45EE6042918B73A00ADA9FF /* GenericGameView.swift */,
-				B4BEB7F0292934B40066D3A7 /* CountToScoreGameView.swift */,
 				B4BEB7F6292970600066D3A7 /* CountdownToStartView.swift */,
 				B4EDFD8E290F3D4300663E7C /* EndingView.swift */,
-				B4BEB7F2292936AF0066D3A7 /* CountUpEndingView.swift */,
 				B4BEB7F429293BF30066D3A7 /* SwitchPlayersPopUpView.swift */,
 				B4BEB7FA2929911F0066D3A7 /* TutorialView.swift */,
 			);
@@ -226,7 +217,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4BEB7F3292936AF0066D3A7 /* CountUpEndingView.swift in Sources */,
 				B45EE6052918B73A00ADA9FF /* GenericGameView.swift in Sources */,
 				B4BEB7F7292970600066D3A7 /* CountdownToStartView.swift in Sources */,
 				B4EDFD87290F3A8100663E7C /* ARViewModel.swift in Sources */,
@@ -236,10 +226,8 @@
 				B4EDFD93290F80E300663E7C /* GameButtonView.swift in Sources */,
 				B4EDFD77290F39F300663E7C /* ContentView.swift in Sources */,
 				B4BEB7FB2929911F0066D3A7 /* TutorialView.swift in Sources */,
-				B4BEB7EF292933AE0066D3A7 /* HotPotatoView.swift in Sources */,
 				B4EDFD8F290F3D4300663E7C /* EndingView.swift in Sources */,
 				B48B7DD829183C8D00522942 /* FaceRing.rcproject in Sources */,
-				B4BEB7F1292934B40066D3A7 /* CountToScoreGameView.swift in Sources */,
 				B4EDFD8B290F3BCE00663E7C /* GameData.swift in Sources */,
 				B4EDFD75290F39F300663E7C /* AppDelegate.swift in Sources */,
 				B4BEB7F529293BF30066D3A7 /* SwitchPlayersPopUpView.swift in Sources */,

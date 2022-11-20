@@ -181,10 +181,6 @@ struct ARModel {
         gameStageVar = gameStage
     }
     
-//    mutating func toggleGameActiveBool() {
-//        isGameActive.toggle()
-//    }
-    
     mutating func toggleGameActiveTrue() {
         isGameActive = true
     }
@@ -194,19 +190,15 @@ struct ARModel {
     }
     
     mutating func updateGameTime() {
-        gametime -= 1
+        switch gameStageVar {
+        case .singlePlayer: gametime -= 1
+        case .hotPotato: gametime += 1
+        default: break
+        }
     }
-    
-//    mutating func correctAnswerAddGameTime() {
-//        gametime += 1
-//    }
     
     mutating func countdownTimeUpdate() {
         countdownTime -= 1
-    }
-    
-    mutating func countUpGameTime() {
-        gametime += 1
     }
     
     mutating func gameSetup() {
@@ -226,18 +218,6 @@ struct ARModel {
         facesArray.shuffle()
         collectedFaces = []
     }
-    
-//    mutating func countUpGameSetup() {
-//        countdownTime = 3
-//        currentScore = 0
-//        gametime = 0
-//
-//        facesArray = []
-//        for face in faces.allCases {
-//            facesArray.append(face)
-//        }
-//        facesArray.shuffle()
-//    }
     
     mutating func switchPlayers() {
         switchPlayer.toggle()

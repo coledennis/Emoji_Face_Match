@@ -13,11 +13,11 @@ struct MenuView: View {
     @State var frameSize: CGFloat = 100
     var body: some View {
         ZStack {
-            ARViewContainer(arViewModel: arViewModel)
+            ARViewContainer(arViewModel: arViewModel).edgesIgnoringSafeArea(.all)
                 .onAppear {
                     backgroundImage = arViewModel.facesArray.randomElement()?.image
                 }
-            Rectangle().fill(.thinMaterial)
+            Rectangle().fill(.thinMaterial).edgesIgnoringSafeArea(.all)
             VStack {
                 backgroundImage?
                     .resizable()
@@ -39,7 +39,7 @@ struct MenuView: View {
                     }
                 }
             }
-        }.edgesIgnoringSafeArea(.all)
+        }
     }
     
     func gameButton(gameStage: GameStage, text: String, color: Color, icon: String) -> some View {
@@ -47,19 +47,6 @@ struct MenuView: View {
             arViewModel.buttonHaptic()
             arViewModel.changeGameStage(newGameStage: gameStage)
             arViewModel.gameSetup()
-
-//            switch gameStage {
-//            case .singlePlayer: arViewModel.gameSetup()
-//            case .hotPotato: arViewModel.countUpGameSetup()
-//            case .menu:
-//                break
-//            case .ending:
-//                break
-//            case .countUpEnding:
-//                break
-//            case .tutorial:
-//                break
-//            }
         } label: {
             GameButtonView(text: text, color: color, icon: icon)
         }

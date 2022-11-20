@@ -50,10 +50,6 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         model.isGameActive
     }
     
-//    func gameActiveToggle() {
-//        model.toggleGameActiveBool()
-//    }
-    
     func toggleGameActiveTrue() {
         model.toggleGameActiveTrue()
     }
@@ -77,10 +73,6 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     func gameSetup() {
         model.gameSetup()
     }
-    
-//    func countUpGameSetup() {
-//        model.countUpGameSetup()
-//    }
     
     // MARK: Haptics 
     func simpleSuccess() {
@@ -115,16 +107,11 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     var gameTime: Int {
         model.gametime
     }
-    
    
 
     func updateGameTime() {
         model.updateGameTime()
     }
-    
-//    func correctAnswerAddGameTime() {
-//        model.correctAnswerAddGameTime()
-//    }
     
     var countdownTime: Int {
         model.countdownTime
@@ -132,10 +119,6 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
     
     func countdownTimeUpdate() {
         model.countdownTimeUpdate()
-    }
-    
-    func countUpGameTime() {
-        model.countUpGameTime()
     }
     
     var switchPlayer: Bool {

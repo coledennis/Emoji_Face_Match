@@ -20,10 +20,9 @@ struct GenericGameView: View {
             topBar
             currentEmoji
                 .padding(5)
-//            testingData
+            //            testingData
         }
         .onAppear {
-//            arViewModel.gameActiveToggle()
             arViewModel.prepareHaptics()
         }
         .task {
@@ -41,7 +40,6 @@ struct GenericGameView: View {
                         }
                         
                         if arViewModel.gameTime == 0 {
-//                            arViewModel.gameActiveToggle()
                             arViewModel.changeGameStage(newGameStage: .ending)
                         }
                     } catch {
@@ -52,13 +50,12 @@ struct GenericGameView: View {
                 while arViewModel.isGameActive { // SHOULD THIS LOGIC BE IN ARMODEL?
                     do {
                         if arViewModel.score > 9 {
-//                            arViewModel.gameActiveToggle()
                             arViewModel.changeGameStage(newGameStage: .countUpEnding)
                         }
                         
                         try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
-                        arViewModel.countUpGameTime()
-                    
+                        arViewModel.updateGameTime()
+                        
                     } catch {
                         print ("error 2")
                     }
@@ -98,7 +95,7 @@ struct GenericGameView: View {
                         .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
                 } else if arViewModel.gameStage == .hotPotato {
                     Label(String(arViewModel.gameTime), systemImage: "clock")
-    //                    .bold()
+                    //                    .bold()
                         .padding()
                         .foregroundColor(arViewModel.gameTime < 60 ? Color(uiColor: .label) : .red)
                         .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
@@ -120,7 +117,7 @@ struct GenericGameView: View {
                 }
             }
         }.font(.subheadline.weight(.bold))
-        .padding(5)
+            .padding(5)
     }
     
     var currentEmoji: some View {
@@ -157,18 +154,18 @@ struct GenericGameView: View {
         }
     }
     
-//    var testingData: some View {
-//        VStack {
-//            Spacer()
-//            VStack {
-//                Text("Eyes: \(arViewModel.eyeStatus.string)")
-//                Text("Eyebrows: \(arViewModel.eyebrowStatus.string)")
-//                Text("Mouth: \(arViewModel.mouthStatus.string)")
-//            }
-//            .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
-//
-//        }
-//    }
+    //    var testingData: some View {
+    //        VStack {
+    //            Spacer()
+    //            VStack {
+    //                Text("Eyes: \(arViewModel.eyeStatus.string)")
+    //                Text("Eyebrows: \(arViewModel.eyebrowStatus.string)")
+    //                Text("Mouth: \(arViewModel.mouthStatus.string)")
+    //            }
+    //            .background(RoundedRectangle(cornerRadius: 10).fill(.regularMaterial))
+    //
+    //        }
+    //    }
 }
 
 struct GenericGameView_Previews: PreviewProvider {
