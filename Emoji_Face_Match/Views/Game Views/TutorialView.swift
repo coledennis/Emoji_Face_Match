@@ -67,7 +67,7 @@ struct TutorialView: View {
             }
         }
         .onAppear {
-            arViewModel.gameActiveToggle()
+            arViewModel.toggleGameActiveTrue()
         }
     }
 }

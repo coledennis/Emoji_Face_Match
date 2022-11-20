@@ -46,18 +46,20 @@ struct MenuView: View {
         Button {
             arViewModel.buttonHaptic()
             arViewModel.changeGameStage(newGameStage: gameStage)
-            switch gameStage {
-            case .singlePlayer: arViewModel.gameSetup()
-            case .hotPotato: arViewModel.countUpGameSetup()
-            case .menu:
-                break
-            case .ending:
-                break
-            case .countUpEnding:
-                break
-            case .tutorial:
-                break
-            }
+            arViewModel.gameSetup()
+
+//            switch gameStage {
+//            case .singlePlayer: arViewModel.gameSetup()
+//            case .hotPotato: arViewModel.countUpGameSetup()
+//            case .menu:
+//                break
+//            case .ending:
+//                break
+//            case .countUpEnding:
+//                break
+//            case .tutorial:
+//                break
+//            }
         } label: {
             GameButtonView(text: text, color: color, icon: icon)
         }

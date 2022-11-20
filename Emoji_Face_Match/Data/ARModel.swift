@@ -103,10 +103,11 @@ struct ARModel {
 //            if gameStageVar == .singlePlayer {
 //                correctAnswerAddGameTime()
 //            }
-                currentScore += 1
             if gameStageVar == .hotPotato {
                 switchPlayer = true
             }
+                currentScore += 1
+            
             simpleSuccess()
             collectedFaces.append(facesArray[0])
             facesArray.remove(at: 0)
@@ -180,8 +181,16 @@ struct ARModel {
         gameStageVar = gameStage
     }
     
-    mutating func toggleGameActiveBool() {
-        isGameActive.toggle()
+//    mutating func toggleGameActiveBool() {
+//        isGameActive.toggle()
+//    }
+    
+    mutating func toggleGameActiveTrue() {
+        isGameActive = true
+    }
+    
+    mutating func toggleGameActiveFalse() {
+        isGameActive = false
     }
     
     mutating func updateGameTime() {
@@ -201,28 +210,34 @@ struct ARModel {
     }
     
     mutating func gameSetup() {
+        switchPlayer = false
         countdownTime = 3
         currentScore = 0
-        gametime = 15
-        
+        if gameStageVar == .singlePlayer {
+            gametime = 15
+        } else if gameStageVar == .hotPotato {
+            gametime = 0
+        }
+            
         facesArray = []
         for face in faces.allCases {
             facesArray.append(face)
         }
         facesArray.shuffle()
+        collectedFaces = []
     }
     
-    mutating func countUpGameSetup() {
-        countdownTime = 3
-        currentScore = 0
-        gametime = 0
-        
-        facesArray = []
-        for face in faces.allCases {
-            facesArray.append(face)
-        }
-        facesArray.shuffle()
-    }
+//    mutating func countUpGameSetup() {
+//        countdownTime = 3
+//        currentScore = 0
+//        gametime = 0
+//
+//        facesArray = []
+//        for face in faces.allCases {
+//            facesArray.append(face)
+//        }
+//        facesArray.shuffle()
+//    }
     
     mutating func switchPlayers() {
         switchPlayer.toggle()

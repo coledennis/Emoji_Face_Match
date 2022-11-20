@@ -9,7 +9,10 @@ import SwiftUI
 
 struct GenericGameView: View {
     @AppStorage(StorageKeys.endingHighestScore.rawValue) var endingHighestScore: Int?
+    @AppStorage(StorageKeys.endingLowestTime.rawValue) var endingLowestTime: Int?
+    
     @ObservedObject var arViewModel : ARViewModel
+    
     @State var frameSize: CGFloat = 100
     var body: some View {
         ZStack {
@@ -20,26 +23,45 @@ struct GenericGameView: View {
 //            testingData
         }
         .onAppear {
-            arViewModel.gameActiveToggle()
+//            arViewModel.gameActiveToggle()
             arViewModel.prepareHaptics()
         }
         .task {
-            while arViewModel.gameTime > 0 && arViewModel.isGameActive { // SHOULD THIS LOGIC BE IN ARMODEL?
-                do {
-                    try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
-                    arViewModel.updateGameTime()
-                    
-                    if arViewModel.gameTime < 6 && arViewModel.gameTime > 0 {
-                        arViewModel.playCountdownAudio()
-                        arViewModel.buttonHaptic()
+            
+            if arViewModel.gameStage == .singlePlayer {
+                
+                while arViewModel.gameTime > 0 && arViewModel.isGameActive { // SHOULD THIS LOGIC BE IN ARMODEL?
+                    do {
+                        try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
+                        arViewModel.updateGameTime()
+                        
+                        if arViewModel.gameTime < 6 && arViewModel.gameTime > 0 {
+                            arViewModel.playCountdownAudio()
+                            arViewModel.buttonHaptic()
+                        }
+                        
+                        if arViewModel.gameTime == 0 {
+//                            arViewModel.gameActiveToggle()
+                            arViewModel.changeGameStage(newGameStage: .ending)
+                        }
+                    } catch {
+                        print ("error 1")
                     }
+                }
+            } else if arViewModel.gameStage == .hotPotato {
+                while arViewModel.isGameActive { // SHOULD THIS LOGIC BE IN ARMODEL?
+                    do {
+                        if arViewModel.score > 9 {
+//                            arViewModel.gameActiveToggle()
+                            arViewModel.changeGameStage(newGameStage: .countUpEnding)
+                        }
+                        
+                        try await Task.sleep(nanoseconds: UInt64(1_000_000_000))
+                        arViewModel.countUpGameTime()
                     
-                    if arViewModel.gameTime == 0 {
-                        arViewModel.gameActiveToggle()
-                        arViewModel.changeGameStage(newGameStage: .ending)
+                    } catch {
+                        print ("error 2")
                     }
-                } catch {
-                    print ("error 1")
                 }
             }
         }
@@ -52,18 +74,35 @@ struct GenericGameView: View {
                     Label(String(arViewModel.score), systemImage: "gamecontroller")
                         .padding()
                         .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
-                    if endingHighestScore != nil {
-                        Label(String(endingHighestScore ?? 0), systemImage: "trophy")
-                            .padding()
-                            .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
-                            .foregroundColor(.yellow)
+                    if arViewModel.gameStage == .singlePlayer {
+                        if endingHighestScore != nil {
+                            Label(String(endingHighestScore ?? 0), systemImage: "trophy")
+                                .padding()
+                                .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
+                                .foregroundColor(.yellow)
+                        }
+                    } else if arViewModel.gameStage == .hotPotato {
+                        if endingLowestTime != nil {
+                            Label(String(endingLowestTime ?? 0), systemImage: "trophy")
+                                .padding()
+                                .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
+                                .foregroundColor(.yellow)
+                        }
                     }
                 }
                 Spacer()
-                Label(String(arViewModel.gameTime), systemImage: "clock")
-                    .padding()
-                    .foregroundColor(arViewModel.gameTime > 5 ? Color(uiColor: .label) : .red)
-                    .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
+                if arViewModel.gameStage == .singlePlayer {
+                    Label(String(arViewModel.gameTime), systemImage: "clock")
+                        .padding()
+                        .foregroundColor(arViewModel.gameTime > 5 ? Color(uiColor: .label) : .red)
+                        .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
+                } else if arViewModel.gameStage == .hotPotato {
+                    Label(String(arViewModel.gameTime), systemImage: "clock")
+    //                    .bold()
+                        .padding()
+                        .foregroundColor(arViewModel.gameTime < 60 ? Color(uiColor: .label) : .red)
+                        .background(RoundedRectangle(cornerRadius: 15).fill(.regularMaterial))
+                }
             }
             .padding(.horizontal)
             Spacer()

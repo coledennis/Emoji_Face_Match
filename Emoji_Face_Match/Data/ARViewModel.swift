@@ -50,8 +50,16 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         model.isGameActive
     }
     
-    func gameActiveToggle() {
-        model.toggleGameActiveBool()
+//    func gameActiveToggle() {
+//        model.toggleGameActiveBool()
+//    }
+    
+    func toggleGameActiveTrue() {
+        model.toggleGameActiveTrue()
+    }
+    
+    func toggleGameActiveFalse() {
+        model.toggleGameActiveFalse()
     }
     
     func playEndingAudio() {
@@ -70,9 +78,9 @@ class ARViewModel: UIViewController, ObservableObject, ARSessionDelegate {
         model.gameSetup()
     }
     
-    func countUpGameSetup() {
-        model.countUpGameSetup()
-    }
+//    func countUpGameSetup() {
+//        model.countUpGameSetup()
+//    }
     
     // MARK: Haptics 
     func simpleSuccess() {
