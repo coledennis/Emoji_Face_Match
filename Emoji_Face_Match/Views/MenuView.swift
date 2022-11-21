@@ -74,7 +74,7 @@ Thank you for downloading Match the 'Moji! 🎉 👋
 
 Match the 'Moji is a game that is played by using your device's camera 🤳 to recognize your facial expressions 🫥.
 
-To use this app, you must have:
+To use this game, you must have:
 
 An iOS device capable of performing face tracking. Such devices require either a front-facing TrueDepth camera or an A12 Bionic chip (or later). Devices include:
 - iPhone X or later
@@ -82,7 +82,7 @@ An iOS device capable of performing face tracking. Such devices require either a
 - iPhone SE (2020) or later
 - iOS 11.0 or later
 
-It appears that your device is not capable of running this app because it does not meet these technical requirements, so you will be unable to play this game 😢.
+It appears that your device is not capable of running this game because it does not meet these technical requirements, so you will be unable to play this game 😢.
 """)
                 .font(.system(.subheadline, design: .rounded).bold())
                 .padding()
